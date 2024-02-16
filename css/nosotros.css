@@ -1,23 +1,54 @@
+.navbar-brand img {
+    width: 60px;
+    height: 60px;
+    margin-left: 30px;
+}
+
+.resumen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+  }
+
+  .img_resumen {
+    width: 200px;
+    height: 200px;
+    margin-left: auto; /* Para centrar la imagen en dispositivos pequeños */
+    margin-right: auto;
+  }
+
+  @media (min-width: 600px) {
+    .resumen {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .txt_resumen {
+      margin-right: 35px; /* Agregar margen derecho al párrafo para separar la imagen del texto en desktop */
+    }
+
+    .img_resumen {
+      margin-left: 0;
+    }
+  }
+
+.nosotros {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .card {
-    background: transparent url(../src/nosotros/Card/fondo1.png) 70% 45%;
+    background: url(../src/nosotros/Card/fondo1.png);
     background-size: cover; /* La imagen se ajustará para cubrir completamente el contenedor */
     background-repeat: no-repeat;
 }
 
 .card .card-img-top {
-    width: 150px;
-    height: 200px;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 5%;
+    width: 50%;
+    height: auto; 
     margin: auto;
     padding: 10px;
-}
-
-.card {
-    /* Ajusta el ancho según tus necesidades */
-    max-width: 500px; /* Establece un ancho máximo para evitar que la tarjeta sea demasiado ancha */
-    margin: 0 auto; /* Centra la tarjeta horizontalmente */
 }
 
 .card .card-body p {
