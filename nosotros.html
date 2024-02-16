@@ -1,165 +1,332 @@
-<!doctype html>
+
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nosotros</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Urbanist:wght@100..900&display=swap"
+        rel="stylesheet">
 
     <style>
-      .card .card-body p {
-        background-color: #DDD3C5;
-        text-align: justify;
-        color: #7E5A6E;
-        font-family: "Urbanist", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 300;
-        font-style: normal;
-        font-size: 20px;
-    }
+        .col-title {
+            position: relative;
+            font-family: "Lato";
+            padding: 5px;
+            margin: auto;
+        }
 
-    .card-text{
-      min-height: 20vh;
-    }
+        .card-body p {
+            background-color: #DDD3C5;
+            text-align: justify;
+            color: #7E5A6E;
+            font-family: "Urbanist";
+            font-weight: 300;
+            font-style: normal;
+            font-size: 15px;
+            overflow: scroll;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            padding: 5%;
+        }
 
-    .card-title{
-      font-family: "Lato", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-      font-size: 25px;
-      color: #7E5A6E;
-      /*float: right; 
-      margin-top: 150px;*/
-      text-align: right;
-    }
+        .col-description {
+            color: #7E5A6E;
+            font-family: "Urbanist";
+            font-weight: 300;
+            font-style: normal;
+            font-size: 18px;
+        }
 
-    .card{
-      background-image: url(./src/nosotros/fondo1.png);
-      background-size: cover;
-    }
+        .card-header {
+            font-family: "Lato", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 25px;
+            color: #7E5A6E;
+            text-align: center;
+            padding: 2px;
+        }
 
-    .card-img-top{
-      width: 50%; 
-      margin-left:25%
-    }
+        .card-title {
+            font-family: "Lato", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 20px;
+            color: #7E5A6E;
+            text-align: center;
+            padding: 2px;
+        }
 
-    img:hover {filter: opacity(.5);}
+        .card {
+            background-image: url(./src/nosotros/fondo1.png);
+            background-size: cover;
+            margin-bottom: 20px; /* Espacio entre las tarjetas */
+            transform-style: preserve-3d;
+        }
 
-    
+        .img {
+           object-fit: cover;
+            perspective: 1000px;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
 
+        .img {
+            transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+            transform-style: preserve-3d;
+        }
 
+        .imgr:hover .card {
+            transform: rotateY(180deg);
+        }
+
+        .flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+        }
+
+        .flip-container:hover .flipper {
+            transform: rotateY(180deg);
+        }
+
+        .frente,
+        .dorso {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            transform: rotateY(0deg);
+        }
+
+        .dorso {
+            transform: rotateY(180deg);
+        }
+
+        .card-text {
+            font-family: "Urbanist";
+            font-size: 16px;
+        }
+
+        .card-img-top {
+            width: 100%; /* Ajusta el ancho al 100% */
+            max-width: 150px; /* Establece un ancho máximo */
+            margin: auto;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .grid-container {
+                display: flexbox;
+            }
+        }
     </style>
+</head>
 
-  </head>
+<body class="grid-container">
 
-  <body>
-    <h1 style="text-align: center; color: #7E5A6E;" >Integrantes</h1>
-    <br>
-    <br>
-    
-
-    <div class="card text-bg-dark">
-      <img src="./src/nosotros/banner.jpg" class="card-img" alt="...">
-      <div class="card-img-overlay">
-        <h1  class="card-title" style="font-size: 40px; text-align: center;">¿Qué es Manahuia?</h1>
-        <br>
-        <p class="card-text" style="color: #7E5A6E; font-size: 30px; text-align: center;">El proyecto aborda los desafíos que enfrentan las mujeres en el turismo en México, destacando la violencia de género y la inseguridad durante los viajes.
-          La solución propuesta es una aplicación web que conecta a mujeres en el sector turístico, buscando no solo abordar la disparidad económica, 
-          sino también ofrecer información sobre destinos seguros. El objetivo es promover experiencias turísticas positivas y seguras, 
-          transformando la industria en un espacio inclusivo y respetuoso de género.</p>
-      </div>
-    </div>
-    <br>
-    <br>
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card">
-          <img src="./src/nosotros/Chayo/Chayo_blanco OK.png" class="card-img-top" alt="info-chayo" >
-          <div class="card-body">
-            <h5 class="card-title">Chayo Orozco</h5>
-            <p class="card-text">Pedagoga y estudiante en ingeniera en sistemas computacionales con experiencia en desarrollo de automatización de procesos y manejo de CRM. </p>
-          </div>
+    <div class="col-title">
+        <header>
+            <h1 class="card-header" style="font-size: 40px; text-align: center;">Nosotros</h1>
+            <h6 class="card-title" style="font-size: 40px; text-align: center;">¿Qué es Manahuia?</h6>
+        </header>
+        <div class="col-description">
+            <p class="container">
+                El proyecto aborda los desafíos que enfrentan las mujeres en el turismo en México, destacando la
+                violencia de género y la inseguridad durante los viajes. La solución propuesta es una aplicación web
+                que conecta a mujeres en el sector turístico, buscando no solo abordar la disparidad económica, sino
+                también ofrecer información sobre destinos seguros. El objetivo es promover experiencias turísticas
+                positivas y seguras, transformando la industria en un espacio inclusivo y respetuoso de género.
+            </p>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="./src/nosotros/Syn/Syn_blanco OK.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            
-            <h5 class="card-title">Sinthya Bermudez</h5>
-            <p class="card-text">Desarrolladora Java Full Stack Junior e Ingeniera en Comunicaciones y Electrónica, apasionada por el desarrollo web y la innovación tecnológica.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="./src/nosotros/Abi/Abi_blanco OK.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            
-            <h5 class="card-title">Abigail Arizmendi</h5>
-            <p class="card-text">Desarrolladora Java Full Stack y Data Analyst con amplio conocimiento de lenguajes de programación y experiencia en revisión y manejo de bases de datos.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="./src/nosotros/Liz/Liz_blanco OK.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            
-            <h5 class="card-title">Lizeth Muñoz</h5>
-            <p class="card-text">Desarrolladora Full Stack con más de seis años de experiencia en el sector Fintech, destacando en el área de seguridad y pruebas.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card">
-          <img src="./src/nosotros/Dita/Dita_blanco OK.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            
-            <h5 class="card-title">Dita Fernández</h5>
-            <p class="card-text">Instructora educativa y coordinadora de proyectos con más de 7 años de experiencia, desarrolladora Full Stack, Cloud Practitioner y estudiante de Ciencias de Datos.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="./src/nosotros/Jos/Jos_blanco OK.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            
-            <h5 class="card-title">Jos Mendoza</h5>
-            <p class="card-text">Desarrollador Full Stack Java Developer Junior, con origen de experiencia en programación en lenguaje C# enfocado en videojuegos. Amante de los videojuegos y la tecnología.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="./src/nosotros/Sofis/Sofi_blanco.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            
-            <h5 class="card-title">Sofi Muñoz</h5>
-            <p class="card-text">iseñadora con 6 años de experiencia en diferentes ramas, desarrolladora Full Stack Java Developer Junior, con interés en la animación y concept art para videojuegos.</p>
-          </div>
-        </div>
-      </div>
     </div>
 
+    <!-- Tarjeta 1 -->
+    <div class="col">
+        <div class="flip-container">
+            <div class="card">
+                <div class="flipper">
+                    <div class="frente">
+                        <img src="./src/nosotros/Chayo/Chayo_blanco OK.png" class="card-img-top" alt="info-chayo">
+                    </div>
+                    <div class="dorso">
+                        <img src="./src/nosotros/Chayo/Chayo_vacaciones OK.png" class="card-img-top"
+                            alt="info-chayo">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Chayo Orozco</h5>
+                    <p class="card-text">Pedagoga y estudiante en ingeniería en sistemas computacionales con experiencia
+                        en desarrollo de automatización de procesos y manejo de CRM.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="col">
+        <div class="flip-container">
+            <div class="card">
+                <div class="flipper">
+                    <div class="frente">
+                        <img src="./src/nosotros/Syn/Syn_blanco OK.png" class="card-img-top" alt="info-syn">
+                    </div>
+                    <div class="dorso">
+                        <img src="./src/nosotros/Syn/Syn_vacaciones OK.png" class="card-img-top" alt="info-syn">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sinthya Bermudez</h5>
+                    <p class="card-text">Desarrolladora Java Full Stack Junior e Ingeniera en Comunicaciones y Electrónica,
+                        apasionada por el desarrollo web y la innovación tecnológica.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta 3 -->
+    <div class="col">
+        <div class="flip-container">
+            <div class="card">
+                <div class="flipper">
+                    <div class="frente">
+                        <img src="./src/nosotros/Abi/Abi_blanco OK.png" class="card-img-top" alt="info-abi">
+                    </div>
+                    <div class="dorso">
+                        <img src="./src/nosotros/Abi/Abi_vacaciones OK.png" class="card-img-top" alt="info-abi">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Abigail Arizmendi</h5>
+                    <p class="card-text">Desarrolladora Java Full Stack y Data Analyst con amplio conocimiento de
+                        lenguajes de programación y experiencia en revisión y manejo de bases de datos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta 4 -->
+    <div class="col">
+        <div class="flip-container">
+            <div class="card">
+                <div class="flipper">
+                    <div class="frente">
+                        <img src="./src/nosotros/Liz/Liz_blanco OK.png" class="card-img-top" alt="info-liz">
+                    </div>
+                    <div class="dorso">
+                        <img src="./src/nosotros/Liz/Liz_vacaciones OK.png" class="card-img-top" alt="info-liz">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Lizeth Muñoz</h5>
+                    <p class="card-text">Desarrolladora Full Stack con más de seis años de experiencia en el sector
+                        Fintech, destacando en el área de seguridad y pruebas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta 5 -->
+    <div class="col">
+            <div class="card">
+              <div class="flip-container">
+                <div class="flipper">
+                    <div class="frente">
+                        <img src="./src/nosotros/Dita/Dita_blanco OK.png" class="card-img-top" alt="info-dita">
+                    </div>
+                    <div class="dorso">
+                        <img src="./src/nosotros/Dita/Dita_vacaciones OK.png" class="card-img-top" alt="info-dita">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Dita Fernández</h5>
+                    <p class="card-text">Instructora educativa y coordinadora de proyectos con más de 7 años de
+                        experiencia, desarrolladora Full Stack, Cloud Practitioner y estudiante de Ciencias de Datos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta 6 -->
+    <div class="col">
+        <div class="flip-container">
+            <div class="card">
+                <div class="flipper">
+                    <div class="frente">
+                        <img src="./src/nosotros/Jos/Jos_blanco OK.png" class="card-img-top" alt="info-jos">
+                    </div>
+                    <div class="dorso">
+                        <img src="./src/nosotros/Jos/Jos_vacaciones OK.png" class="card-img-top" alt="info-jos">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Jos Mendoza</h5>
+                    <p class="card-text">Desarrollador Full Stack Java Developer Junior, con origen de experiencia en
+                        programación en lenguaje C# enfocado en videojuegos. Amante de los videojuegos y la tecnología.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta 7 -->
+    <div class="col">
+        <div class="flip-container">
+            <div class="card">
+                <div class="flipper">
+                    <div class="frente">
+                        <img src="./src/nosotros/Sofis/Sofi_blanco.png" class="card-img-top" alt="info-sofis">
+                    </div>
+                    <div class="dorso">
+                        <img src="./src/nosotros/Sofis/Sof_vacaciones OK.png" class="card-img-top" alt="info-sofis">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sofi Muñoz</h5>
+                    <p class="card-text">Diseñadora con 6 años de experiencia en diferentes ramas, desarrolladora Full
+                        Stack Java Developer Junior, con interés en la animación y concept art para videojuegos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  
 
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var flipContainers = document.querySelectorAll(".flip-container");
+
+            flipContainers.forEach(function (container) {
+                container.addEventListener("mouseenter", function () {
+                    container.querySelector(".flipper").style.transform = "rotateY(180deg)";
+                });
+
+                container.addEventListener("mouseleave", function () {
+                    container.querySelector(".flipper").style.transform = "rotateY(0deg)";
+                });
+            });
+        });
+    </script>
+</body>
+
 </html>
