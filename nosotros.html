@@ -71,7 +71,7 @@
             margin-bottom: 20px; /* Espacio entre las tarjetas */
             transform-style: preserve-3d;
         }
-
+/*
         .img {
            object-fit: cover;
             perspective: 1000px;
@@ -89,53 +89,111 @@
         .imgr:hover .card {
             transform: rotateY(180deg);
         }
-
-        .flipper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
-        }
-
-        .flip-container:hover .flipper {
-            transform: rotateY(180deg);
-        }
-
-        .frente,
-        .dorso {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            text-align: center;
-            transform: rotateY(0deg);
-        }
-
-        .dorso {
-            transform: rotateY(180deg);
-        }
-
+*/
         .card-text {
             font-family: "Urbanist";
             font-size: 16px;
         }
 
         .card-img-top {
-            width: 100%; /* Ajusta el ancho al 100% */
-            max-width: 150px; /* Establece un ancho máximo */
-            margin: auto;
+            width: 50%; 
+            margin-left:25%;
+            /*width: 100%; /* Ajusta el ancho al 100% */
+            /*max-width: 150px; /* Establece un ancho máximo */
+            /*margin: auto;*/
         }
 
+
+        .imagen{
+            position: relative;
+            margin-top: 5%;
+        }
+    
+        .firstImage, .secondImage{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .firstImage{
+            z-index:1;
+        }
+    
+        .firstImage:hover{
+            filter: opacity(0);        
+            transition: 1s ease;
+        }
+
+        .card-body{
+            margin-top: 200px;
+          }
+      
         @media only screen and (max-width: 767px) {
             .grid-container {
                 display: flexbox;
             }
         }
+
+    /*celulares*/
+    @media(min-width:576px){ /*Con este min decimos que de 576 a 767 tendrá este formato*/
+        .card-body {
+            margin-top: 200px;
+        }
+        .card-text {
+          min-height: 12vh;
+        }
+    }
+    @media(max-width:600px){  /*Con este maximo decimos que desde el mas pequeño hasta los 600px se respeta esta condición*/
+      .card-body {
+          margin-top: 200px;
+      }
+      .card-text {
+        min-height: 12vh;
+      }
+    }
+    /*tablet*/
+    @media(min-width:768px){
+      .card-body {
+          margin-top: 130px;
+      }
+      .card-text {
+        min-height: 18vh;
+      }
+      .card-img-top {
+        max-width: 300px;
+      }
+    }
+    /*escritorio*/
+    @media(min-width:992px){
+      .card-body {
+          margin-top: 180px;
+      }
+      .card-text {
+        min-height: 12vh;
+      }
+    }
+
+    /*escritorio L*/
+    @media(min-width:1440px){
+      .card-body {
+          margin-top: 250px;
+      }
+      .card-text {
+        min-height: 10vh;
+      }
+    }
+
+     /*escritorio 4k*/
+     @media(min-width:2560px){
+      .card-body {
+          margin-top: 350px;
+      }
+      .card-text {
+        min-height: 7vh;
+      }
+    }
+
     </style>
 </head>
 
@@ -157,18 +215,30 @@
         </div>
     </div>
 
+<!-- 
+    falta identar donde acaba el div de cada tarjeta y el div de la clase imagen
+    <div class="col">
+        <div class="card">
+          <div class="imagen">
+          <img src="./src/img/Liz_blanco OK.png" class="card-img-top firstImage" firstImage" alt="info-chayo" >
+          <img src="./src/img/Liz_vacaciones OK.png" class="card-img-top firstImage" secondImage" alt="...">
+        </div>
+          <div class="card-body">
+            <h5 class="card-title">Chayo Orozco</h5>
+            <p class="card-text">Pedagoga y estudiante en ingeniera en sistemas computacionales con experiencia en desarrollo de automatización de procesos y manejo de CRM. </p>
+          </div>
+        </div>
+      </div>
+-->
+    
+<div class="row row-cols-1 row-cols-md-3 g-4">
     <!-- Tarjeta 1 -->
     <div class="col">
-        <div class="flip-container">
             <div class="card">
-                <div class="flipper">
-                    <div class="frente">
-                        <img src="./src/nosotros/Chayo/Chayo_blanco OK.png" class="card-img-top" alt="info-chayo">
-                    </div>
-                    <div class="dorso">
-                        <img src="./src/nosotros/Chayo/Chayo_vacaciones OK.png" class="card-img-top"
+                <div class="imagen">
+                        <img src="./src/nosotros/Chayo/Chayo_blanco OK.png" class="card-img-top firstImage" alt="info-chayo">
+                        <img src="./src/nosotros/Chayo/Chayo_vacaciones OK.png" class="card-img-top secondImage"
                             alt="info-chayo">
-                    </div>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Chayo Orozco</h5>
@@ -176,41 +246,30 @@
                         en desarrollo de automatización de procesos y manejo de CRM.</p>
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- Tarjeta 2 -->
     <div class="col">
-        <div class="flip-container">
             <div class="card">
-                <div class="flipper">
-                    <div class="frente">
-                        <img src="./src/nosotros/Syn/Syn_blanco OK.png" class="card-img-top" alt="info-syn">
-                    </div>
-                    <div class="dorso">
-                        <img src="./src/nosotros/Syn/Syn_vacaciones OK.png" class="card-img-top" alt="info-syn">
-                    </div>
+                <div class="imagen">
+                        <img src="./src/nosotros/Syn/Syn_blanco OK.png" class="card-img-top firstImage" alt="info-syn">
+                        <img src="./src/nosotros/Syn/Syn_vacaciones OK.png" class="card-img-top secondImage" alt="info-syn">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Sinthya Bermudez</h5>
                     <p class="card-text">Desarrolladora Java Full Stack Junior e Ingeniera en Comunicaciones y Electrónica,
                         apasionada por el desarrollo web y la innovación tecnológica.</p>
+
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- Tarjeta 3 -->
     <div class="col">
-        <div class="flip-container">
             <div class="card">
-                <div class="flipper">
-                    <div class="frente">
-                        <img src="./src/nosotros/Abi/Abi_blanco OK.png" class="card-img-top" alt="info-abi">
-                    </div>
-                    <div class="dorso">
-                        <img src="./src/nosotros/Abi/Abi_vacaciones OK.png" class="card-img-top" alt="info-abi">
-                    </div>
+                <div class="imagen">
+                        <img src="./src/nosotros/Abi/Abi_blanco OK.png" class="card-img-top firstImage" alt="info-abi">
+                        <img src="./src/nosotros/Abi/Abi_vacaciones OK.png" class="card-img-top secondImage" alt="info-abi">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Abigail Arizmendi</h5>
@@ -218,20 +277,14 @@
                         lenguajes de programación y experiencia en revisión y manejo de bases de datos.</p>
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- Tarjeta 4 -->
     <div class="col">
-        <div class="flip-container">
             <div class="card">
-                <div class="flipper">
-                    <div class="frente">
-                        <img src="./src/nosotros/Liz/Liz_blanco OK.png" class="card-img-top" alt="info-liz">
-                    </div>
-                    <div class="dorso">
-                        <img src="./src/nosotros/Liz/Liz_vacaciones OK.png" class="card-img-top" alt="info-liz">
-                    </div>
+                <div class="imagen">
+                        <img src="./src/nosotros/Liz/Liz_blanco OK.png" class="card-img-top firstImage" alt="info-liz">
+                        <img src="./src/nosotros/Liz/Liz_vacaciones OK.png" class="card-img-top secondImage" alt="info-liz">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Lizeth Muñoz</h5>
@@ -239,20 +292,14 @@
                         Fintech, destacando en el área de seguridad y pruebas.</p>
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- Tarjeta 5 -->
     <div class="col">
             <div class="card">
-              <div class="flip-container">
-                <div class="flipper">
-                    <div class="frente">
-                        <img src="./src/nosotros/Dita/Dita_blanco OK.png" class="card-img-top" alt="info-dita">
-                    </div>
-                    <div class="dorso">
-                        <img src="./src/nosotros/Dita/Dita_vacaciones OK.png" class="card-img-top" alt="info-dita">
-                    </div>
+                <div class="imagen">
+                        <img src="./src/nosotros/Dita/Dita_blanco OK.png" class="card-img-top firstImage" alt="info-dita">
+                        <img src="./src/nosotros/Dita/Dita_vacaciones OK.png" class="card-img-top secondImage" alt="info-dita">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Dita Fernández</h5>
@@ -261,20 +308,14 @@
                     </p>
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- Tarjeta 6 -->
     <div class="col">
-        <div class="flip-container">
             <div class="card">
-                <div class="flipper">
-                    <div class="frente">
-                        <img src="./src/nosotros/Jos/Jos_blanco OK.png" class="card-img-top" alt="info-jos">
-                    </div>
-                    <div class="dorso">
-                        <img src="./src/nosotros/Jos/Jos_vacaciones OK.png" class="card-img-top" alt="info-jos">
-                    </div>
+                <div class="imagen">
+                        <img src="./src/nosotros/Jos/Jos_blanco OK.png" class="card-img-top firstImage" alt="info-jos">
+                        <img src="./src/nosotros/Jos/Jos_vacaciones OK.png" class="card-img-top secondImage" alt="info-jos">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Jos Mendoza</h5>
@@ -283,20 +324,14 @@
                     </p>
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- Tarjeta 7 -->
     <div class="col">
-        <div class="flip-container">
             <div class="card">
-                <div class="flipper">
-                    <div class="frente">
-                        <img src="./src/nosotros/Sofis/Sofi_blanco.png" class="card-img-top" alt="info-sofis">
-                    </div>
-                    <div class="dorso">
-                        <img src="./src/nosotros/Sofis/Sof_vacaciones OK.png" class="card-img-top" alt="info-sofis">
-                    </div>
+                <div class="imagen">
+                        <img src="./src/nosotros/Sofis/Sofi_blanco.png" class="card-img-top firstImage" alt="info-sofis">
+                        <img src="./src/nosotros/Sofis/Sof_vacaciones OK.png" class="card-img-top secondImage" alt="info-sofis">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Sofi Muñoz</h5>
@@ -304,10 +339,9 @@
                         Stack Java Developer Junior, con interés en la animación y concept art para videojuegos.</p>
                 </div>
             </div>
-        </div>
     </div>
 
-
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
