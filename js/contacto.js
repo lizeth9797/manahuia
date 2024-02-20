@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let valid = true;
         
         // Validación del nombre
-        if (nameInput.value.length < 5 || !nameInput.value.trim().includes(' ')) {
+        if (nameInput.value.length < 5 || /^\s|\s$/.test(nameInput.value) || /\s{2,}/.test(nameInput.value)) {
             nameInput.classList.add('is-invalid');
-            nameError.textContent = 'Por favor escribe un nombre válido (mínimo 5 letas)';
+            nameError.textContent = 'Por favor escribe un nombre válido (mínimo 5 letras y sin espacios en blanco)';
             valid = false;
         } else {
             nameInput.classList.remove('is-invalid');
