@@ -1,4 +1,4 @@
-.navbar-nav ms-auto spacing-nav { 
+/* .navbar-nav ms-auto spacing-nav { 
     margin: 150px auto 0; 
     padding: 0; 
     list-style: none; 
@@ -36,7 +36,100 @@
   .nav-link:hover:after { 
     width: 100%; 
     left: 0; 
+  } */
+
+  .navbar-nav {
+    a {
+      color: #797878;
+      margin: 0 20px;
+      padding: 10px 20px;
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      @include transition(.3s ease-out);
+      span{
+        &::before{
+          width: 5px;
+          height: 5px;
+          background: transparent;
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          /*border-top: 2px solid white;
+          border-left: 2px solid white;*/
+          @include transition (.3s);
+          opacity: 0;
+        }
+        &::after{
+          width: 5px;
+          height: 5px;
+          background: transparent;
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          /*border-right: 2px solid white;
+          border-bottom: 2px solid white;*/
+          @include transition (.3s);
+          opacity: 0;
+  
+        }
+      }
+      &::before {
+        width: 15px;
+        height: 15px;
+        background: transparent;
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-right: 2px solid #85586F;
+        border-top: 2px solid #85586F;
+        @include transition (.3s);
+        opacity: 0;
+      }
+      &::after {
+        width: 15px;
+        height: 15px;
+        background: transparent;
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        border-left: 2px solid #85586F;
+        border-bottom: 2px solid #85586F;
+        @include transition (.3s);
+        opacity: 0;
+      }
+      &:hover{
+        color: #85586F;
+        &::before{
+          opacity: 1;
+          right: 5px;
+          top: 5px;
+        }
+        &::after{
+          opacity: 1;
+          left: 4px;
+          bottom: 5px;
+        }
+        a{
+          &::before{
+            opacity: 1;
+            left: 5px;
+            top: 5px;
+          }
+          &::after{
+            opacity: 1;
+            right: 5px;
+            bottom: 5px;
+          }
+        }
+      }
+    }
   }
+
   @media screen and (max-height: 300px) {
       ul {
           margin-top: 40px;
