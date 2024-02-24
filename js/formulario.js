@@ -1,22 +1,45 @@
+let modalCounter = 1;
 function addItem(item) {
     const container = document.getElementById('cards-container');
-
     const card = document.createElement('div');
     card.classList.add('card', 'col-md-4', 'mb-3');
 
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.5));
-
+    const modalId = `exampleModal_${modalCounter++}`;
     const cardHTML = `
         <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
         <div class="card-body">
             <h5 class="card-title">${item.nombreDestino}</h5>
             <p class="card-text">${truncatedDescription}</p>
-            <button class="btn btn-primary details-btn" data-bs-toggle="modal" data-bs-target="#detailsModal" 
-                data-nombre="${item.nombreDestino}" data-precio="${item.precio}" data-destinos="${item.destinos}" 
-                data-incluye="${item.incluye}" data-duracion="${item.duracion}" data-descripcion="${item.descripcion}">
+            <button type="button" style="align-self: flex-end;" class="btn btn-primary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
                 Detalles
             </button>
-        </div>
+        </div> <!--card-body-->
+
+        <!--Modal-->
+            <div class="modal fade" id="exampleModal_${item.id}" tabindex="-1" 
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                 <h1 class="modal-title fs-5" id="exampleModalLabel">${item.nombreDestino}</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" 
+                                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                ${item.descripcion}
+                <ul>
+                    <li>${item.incluye}</li>
+                </ul>
+                <p class="text-end"><strong> ${item.precio} USD </strong></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" 
+                                                data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div> <!--cierre-modal-->
     `;
 
     card.innerHTML = cardHTML;
@@ -26,23 +49,19 @@ function addItem(item) {
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
     if (event.target.classList.contains('details-btn')) {
-        const detailsModal = document.getElementById('detailsModal');
-
-        // Llena el modal con la información
-        detailsModal.querySelector('.modal-title').innerText = event.target.dataset.nombre;
-        detailsModal.querySelector('.modal-precio').innerText = `Precio: ${event.target.dataset.precio}`;
-        detailsModal.querySelector('.modal-destinos').innerText = `Destinos: ${event.target.dataset.destinos}`;
-        detailsModal.querySelector('.modal-duracion').innerText = `Duración: ${event.target.dataset.duracion}`;
-        detailsModal.querySelector('.modal-incluye').innerHTML = `Incluye: ${event.target.dataset.incluye}`;
-        detailsModal.querySelector('.modal-descripcion').innerText = event.target.dataset.descripcion;
+        const modalId = event.target.getAttribute('data-bs-target'); // Obtiene el ID del modal desde el atributo data-bs-target
+        const modal = document.querySelector(modalId);
 
         // Muestra el modal
-        const modal = new bootstrap.Modal(detailsModal);
-        modal.show();
+        if (!modal) {
+            const modal = new bootstrap.Modal(document.querySelector(modalId));
+            modal.show();
+        }
     }
 });
 
 addItem({
+    'id': 1,
     'nombreDestino':'Aventura Maya en Península Yucateca',
     'precio':'$10,000',
     'destinos':'Mérida, Chichén Itzá, playa del Carmen y Tulúm',
@@ -53,6 +72,7 @@ addItem({
 });
 
 addItem({
+    'id': 2,
     'nombreDestino':'Exploración Natural en la Sierra Madre',
     'precio':'$8,560',
     'destinos':'Puerto Vallarta, San Sebastián del Oeste, Mascota',
@@ -63,6 +83,7 @@ addItem({
 });
 
 addItem({
+    'id': 3,
     'nombreDestino':'Playas en Baja California Sur',
     'precio':'$11,000',
     'destinos':'Loreto, Todos Santos, San José del Cabo, La Paz',
@@ -73,6 +94,7 @@ addItem({
 });
 
 addItem({
+    'id': 4,
     'nombreDestino':'Ruta del Café y Naturaleza en Chiapas',
     'precio':'$12,000',
     'destinos':'San Cristóbal de las Casas, Comitán, Palenque',
@@ -83,6 +105,7 @@ addItem({
 });
 
 addItem({
+    'id': 5,
     'nombreDestino':'Aventura Marina en la Costa Maya',
     'precio':'$9,000',
     'destinos':'Mahahual, Bacalar y Tulum',
@@ -93,6 +116,7 @@ addItem({
 });
 
 addItem({
+    'id': 6,
     'nombreDestino':'Eco-Camping en la Reserva de la Biosfera de Sonora',
     'precio':'$6,000',
     'destinos':'Reserva de la Biosfera El Pinacate y Gran Desierto de Altar',
@@ -103,6 +127,7 @@ addItem({
 });
 
 addItem({
+    'id': 7,
     'nombreDestino':'Encanto y Aventura Volcánica',
     'precio':'$9,500',
     'destinos':'Ciudad de México, Puebla, Cholula, Parque Nacional Iztaccíhuatl-Popocatépetl',
@@ -113,6 +138,7 @@ addItem({
 });
 
 addItem({
+    'id': 8,
     'nombreDestino':'Aventura Aérea y Relajación Natural en México',
     'precio':'$14,250',
     'destinos':'Teotihuacán, Campos Florales y Ixtapan de la Sal',
@@ -123,6 +149,7 @@ addItem({
 });
 
 addItem({
+    'id': 9,
     'nombreDestino':'Aventura en las Alturas: Montañismo y camping en Mexico',
     'precio':'$7,280',
     'destinos':'Parque Nacional Nevado de Toluca, Parque Nacional Cumbres de Monterrey y Parque Nacional Pico de Orizaba',
@@ -133,6 +160,7 @@ addItem({
 });
 
 addItem({
+    'id': 10,
     'nombreDestino':': Encanto Costero y Artesanías Mexicanas',
     'precio':'$9,000',
     'destinos':'Puerto escondido y playa del Carmen',
