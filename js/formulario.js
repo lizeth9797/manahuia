@@ -16,30 +16,56 @@ function addItem(item) {
             </button>
         </div> <!--card-body-->
 
-        <!--Modal-->
-            <div class="modal fade" id="exampleModal_${item.id}" tabindex="-1" 
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                 <h1 class="modal-title fs-5" id="exampleModalLabel">${item.nombreDestino}</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" 
-                                        aria-label="Close"></button>
+        <!-- Modal -->
+        <div class="modal fade custom-modal" id="exampleModal_${item.id}" tabindex="-1" 
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body row">
+                        <!-- Carrusel de imágenes en el lado izquierdo -->
+                        <div class="col-md-6">
+                            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <!-- Aquí deberías agregar tus imágenes dinámicamente -->
+                                    <div class="carousel-item active">
+                                        <img src="${item.img[0]}" class="d-block w-100" alt="Slide 1">
+                                    </div>
+                                    <!-- Agrega más imágenes según sea necesario -->
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+        
+                        <!-- Información a la derecha -->
+                        <div class="col-md-6">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">${item.nombreDestino}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="modal-description">${item.descripcion}</p>
+                                <hr />
+                                <h5>Incluye:</h5>
+                                <p class="modal-incluye text-left small">
+                                    ${item.incluye}
+                                </p>
+                                <p class="text-end modal-price"><strong>${item.precio} USD</strong></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                ${item.descripcion}
-                <ul>
-                    <li>${item.incluye}</li>
-                </ul>
-                <p class="text-end"><strong> ${item.precio} USD </strong></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" 
-                                                data-bs-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
             </div>
-          </div> <!--cierre-modal-->
+        </div> <!-- cierre-modal -->
     `;
 
     card.innerHTML = cardHTML;
