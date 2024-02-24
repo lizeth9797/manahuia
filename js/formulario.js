@@ -8,7 +8,7 @@ function addItem(item) {
     const modalId = `exampleModal_${modalCounter++}`;
     const cardHTML = `
         <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
-        <div class="card-body d-flex flex-column">
+        <div class="card-body d-flex flex-column" style="margin:5px; padding:5px">
             <h5 class="card-title">${item.nombreDestino}</h5>
             <p class="card-text flex-grow-1">${truncatedDescription}</p>
             <button type="button"  style= "background-color:#85586F" class="btn btn-secondary" mt-auto details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
