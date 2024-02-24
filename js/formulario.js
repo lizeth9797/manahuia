@@ -1,5 +1,46 @@
-function addItem(item){
+function addItem(item) {
+    const container = document.getElementById('cards-container');
+
+    const card = document.createElement('div');
+    card.classList.add('card', 'col-md-4', 'mb-3');
+
+    const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.5));
+
+    const cardHTML = `
+        <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
+        <div class="card-body">
+            <h5 class="card-title">${item.nombreDestino}</h5>
+            <p class="card-text">${truncatedDescription}</p>
+            <button class="btn btn-primary details-btn" data-bs-toggle="modal" data-bs-target="#detailsModal" 
+                data-nombre="${item.nombreDestino}" data-precio="${item.precio}" data-destinos="${item.destinos}" 
+                data-incluye="${item.incluye}" data-duracion="${item.duracion}" data-descripcion="${item.descripcion}">
+                Detalles
+            </button>
+        </div>
+    `;
+
+    card.innerHTML = cardHTML;
+    container.appendChild(card);
 }
+
+// Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
+document.getElementById('cards-container').addEventListener('click', function (event) {
+    if (event.target.classList.contains('details-btn')) {
+        const detailsModal = document.getElementById('detailsModal');
+
+        // Llena el modal con la información
+        detailsModal.querySelector('.modal-title').innerText = event.target.dataset.nombre;
+        detailsModal.querySelector('.modal-precio').innerText = `Precio: ${event.target.dataset.precio}`;
+        detailsModal.querySelector('.modal-destinos').innerText = `Destinos: ${event.target.dataset.destinos}`;
+        detailsModal.querySelector('.modal-duracion').innerText = `Duración: ${event.target.dataset.duracion}`;
+        detailsModal.querySelector('.modal-incluye').innerHTML = `Incluye: ${event.target.dataset.incluye}`;
+        detailsModal.querySelector('.modal-descripcion').innerText = event.target.dataset.descripcion;
+
+        // Muestra el modal
+        const modal = new bootstrap.Modal(detailsModal);
+        modal.show();
+    }
+});
 
 addItem({
     'nombreDestino':'Aventura Maya en Península Yucateca',
