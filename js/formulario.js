@@ -4,24 +4,26 @@ function addItem(item) {
     const card = document.createElement('div');
     card.classList.add('card', 'col-md-4', 'mb-3');
 
-    const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.5));
+    const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
     const modalId = `exampleModal_${modalCounter++}`;
     const cardHTML = `
         <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
-        <div class="card-body">
+        <div class="card-body d-flex flex-column">
             <h5 class="card-title">${item.nombreDestino}</h5>
-            <p class="card-text">${truncatedDescription}</p>
-            <button type="button" style="align-self: flex-end;" class="btn btn-primary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
+            <p class="card-text flex-grow-1">${truncatedDescription}</p>
+            <button type="button"  style= "background-color:#85586F" class="btn btn-secondary" mt-auto details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
                 Detalles
             </button>
         </div> <!--card-body-->
+            
+        </div> <!--card-body-->
 
         <!-- Modal -->
-        <div class="modal fade custom-modal" id="exampleModal_${item.id}" tabindex="-1" 
+        <div class="modal fade custom-modal"  id="exampleModal_${item.id}" tabindex="-1" 
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
-                    <div class="modal-body row">
+                    <div class="modal-body row" style= "background-color:#F8EDE3">
                         <!-- Carrusel de imágenes en el lado izquierdo -->
                         <div class="col-md-6">
                             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -36,7 +38,7 @@ function addItem(item) {
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button"   data-bs-target="#carouselExample" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -59,7 +61,7 @@ function addItem(item) {
                                 <p class="text-end modal-price"><strong>${item.precio} USD</strong></p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" style= "background-color:#85586F" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </div>
