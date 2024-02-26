@@ -72,9 +72,6 @@
             color: #85586F;
         }
         
-        .estilo_imagen{
-            /*opacity: 0.5;*/
-        }
         
         @media only screen and (max-width: 767px) {
             .contenedor-a-ocultar {
@@ -168,13 +165,16 @@ label{
     --bs-btn-active-border-color: #85586F;
 }
 h5{
-    padding-top: 15px;
+    padding-top: 5px;
     padding-bottom: 5px;
     font-size: 15px;
    font-family:  "Urbanist", sans-serif;
 }
 
-
+#fecha.fecha{
+  border-color: #85586F;
+  
+}
 
 
     </style>
@@ -268,7 +268,7 @@ h5{
                               <!-- Equipo completo de camping con desayuno y cena -->
                               <div class="col-12 col-md-6 col-lg-4">
                                 <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-                                <label class="btn btn-outline-primary w-100 mb-2" for="btncheck6">camping con desayuno y cena</label>
+                                <label class="btn btn-outline-primary w-100 mb-2" for="btncheck6">Camping con desayuno y cena</label>
                               </div>
                               <!-- Paseos y servicios turísticos -->
                               <div class="col-12 col-md-6 col-lg-4">
@@ -284,35 +284,23 @@ h5{
             </div>
 
 
-                          <h5 slot="font-size:">¿Cuantos dias va a durar el Viaje?</h5>
-                          <div class="btn-group" style="padding:8px ;" role="group" aria-label="Basic radio toggle button group">
-                          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                          <label class="btn btn-outline-primary" for="btnradio1">2</label>
                           
-                          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                          <label class="btn btn-outline-primary" for="btnradio2">3</label>
-                          
-                          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                          <label class="btn btn-outline-primary" for="btnradio3">4</label>
-                          
-                          <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                          <label class="btn btn-outline-primary" for="btnradio4">5</label>
-                          
-                          <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-                          <label class="btn btn-outline-primary" for="btnradio5">6</label>
-                          
-                          <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
-                          <label class="btn btn-outline-primary" for="btnradio6">7</label>
-                          </div>
 
-
+<!--calendario-->
+<h5 slot="font-size:"> Selecciona la Fecha</h5>
+<form>
+  <h5 for="fecha">Inicio:</h5>
+  <input type="date" id="fecha" name="fecha"  style="border-color: #85586F;" required>
+</form>
+<form>
+  <h5 for="fecha">Final:</h5>
+  <input type="date" id="fecha" name="fecha" style="border-color: #85586F;" required>
+</form>
                    
 
 
-
-
                        <!--Descripcion-->
-                       <div class="input-group">
+                       <div class="input-group" style="padding-top:20px ;">
                         <span class="input-group-text">Descripción</span>
                         <textarea class="form-control" aria-label="With textarea"></textarea>
                       </div>
@@ -320,7 +308,7 @@ h5{
                         <!--Boton escitorio-->
                         <input class="btn btn-primary d-none d-lg-block  " type="submit" value="Enviar">
                         <!--Texto despues del boton-->
-                        <div id="help" class="form-text d-none d-lg-block">Regresa a Inicio <a href="in" target="_blank">Regresar</a></div>
+                        <div id="help" class="form-text d-none d-lg-block">Regresa al Inicio <a href="in" target="_blank">Regresar</a></div>
                     </form>
                 </div>
             </div>
@@ -330,12 +318,13 @@ h5{
             
             <!-- Sección de la imagen en dispositivos grandes -->
             <div class="col-lg-6"><!-- columna -->
-                <div class="comentario">
-                    <h5  ;>Agrega máximo 5 fotografias.</h5></div>
-               <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile02" >
+                
+               <div class="input-group mb-3" style="padding-top: 15px;">
+                <input type="file" class="form-control" id="inputGroupFile02">
                 <label class="input-group-text" for="inputGroupFile02">Subir foto</label>
                </div>
+               <div class="comentario">
+                <h5 >Agrega máximo 5  fotografías.</h5></div>
                 <img src="./src/formulario/Viaje.png" class="img-fluid estilo_imagen d-lg-block" alt="...">
             </div>
     
