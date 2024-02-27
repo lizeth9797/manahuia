@@ -30,7 +30,7 @@ function addItem(item) {
                 <div class="modal-content">
                     <div class="modal-body row" style= "background-color:#F8EDE3">
                         <!-- Carrusel de imágenes en el lado izquierdo -->
-                        <div class="col-md-6">
+                        <div class="col-lg-6" style="align-self: center;">
                             <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <!-- Aquí deberías agregar tus imágenes dinámicamente -->
@@ -59,7 +59,7 @@ function addItem(item) {
                         </div>
         
                         <!-- Informacion a la derecha -->
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">${item.nombreDestino}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -71,7 +71,7 @@ function addItem(item) {
                                 <p class="modal-incluye text-left small">
                                     ${item.incluye}
                                 </p>
-                                <p class="text-end modal-price"><strong>${item.precio} USD</strong></p>
+                                <p class="text-end modal-price"><strong>${item.precio} MXN</strong></p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" style= "background-color:#85586F" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -210,7 +210,7 @@ addItem({
 
 addItem({
     'id': 10,
-    'nombreDestino':': Encanto Costero y Artesanías Mexicanas',
+    'nombreDestino':'Encanto Costero y Artesanías Mexicanas',
     'precio':'$9,000',
     'destinos':'Puerto escondido y playa del Carmen',
     'incluye':'Alojamiento en hoteles con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte hacia destinos turísticos y mercados artesanales.<br>Excursiones a lugares locales de artesanías.<br>Visita a playas paradisíacas.',
