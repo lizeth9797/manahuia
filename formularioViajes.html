@@ -18,6 +18,8 @@
         
         }
 
+
+
 .navbar {
             background-color: #DFD3C3;
         }
@@ -177,6 +179,10 @@ h5{
 }
 
 
+
+
+ 
+
     </style>
 </head>
 
@@ -226,7 +232,33 @@ h5{
                         <input type="text" class="form-control A" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                       </div>
 
+       
+<!--calendario-->
+<div class="container-fluid" style="padding-bottom:15px ;">
+  <div class="row">
+    <div class="col-3"></div> 
+    <div class="col-6"> 
+      <h5 slot="font-size:">Selecciona la Fecha</h5>
+      <form>
+        <div class="row">
+          <div class="col">
+            <h5 for="fecha">Inicio:</h5>
+            <input type="date" id="fechaInicio" name="fechaInicio" style="border-color: #85586F;" required>
+          </div>
+          <div class="col">
+            <h5 for="fecha">Final:</h5>
+            <input type="date" id="fechaFinal" name="fechaFinal" style="border-color: #85586F;" required>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-3"></div> 
+  </div>
+</div>
 
+
+
+  <!--Paquetes-->
                       <div class="container-fluid">
                         <div class="row">
                           <div class="col-3">
@@ -286,17 +318,9 @@ h5{
 
                           
 
-<!--calendario-->
-<h5 slot="font-size:"> Selecciona la Fecha</h5>
-<form>
-  <h5 for="fecha">Inicio:</h5>
-  <input type="date" id="fecha" name="fecha"  style="border-color: #85586F;" required>
-</form>
-<form>
-  <h5 for="fecha">Final:</h5>
-  <input type="date" id="fecha" name="fecha" style="border-color: #85586F;" required>
-</form>
-                   
+
+
+            
 
 
                        <!--Descripcion-->
