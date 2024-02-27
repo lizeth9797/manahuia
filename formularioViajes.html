@@ -177,6 +177,12 @@ h5{
   border-color: #85586F;
   
 }
+.btn:hover{
+      /*--bs-btn-active-bg: #959ca1fa;*/
+      --bs-btn-focus-shadow-rgb: 133 88 11;
+}
+
+
 
 
 
@@ -194,12 +200,13 @@ h5{
 <nav class="navbar navbar-expand-lg"> <!--Añadí un style en el archivo css de la clase navbar para guiarme en como debe quedar el diseño -->
     <div class="container-fluid">
       <img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top">
-      <a class="navbar-brand" style="padding-left: 50px; color:#85586F;">MANAHUIA</a>   <!--Le agregue el color y el padding a la linea para ir viendolos mas estructurados-->
+      <a class="navbar-brand" style="padding-left: 50px; color:#85586F;"></a>   <!--Le agregue el color y el padding a la linea para ir viendolos mas estructurados-->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto spacing-nav"> <!--Cree una nueva clase aqui llamada spacing-nav para añadirle estilo en la hoja de css-->
+        <!--pop up de bienvebida al usuario o administador-->
           <a class="nav-link ms-auto" href="./index.html">Inicio</a>
           <a class="nav-link ms-auto" href="./nosotros.html">Nosotros</a>
           <a class="nav-link ms-auto" href="./catalogoViajes.html">Viajes</a>
@@ -228,7 +235,7 @@ h5{
                       <!--Nombre del destino-->
                       <div class="input-group input-group-sm mb-3" style="padding-top: 15px;">
                         <h4></h4>
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Nombre del Destino</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Nombre del destino</span>
                         <input type="text" class="form-control A" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                       </div>
 
@@ -236,9 +243,9 @@ h5{
 <!--calendario-->
 <div class="container-fluid" style="padding-bottom:15px ;">
   <div class="row">
-    <div class="col-3"></div> 
-    <div class="col-6"> 
-      <h5 slot="font-size:">Selecciona la Fecha</h5>
+    <div class="col-3-lg"></div> 
+    <div class="col-6-lg"> 
+      <h5 slot="font-size:">Selecciona la fecha</h5>
       <form>
         <div class="row">
           <div class="col">
@@ -258,6 +265,7 @@ h5{
 
 
 
+
   <!--Paquetes-->
                       <div class="container-fluid">
                         <div class="row">
@@ -266,7 +274,7 @@ h5{
                           <div class="container-fluid">
                             <div class="row">
                               <div class="col-12">
-                                <h5 class="mb-3">Selecciona el paquete</h5>
+                                <h5 class="mb-3">¿Qué incluye?</h5>
                               </div>
                           <div class="container-fluid">
                             <div class="row">
@@ -329,8 +337,43 @@ h5{
                         <textarea class="form-control" aria-label="With textarea"></textarea>
                       </div>
     
-                        <!--Boton escitorio-->
-                        <input class="btn btn-primary d-none d-lg-block  " type="submit" value="Enviar">
+                       
+                     
+
+               <!--       <div class="container-fluid" style="padding-bottom:15px ;">
+                        <div class="row">
+                          <div class="col-3">
+                          </div>
+                          <div class="container-fluid">
+                            <div class="row">
+                          <----Precio
+                          <div class="input-group mb-3">
+  <span class="input-group-text">$</span>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <span class="input-group-text">.00</span>
+                          </div>-->
+                           <!--Boton escitorio-->
+                      <!--  <input class="btn btn-primary d-none d-lg-block  " type="submit" value="Enviar" style="--bs-btn-active-bg: #959ca1fa;">
+                      </div>
+                      </div>
+                        </div>
+                      </div>--> 
+                       
+                      <div class="container-fluid" >
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="input-group mb-3-md" style="padding-top: 17px;">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6"  style="padding-top: 7px;">
+                                <input class="btn btn-primary d-none d-lg-block" type="submit" value="Enviar" style="--bs-btn-active-bg: #959ca1fa;">
+                            </div>
+                        </div>
+                    </div>
+
                         <!--Texto despues del boton-->
                         <div id="help" class="form-text d-none d-lg-block">Regresa al Inicio <a href="in" target="_blank">Regresar</a></div>
                     </form>
@@ -341,7 +384,7 @@ h5{
 
             
             <!-- Sección de la imagen en dispositivos grandes -->
-            <div class="col-lg-6"><!-- columna -->
+            <div class="col-lg-6"> 
                 
                <div class="input-group mb-3" style="padding-top: 15px;">
                 <input type="file" class="form-control" id="inputGroupFile02">
@@ -350,14 +393,13 @@ h5{
                <div class="comentario">
                 <h5 >Agrega máximo 5  fotografías.</h5></div>
                 <img src="./src/formulario/Viaje.png" class="img-fluid estilo_imagen d-lg-block" alt="...">
-            </div>
-    
+            </div> 
 
 
             <!--Boton telefono-->
-            <input class="btn btn-primary d-sm-block d-lg-none type="submit" value="Enviar">
+             <input class="btn btn-primary d-sm-block d-lg-none" type="submit" value="Enviar" style="--bs-btn-active-bg: #959ca1fa;"> 
             <!--Texto despues del boton-->
-            <div id="help" class="form-text d-sm-block d-lg-none">Regresa a Inicio <a href="index.html" target="_blank">Regresar</a></div>
+            <div id="help" class="form-text d-sm-block d-lg-none">Regresa a Inicio <a href="index.html" target="_blank" >Regresar</a></div>
         </div>
     </div>
 
