@@ -1,22 +1,25 @@
 let modalCounter = 1;
+
 function addItem(item) {
     const container = document.getElementById('cards-container');
+    
+    // Crear la tarjeta
     const card = document.createElement('div');
-    card.classList.add('card', 'col-md-4', 'mb-3');
-
+    card.classList.add('card','col-md-3', 'mb-5', 'mx-auto');
+    
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
     const modalId = `exampleModal_${modalCounter++}`;
+    
     const cardHTML = `
+        <!-- Contenido de la tarjeta -->
         <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
-        <div class="card-body d-flex flex-column" style="margin:5px; padding:5px">
+        <div class="card-body d-flex flex-column" style="margin: 5px; padding: 5px;">
             <h5 class="card-title">${item.nombreDestino}</h5>
             <p class="card-text flex-grow-1">${truncatedDescription}...</p>
-            <button type="button"  style= "background-color:#85586F" class="btn btn-secondary" mt-auto details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
+            <button type="button" style="background-color: #85586F" class="btn btn-secondary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
                 Detalles
             </button>
-        </div> <!--card-body-->
-            
-        </div> <!--card-body-->
+        </div> <!-- card-body -->
 
         <!-- Modal -->
         <div class="modal fade custom-modal"  id="exampleModal_${item.id}" tabindex="-1" 
@@ -45,7 +48,7 @@ function addItem(item) {
                             </div>
                         </div>
         
-                        <!-- Información a la derecha -->
+                        <!-- Informacion a la derecha -->
                         <div class="col-md-6">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">${item.nombreDestino}</h1>
@@ -71,8 +74,16 @@ function addItem(item) {
     `;
 
     card.innerHTML = cardHTML;
+    
+    // Crear el espacio entre tarjetas
+    const space = document.createElement('div');
+    space.classList.add('col-md-auto'); 
+    
+    // Agregar la tarjeta y el espacio al contenedor
     container.appendChild(card);
+    container.appendChild(space);
 }
+
 
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
