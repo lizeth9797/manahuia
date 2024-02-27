@@ -8,7 +8,9 @@ function addItem(item) {
     card.classList.add('card','col-md-3', 'mb-5', 'mx-auto');
     
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
-    const modalId = `exampleModal_${modalCounter++}`;
+    const modalId = `exampleModal_${modalCounter}`;
+    const carouselId = `carouselExample_${modalCounter}`;
+    modalCounter++;
     
     const cardHTML = `
         <!-- Contenido de la tarjeta -->
@@ -29,19 +31,27 @@ function addItem(item) {
                     <div class="modal-body row" style= "background-color:#F8EDE3">
                         <!-- Carrusel de imágenes en el lado izquierdo -->
                         <div class="col-md-6">
-                            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                            <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <!-- Aquí deberías agregar tus imágenes dinámicamente -->
                                     <div class="carousel-item active">
                                         <img src="${item.img[0]}" class="d-block w-100" alt="Slide 1">
                                     </div>
-                                    <!-- Agrega más imágenes según sea necesario -->
+                                    <div class="carousel-item">
+                                        <img src="${item.img[1]}" class="d-block w-100" alt="Slide 1">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="${item.img[2]}" class="d-block w-100" alt="Slide 1">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="${item.img[3]}" class="d-block w-100" alt="Slide 1">
+                                    </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button"   data-bs-target="#carouselExample" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button"   data-bs-target="#${carouselId}" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -140,7 +150,7 @@ addItem({
     'incluye':'Alojamiento en hoteles con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte durante todo el recorrido.<br>Visitas guiadas a fincas de café para aprender sobre el proceso de producción.<br>Entradas a parques naturales para explorar la exuberante biodiversidad de Chiapas.',
     'duracion':'7 días',
     'descripcion':'Descubre la magia de Chiapas en nuestra Ruta del Café y Naturaleza. Este paquete de 7 días te sumerge en la cultura del café, con visitas a fincas para conocer su proceso de producción, y te lleva a explorar la naturaleza de la región con entradas a parques naturales. Incluye alojamiento en hoteles con desayuno y cena, transporte y una experiencia inolvidable en Chiapas. Reserva ahora y déjate cautivar por la belleza y el sabor de esta región!',
-        'img':['./src/catalogo/Viaje 3.png','./src/catalogo/Viaje 18.png','./src/catalogo/Viaje 7.png','./src/catalogo/Viaje 22.png']
+        'img':['./src/catalogo/Viaje 18.png','./src/catalogo/Viaje 3.png','./src/catalogo/Viaje 7.png','./src/catalogo/Viaje 22.png']
 });
 
 addItem({
