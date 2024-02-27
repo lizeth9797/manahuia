@@ -9,7 +9,7 @@
     <!--Cambiar el font al nuestro, estos solo fueron tomados como muestra para la creación de la estructura-->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Monomaniac+One&display=swap" rel="stylesheet">
-    <title>Navbar y Footer</title>
+    <title>Paquetes de Viaje</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" sizes="32x32" type="image/x-icon" href="./src/navbaryfooter/icon.ico">
 
@@ -21,12 +21,12 @@
 
 /*Navbar*/
 .navbar {
-    background-color: #DFD3C3;
+    background-color: #F8EDE3;
 }
 .navbar-nav a{
     color: #85586F;
     font-size: 15px;
-    
+    font-weight: 500;
 }
 .spacing-nav{
     padding-right: 25px;
@@ -117,9 +117,8 @@
  
     <!--NAVBAR-->  
     <nav class="navbar navbar-expand-lg"> <!--Añadí un style en el archivo css de la clase navbar para guiarme en como debe quedar el diseño -->
-      <div class="container-fluid">
-        <img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top">
-        <a class="navbar-brand" style="padding-left: 50px; color:#85586F;">MANAHUIA</a>   <!--Le agregue el color y el padding a la linea para ir viendolos mas estructurados-->
+      <div class="container">
+        <img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top"> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -128,6 +127,7 @@
             <a class="nav-link ms-auto" href="./index.html">Inicio</a>
             <a class="nav-link ms-auto" href="./nosotros.html">Nosotros</a>
             <a class="nav-link ms-auto" href="./catalogoViajes.html">Viajes</a>
+            <a class="nav-link ms-auto" href="./itemsViajes.html">Paquetes</a>
             <a class="nav-link ms-auto" href="./carrito.html">Carrito</a>
             <a class="nav-link ms-auto" href="./contacto.html">Contacto</a>
             <a class="nav-link ms-auto" href="./login.html">Login</a>
@@ -138,7 +138,7 @@
 
 
 
-    <div class="container-fluid text-center py-4" style="color: #85586F;"><h1>Cards de Viajes</h1></div>
+    <div class="container-fluid text-center py-4" style="color: #85586F;"><h1>Paquetes de Viajes</h1></div>
 
     <!--Cards / el contenido esta en formulario.js /-->
     
@@ -154,7 +154,7 @@
     <footer style="background-color:#F8EDE3;" class="footer pt-4 pb-5 mt-5">
       <div class="container-footer text-center text-mx-start">
         <div class="row text-center text-mx-start">
-          <div class=" mx-auto">
+          <div class="mx-auto">
               <hr class="line-wrapped1"><!--Se creo esta clase para poder utilizar hr como un separador a la izquierda -->              
               <!--Icono de facebook--> <!--Falta ingresar a facebook, whatsapp e instagram el vinculo-->
               <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook " viewBox="0 0 16 16">
