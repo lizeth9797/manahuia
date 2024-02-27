@@ -65,7 +65,7 @@ function addItem(item) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p class="modal-description">${item.descripcion}</p>
+                                <p class="modal-description" style="text-align: justify;">${item.descripcion}</p>
                                 <hr />
                                 <h5>Incluye:</h5>
                                 <p class="modal-incluye text-left small">
