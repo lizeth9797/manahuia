@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Validación del número de teléfono  
-        let phoneRegex =/^(?:(\d)(?!\1{3})){10}$/;    //chayo: /^\d{10}$/  //sy: 
+        let phoneRegex =/^(?:(\d)(?!\1{4})){10}$/;    //chayo: /^\d{10}$/  //sy: 
         //jos: /^(?:(?:(?!000)\d){10}|(?:(?:\+|00)34\s?)?[6789](?:(?!000)\d){7})$/
         if (!phoneRegex.test(phoneInput.value)) {
             phoneInput.classList.add('is-invalid');
