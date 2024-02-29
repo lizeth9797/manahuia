@@ -152,7 +152,7 @@
     </div>
   </nav>
 
-    <div class="container-fluid" style="border-style: double; border-color: rgb(255, 255, 255);">
+    <div class="container-fluid" style="border-style: double; border-color: rgb(255, 255, 255);" id="formulario">
         <div class="row"><!-- fila -->
             <!-- Sección de la imagen en dispositivos móviles -->
             <div class="col-md-12"><!-- columna -->
@@ -201,6 +201,7 @@
     
                         <!--Boton-->
                         <input class="btn btn-primary" type="submit" value="Enviar">
+                        <!--  -->
                         <!--Texto despues del boton-->
                         <div id="help" class="form-text">¿Ya tienes cuenta? <a href="#" target="_blank">Ingrese</a></div>
                     </form>
@@ -213,7 +214,25 @@
             </div>
     
         </div>
+<!-- modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="successModal">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-body text-center">
+                <div>
+                    <i class="text-success bi bi-check-circle" ></i>
+                </div>
+                <div class="mt-4 py-2">
+                <p class="px-4 pb-0 mb-1 text-secondary">¡Hecho!</p>
+                <h4 class="h5">Tu correo ha sido enviado</h4>
+                </div>
+                <div class="py-1"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button></div>
+            </div>
+            </div>
+        </div>
     </div>
+
+    </div>    
 
 
 
@@ -248,10 +267,9 @@
             </div>
           </div>
         </div>
-      </footer>
+    </footer>
 
 
-      
 
 <!--Bootstrap-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
@@ -271,6 +289,9 @@ integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4Qz
       });
    })();
 </script>
+<!-- Se importa librería de jquery para mandar a llamar al popup MODAL-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
 
 <script src="js/contacto.js"></script>
 
