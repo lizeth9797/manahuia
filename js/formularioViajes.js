@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  let modalCounter = 0;
   let btnSendTravel = document.getElementById('btnSendTravel');
   let nameTravel = document.getElementById('nameTravel');
   let nameTravelError = document.getElementById('nameTravelError');
@@ -22,9 +23,34 @@ document.addEventListener("DOMContentLoaded", function () {
   let startDateError = document.getElementById('startDateError');
   let finalDateError = document.getElementById('finalDateError');
 
+  function calcularDuracion(startDateInput, finalDateInput) {
+    const start = new Date(startDateInput);
+    const final = new Date(finalDateInput);
+    const diferenciaEnTiempo = final - start;
+    const diferenciaEnDias = Math.ceil(diferenciaEnTiempo / (1000 * 60 * 60 * 24));
+    return diferenciaEnDias;
+}
+
+function addItem(nuevoViaje) {
+    // Lógica para agregar el nuevo elemento
+    // Puedes decidir qué hacer con el objeto JSON, como enviarlo a un servidor, almacenarlo en una base de datos, etc.
+    console.log("Nuevo Viaje:", nuevoViaje);
+    // Aquí puedes agregar más lógica según tus necesidades
+}
+
   btnSendTravel.addEventListener('click', function (event) {
       event.preventDefault();
       let valid = true;
+
+        //Obtener y procesar las imágenes en JSON
+        const inputFiles = document.getElementById('uploadPhotos');
+        const files = inputFiles.files;
+        const imagenesSubidas = [];
+
+        for (let i = 0; i < files.length; i++) {
+            const nuevaImagen = files[i];
+            imagenesSubidas.push({ nombre: nuevaImagen.name, tipo: nuevaImagen.type, tamaño: nuevaImagen.size });
+        }
 
       // Validación del nombre del destino
       if (nameTravel.value.length < 10 || /^\s|\s$/.test(nameTravel.value) || /\s{2,}/.test(nameTravel.value)) {
@@ -41,13 +67,19 @@ document.addEventListener("DOMContentLoaded", function () {
       validarFechas();
 
       // Validación de checkboxes
-      let selectedCheckboxes = checkboxes.filter(checkbox => checkbox.checked);
-      if (selectedCheckboxes.length < 2) {
-          checkboxesError.textContent = 'Por favor escoge mínimo 2 opciones';
-          valid = false;
-      } else {
-          checkboxesError.textContent = ''; // Limpiar el mensaje de error
-      }
+        let selectedCheckboxes = checkboxes.filter(checkbox => checkbox.checked);
+        if (selectedCheckboxes.length < 2) {
+            checkboxesError.textContent = 'Por favor escoge mínimo 2 opciones';
+            valid = false;
+        } else {
+            checkboxesError.textContent = ''; // Limpiar el mensaje de error
+        }
+
+        // Obtener el texto de los labels asociados a los checkboxes seleccionados
+        const incluyeText = selectedCheckboxes.map(checkbox => {
+            const label = document.querySelector(`label[for=${checkbox.id}]`);
+            return label.textContent.trim();
+        }).join(', ');
 
       // Validación de la descripción
       if (description.value.length === 0 || description.value.length > 300) {
@@ -88,7 +120,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Si todas las validaciones son correctas, se podría enviar el formulario.
       if (valid) {
-          // Realizar acciones adicionales si es necesario
+        // Crear el objeto JSON del nuevo viaje
+        const nuevoViaje = {
+            'id': modalCounter, // Asignar un nuevo ID
+            'nombreDestino': nameTravel.value,
+            'precio': priceInput.value,
+            'incluye': incluyeText,
+            'fechaInicio': startDate.value,
+            'fechaFin': finalDate.value,
+            'duracion': calcularDuracion(startDateInput.value, finalDateInput.value),
+            'descripcion': description.value,
+            'img': imagenesSubidas
+        };
+    
+        // Llamar a la función addItem con el nuevoViaje como argumento
+        addItem(nuevoViaje);
+    
+        // Incrementar el contador de modales
+        modalCounter++;
       }
   });
 
@@ -138,7 +187,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Actualizar clases is-valid e is-invalid para fechas
       actualizarClases(startDateInput, startDateError);
       actualizarClases(finalDateInput, finalDateError);
-  }
+    }
+      // Si todas las validaciones son correctas, crear el objeto JSON y agregar la tarjeta
+ 
 
   // Función para actualizar clases is-valid e is-invalid
   function actualizarClases(inputElement, errorElement) {
@@ -149,5 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
           inputElement.classList.remove('is-invalid');
           inputElement.classList.add('is-valid');
       }
-  }
-});
+
+      
+  }// eventListener
+  
+});// DOMcontent
