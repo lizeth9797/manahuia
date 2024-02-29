@@ -69,6 +69,7 @@ function addItem(nuevoViaje) {
 
       // Validación de checkboxes
         let selectedCheckboxes = checkboxes.filter(checkbox => checkbox.checked);
+        
         if (selectedCheckboxes.length < 2) {
             checkboxesError.textContent = 'Por favor escoge mínimo 2 opciones';
             valid = false;
@@ -94,14 +95,24 @@ function addItem(nuevoViaje) {
       }
 
       // Validación del precio
-      let priceValue = parseFloat(priceInput.value.replace(',', ''));
-      if (isNaN(priceValue) || priceValue <= 0 || priceValue >= 10000000) {
+      let priceInputValue = priceInput.value.trim();
+
+      // Validar que el campo de precio solo contenga números
+      if (!/^\d+$/.test(priceInputValue)) {
           priceInput.classList.add('is-invalid');
-          priceInputError.textContent = 'Agrega una cifra válida';
+          priceInputError.textContent = 'Ingresa solo números en el campo de precio.';
           valid = false;
       } else {
-          priceInput.classList.remove('is-invalid');
-          priceInput.classList.add('is-valid');
+          let priceValue = parseFloat(priceInputValue.replace(',', ''));
+      
+          if (isNaN(priceValue) || priceValue <= 0 || priceValue >= 10000000) {
+              priceInput.classList.add('is-invalid');
+              priceInputError.textContent = 'Agrega una cifra válida';
+              valid = false;
+          } else {
+              priceInput.classList.remove('is-invalid');
+              priceInput.classList.add('is-valid');
+          }
       }
 
       // Validación de la carga de fotos
@@ -120,10 +131,28 @@ function addItem(nuevoViaje) {
       actualizarClases(startDateInput, startDateError);
       actualizarClases(finalDateInput, finalDateError);
 
+        //Función para crear nuevoViaje
+
+    function addItem() {
+
+        const container = document.getElementById('cards-container');
+    
+        // Crear la tarjeta
+        const card = document.createElement('div');
+        card.classList.add('card','col-md-3', 'mb-5', 'mx-auto');
+        
+        const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
+        const modalId = `exampleModal_${modalCounter}`;
+        const carouselId = `carouselExample_${modalCounter}`;
+    };
+
+    
+
+
       // Si todas las validaciones son correctas, se podría enviar el formulario.
       if (valid) {
         // Crear el objeto JSON del nuevo viaje
-        const nuevoViaje = {
+        var nuevoViaje = {
             'id': modalCounter, // Asignar un nuevo ID
             'nombreDestino': nameTravel.value,
             'precio': priceInput.value,
@@ -170,11 +199,28 @@ function addItem(nuevoViaje) {
           
       }
 
+      if (!startDateInput.value) {
+        // Fecha vacía, actualiza el error
+        startDateError.textContent = 'Por favor ingresa una fecha de inicio.';
+    } else if (startDate < fechaActual) {
+        // Fecha de inicio menor al día actual, mostrar alerta y actualizar la fecha
+        alert('La fecha de inicio no puede ser menor al día actual.');
+        startDateInput.value = hoy;
+    }
+
       // Validar la fecha final
       if (finalDate < startDate) {
           alert('La fecha final no puede ser menor a la fecha de inicio.');
           finalDateInput.value = startDateInput.value;
       }
+      if (!finalDateInput.value) {
+        // Fecha vacía, actualiza el error
+        finalDateError.textContent = 'Por favor ingresa una fecha final.';
+    } else if (finalDate < startDate) {
+        // Fecha final menor a la fecha de inicio, mostrar alerta y actualizar la fecha
+        alert('La fecha final no puede ser menor a la fecha de inicio.');
+        finalDateInput.value = startDateInput.value;
+    }
 
       // Validar que las fechas no superen un año
       if (startDate > fechaMaxima || finalDate > fechaMaxima) {
@@ -203,5 +249,7 @@ function addItem(nuevoViaje) {
 
       
   }// eventListener
+
+  localStorage.setItem('nuevoViaje', JSON.stringify(nuevoViaje));
   
 });// DOMcontent
