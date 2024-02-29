@@ -194,7 +194,7 @@ function addItem(nuevoViaje) {
 
       // Validar la fecha de inicio
       if (startDate < fechaActual) {
-          alert('La fecha de inicio no puede ser menor al día actual.');
+          Swal.fire('La fecha de inicio no puede ser menor al día actual.');
           startDateInput.value = hoy;
           
       }
@@ -204,13 +204,13 @@ function addItem(nuevoViaje) {
         startDateError.textContent = 'Por favor ingresa una fecha de inicio.';
     } else if (startDate < fechaActual) {
         // Fecha de inicio menor al día actual, mostrar alerta y actualizar la fecha
-        alert('La fecha de inicio no puede ser menor al día actual.');
+        Swal.fire('La fecha de inicio no puede ser menor al día actual.');
         startDateInput.value = hoy;
     }
 
       // Validar la fecha final
       if (finalDate < startDate) {
-          alert('La fecha final no puede ser menor a la fecha de inicio.');
+         Swal.fire('La fecha final no puede ser menor a la fecha de inicio.');
           finalDateInput.value = startDateInput.value;
       }
       if (!finalDateInput.value) {
@@ -218,13 +218,13 @@ function addItem(nuevoViaje) {
         finalDateError.textContent = 'Por favor ingresa una fecha final.';
     } else if (finalDate < startDate) {
         // Fecha final menor a la fecha de inicio, mostrar alerta y actualizar la fecha
-        alert('La fecha final no puede ser menor a la fecha de inicio.');
+        Swal.fire('La fecha final no puede ser menor a la fecha de inicio.');
         finalDateInput.value = startDateInput.value;
     }
 
       // Validar que las fechas no superen un año
       if (startDate > fechaMaxima || finalDate > fechaMaxima) {
-          alert('Las fechas no pueden superar un año desde hoy.');
+          Swal.fire('Las fechas no pueden superar un año desde hoy.');
           startDateInput.value = hoy;
           finalDateInput.value = hoy;
           startDateError.textContent = 'Las fechas no pueden superar un año desde hoy.';
