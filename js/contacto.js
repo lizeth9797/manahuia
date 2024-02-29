@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // Validación del nombre  
         if (nameInput.value.length < 5 || /^\s|\s$/.test(nameInput.value) || /\s{2,}/.test(nameInput.value)) {  
             nameInput.classList.add('is-invalid');
-            nameError.textContent = 'Por favor escribe un nombre válido (mínimo 5 letras)';
+            nameError.textContent = 'Por favor escribe un nombre válido (mínimo 5 letras)\n';
+            nameError.style.whiteSpace = 'pre-line';
             valid = false;
         } else {
             console.log("else");
