@@ -33,10 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 function addItem(nuevoViaje) {
-    // Lógica para agregar el nuevo elemento
-    // Puedes decidir qué hacer con el objeto JSON, como enviarlo a un servidor, almacenarlo en una base de datos, etc.
     console.log("Nuevo Viaje:", nuevoViaje);
-    // Aquí puedes agregar más lógica según tus necesidades
+    let viajes = JSON.parse(localStorage.getItem('viajes')) || [];
+
+        // esto lo que hace es agarrar el objeto del nuevo viaje al array de viajes
+        viajes.push(nuevoViaje);
+
+        // almacenar el array de objetos y actualizarlo en localStorage
+        localStorage.setItem('viajes', JSON.stringify(viajes));
 }
 
   btnSendTravel.addEventListener('click', function (event) {
