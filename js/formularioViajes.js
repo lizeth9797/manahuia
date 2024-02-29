@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let modalCounter = 0;
+  let modalCounter = 11;
   let btnSendTravel = document.getElementById('btnSendTravel');
   let nameTravel = document.getElementById('nameTravel');
   let nameTravelError = document.getElementById('nameTravelError');
@@ -130,24 +130,6 @@ function addItem(nuevoViaje) {
       // Actualizar clases is-valid e is-invalid para fechas
       actualizarClases(startDateInput, startDateError);
       actualizarClases(finalDateInput, finalDateError);
-
-        //Función para crear nuevoViaje
-
-    function addItem() {
-
-        const container = document.getElementById('cards-container');
-    
-        // Crear la tarjeta
-        const card = document.createElement('div');
-        card.classList.add('card','col-md-3', 'mb-5', 'mx-auto');
-        
-        const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
-        const modalId = `exampleModal_${modalCounter}`;
-        const carouselId = `carouselExample_${modalCounter}`;
-    };
-
-    
-
 
       // Si todas las validaciones son correctas, se podría enviar el formulario.
       if (valid) {
