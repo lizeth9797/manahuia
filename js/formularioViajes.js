@@ -250,6 +250,5 @@ function addItem(nuevoViaje) {
       
   }// eventListener
 
-  localStorage.setItem('nuevoViaje', JSON.stringify(nuevoViaje));
   
 });// DOMcontent
