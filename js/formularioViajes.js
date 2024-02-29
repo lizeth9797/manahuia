@@ -33,10 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
         return diferenciaEnDias;
     }
 
-    function addItem(nuevoViaje) {
-        // poder ver el objeto json en la consola
-        console.log("Nuevo Viaje:", nuevoViaje);
-    }
+function addItem(nuevoViaje) {
+    console.log("Nuevo Viaje:", nuevoViaje);
+    let viajes = JSON.parse(localStorage.getItem('viajes')) || [];
+
+        // esto lo que hace es agarrar el objeto del nuevo viaje al array de viajes
+        viajes.push(nuevoViaje);
+
+        // almacenar el array de objetos y actualizarlo en localStorage
+        localStorage.setItem('viajes', JSON.stringify(viajes));
+}
 
     btnSendTravel.addEventListener('click', function (event) {
         event.preventDefault();
