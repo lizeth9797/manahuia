@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let description = document.getElementById('description');
   let descriptionError = document.getElementById('descriptionError');
   let priceInput = document.getElementById('priceInput');
+  let priceInputError = document.getElementById('priceInputError');
   let uploadPhotos = document.getElementById('uploadPhotos');
   let uploadPhotosError = document.getElementById('uploadPhotosError');
   let startDateInput = document.getElementById('startDate');
@@ -96,6 +97,7 @@ function addItem(nuevoViaje) {
       let priceValue = parseFloat(priceInput.value.replace(',', ''));
       if (isNaN(priceValue) || priceValue <= 0 || priceValue >= 10000000) {
           priceInput.classList.add('is-invalid');
+          priceInputError.textContent = 'Agrega una cifra válida';
           valid = false;
       } else {
           priceInput.classList.remove('is-invalid');
@@ -165,14 +167,13 @@ function addItem(nuevoViaje) {
       if (startDate < fechaActual) {
           alert('La fecha de inicio no puede ser menor al día actual.');
           startDateInput.value = hoy;
-          startDateError.textContent = 'La fecha de inicio no puede ser menor al día actual.';
+          
       }
 
       // Validar la fecha final
       if (finalDate < startDate) {
           alert('La fecha final no puede ser menor a la fecha de inicio.');
           finalDateInput.value = startDateInput.value;
-          finalDateError.textContent = 'La fecha final no puede ser menor a la fecha de inicio.';
       }
 
       // Validar que las fechas no superen un año
@@ -181,7 +182,6 @@ function addItem(nuevoViaje) {
           startDateInput.value = hoy;
           finalDateInput.value = hoy;
           startDateError.textContent = 'Las fechas no pueden superar un año desde hoy.';
-          finalDateError.textContent = 'Las fechas no pueden superar un año desde hoy.';
       }
 
       // Actualizar clases is-valid e is-invalid para fechas

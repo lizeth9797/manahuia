@@ -170,6 +170,7 @@ h5{
     padding-bottom: 5px;
     font-size: 15px;
    font-family:  "Urbanist", sans-serif;
+   justify-content: left;
 }
 
 #fecha.fecha{
@@ -236,13 +237,12 @@ h5{
                 <div class="text-center"><!-- columna -->
                   
                       <!--Nombre del destino-->
-                      <div class="input-group input-group-sm mb-3" style="padding-top: 40px;">
+                      <div class="input-group input-group-sm" style="padding-top: 40px;">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Nombre del destino</span>
                         <input type="text" class="form-control A" id="nameTravel"  name="nameTravel" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                        <br>
-                        <span id="nameTravelError" class="text-danger"></span>
                       </div>
-
+                      <div><span id="nameTravelError" class="text-danger"></span></div>
+                      
        
 <!--calendario-->
 <div class="container-fluid" id="calendar" style="padding-bottom:15px ;">
@@ -333,6 +333,8 @@ h5{
                        <div class="input-group" style="padding-top:20px ;">
                         <span class="input-group-text">Descripción</span>
                         <textarea class="form-control" aria-label="With textarea" id="description"  name="description"></textarea>  
+                      </div>
+                      <div>
                         <span id="descriptionError" class="text-danger"></span>
                       </div>
     
@@ -344,13 +346,15 @@ h5{
                               <div class="row">
                                 <br>
 
-                              Precio 
-                              <div class="input-group mb-3" >
+                               <br>
+                              <h5 slot="font-size:"  style="justify-content: left;">Precio</h5>
+                              <div class="input-group" >
                                 <span class="input-group-text">$</span>
                                 <input type="text" class="form-control" id="priceInput" name="priceInput" aria-label="Amount (to the nearest dollar)">
                                 <span class="input-group-text">.00</span>
-                                <span id="priceInput" class="text-danger"></span>
-                                
+                              </div>
+                              <div>
+                                <span id="priceInputError" class="text-danger"></span>
                               </div>
                             <!--Boton escitorio--->
                          
@@ -360,7 +364,7 @@ h5{
                   </div>
                        
                       <input class="btn btn-primary d-none d-lg-block  " type="submit" value="Crear"  id="btnSendTravel" style="--bs-btn-active-bg: #959ca1fa;">
-                          <span id="priceInputError" class="text-danger"></span>
+                          <!-- <span id="priceInputError" class="text-danger"></span> -->
 
                         <!--Texto despues del boton-->
                         <div id="help" class="form-text d-none d-lg-block">Regresa al Inicio <a href="in" target="_blank">Regresar</a></div>
@@ -370,18 +374,17 @@ h5{
             <!-- Sección de la imagen en dispositivos grandes -->
             <div class="col-lg-6"> 
                 
-               <div class="input-group mb-3" style="padding-top: 15px;">
+               <div class="input-group" style="padding-top: 15px;">
                <div class= "container" >Suba sus fotografías</div>
                <br>
                <input type="file" class="form-control" id="uploadPhotos" name="uploadPhotos" multiple>
-                <br>
-                <span id="uploadPhotosError" class="text-danger"></span>
-                
                </div>
+               <div><span id="uploadPhotosError" class="text-danger"></span></div>
                <div class="comentario">
                 <h5 >Agrega máximo 5  fotografías.</h5></div>
                 <img src="./src/formulario/Viaje.png" class="img-fluid estilo_imagen d-lg-block" alt="...">
-            </div> 
+            </div>
+            
 
 
             <!--Boton submit-->
