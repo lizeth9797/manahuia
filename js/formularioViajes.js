@@ -176,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                            <p>Nombre del destino: ${item.nombreDestino}</p>
                                            <p>Precio: ${item.precio}</p>
                                            <p>Duración: ${item.duracion}</p>`;
-                document.body.appendChild(nuevoElemento);
             });
         }
 
