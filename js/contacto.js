@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault(); // Previene la recarga de la página
         let valid = true;
-        
+         
         // Validación del nombre  
         if (nameInput.value.length < 5 || /^\s|\s$/.test(nameInput.value) || /\s{2,}/.test(nameInput.value)) {  
             nameInput.classList.add('is-invalid');
@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
             nameError.style.whiteSpace = 'pre-line';
             valid = false;
         } else {
-            console.log("else");
             nameInput.classList.remove('is-invalid');
             nameError.textContent = '';
         }
@@ -58,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             commentInput.classList.remove('is-invalid');
             commentError.textContent = '';
-        }
+        }  
 
         // Si todas las validaciones son correctas, se podría enviar el formulario.
         if(valid){
@@ -68,10 +67,12 @@ document.addEventListener("DOMContentLoaded", function() {
             phoneInput: `${phoneInput.value}`,
             emailInput: `${emailInput.value}`
             };
+           
         //Envío de email mediante emailJS
         emailjs.send('service_rtkhc7b', 'template_dc6n9i7', templateParams).then(
         (response) => {
             console.log('SUCCESS!', response.status, response.text);
+            $('#successModal').modal('show');
         },
         (error) => {
             console.log('FAILED...', error);
