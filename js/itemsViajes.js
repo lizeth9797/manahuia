@@ -1,4 +1,4 @@
-let modalCounter = 1;
+let idCounter = 1;
 
 function addItem(item) {
     const container = document.getElementById('cards-container');
@@ -8,9 +8,9 @@ function addItem(item) {
     card.classList.add('card','col-md-3', 'mb-5', 'mx-auto');
     
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
-    const modalId = `exampleModal_${modalCounter}`;
-    const carouselId = `carouselExample_${modalCounter}`;
-    modalCounter++;
+    const modalId = `exampleModal_${idCounter}`;
+    const carouselId = `carouselExample_${idCounter}`;
+    idCounter++;
     
     const cardHTML = `
         <!-- Contenido de la tarjeta -->
@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
         addItem(storedItem);
     }
 });
-
 
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
