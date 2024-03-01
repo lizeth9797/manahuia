@@ -191,13 +191,13 @@ function addItem(nuevoViaje) {
     
         // Validar la fecha de inicio
         if (!startDateInput.value || startDate < fechaActual) {
-            manejarErrorFecha('La fecha de inicio debe ser mayor al día actual.', startDateInput);
+            manejarErrorFecha('La fecha es inválida', startDateInput);
             return false;
         }
     
         // Validar la fecha final
         if (!finalDateInput.value || finalDate < startDate) {
-            manejarErrorFecha('La fecha final no puede ser menor o igual a la fecha inicial.', finalDateInput);
+            manejarErrorFecha('La fecha es inválida.', finalDateInput);
             return false;
         }
     
