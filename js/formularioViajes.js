@@ -139,8 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Validación de la carga de fotos
-        if (imagenesSubidas.length !== 4) {
-            uploadPhotosError.textContent = 'Por favor sube 4 fotografías\n';
+        if (imagenesSubidas.length === 0) {
+            uploadPhotosError.textContent = 'Por favor sube al menos una fotografía';
             valid = false;
         } else {
             uploadPhotosError.textContent = ''; // Limpiar el mensaje de error
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
         checkboxes.forEach(checkbox => checkbox.checked = false);
         description.value = '';
         priceInput.value = '';
-        uploadPhotos.value = '';
+        // uploadPhotos.value = ''; // No limpiamos el campo de carga de fotos para evitar problemas con Cloudinary
         startDateInput.value = '';
         finalDateInput.value = '';
     }
