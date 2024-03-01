@@ -94,6 +94,16 @@ function addItem(item) {
     container.appendChild(space);
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const storedViajes = localStorage.getItem('viajes');
+    const viajes = storedViajes ? JSON.parse(storedViajes) : [];
+
+    for (let i = 0; i < viajes.length; i++) {
+        const storedItem = viajes[i];
+        addItem(storedItem);
+    }
+});
+
 
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
@@ -108,6 +118,7 @@ document.getElementById('cards-container').addEventListener('click', function (e
         }
     }
 });
+
 
 addItem({
     'id': 1,
