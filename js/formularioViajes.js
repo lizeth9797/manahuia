@@ -192,6 +192,7 @@ function addItem(nuevoViaje) {
     
         // Llamar a la función addItem con el nuevoViaje como argumento
         addItem(nuevoViaje);
+        $('#successModal').modal('show');
     
         // Incrementar el contador de modales
         modalCounter++;
