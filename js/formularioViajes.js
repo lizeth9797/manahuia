@@ -23,6 +23,31 @@ document.addEventListener("DOMContentLoaded", function () {
   let finalDateInput = document.getElementById('finalDate');
   let startDateError = document.getElementById('startDateError');
   let finalDateError = document.getElementById('finalDateError');
+  const cloudName = "dezqwhec1"; 
+  const uploadPreset = "ip5jqq1p"; 
+
+    let imagenesSubidas=[]
+    //pinta en el HTML la ventana para subir una imágen
+    const myWidget = cloudinary.createUploadWidget(
+        {
+        cloudName: cloudName,
+        uploadPreset: uploadPreset,
+        },
+        (error, result) => {
+        if (!error && result && result.event === "success") {
+            //console.log("Done! Here is the image info: ", result);
+            imagenesSubidas.push(result.info.secure_url);
+            //console.log("imagenesSubidasARRAY:",imagenesSubidas);
+        }
+        }
+    );
+    document.getElementById("upload_widget").addEventListener("click",function () {
+        myWidget.open();
+        },  false
+    );
+
+
+
 
   function calcularDuracion(startDateInput, finalDateInput) {
     const start = new Date(startDateInput);
@@ -43,19 +68,20 @@ function addItem(nuevoViaje) {
         localStorage.setItem('viajes', JSON.stringify(viajes));
 }
 
+//BOTON CREAR
   btnSendTravel.addEventListener('click', function (event) {
       event.preventDefault();
       let valid = true;
 
+
         //Obtener y procesar las imágenes en JSON
-        const inputFiles = document.getElementById('uploadPhotos');
+/*         const inputFiles = document.getElementById('uploadPhotos');
         const files = inputFiles.files;
         const imagenesSubidas = [];
-
         for (let i = 0; i < files.length; i++) {
-            const nuevaImagen = files[i];
+            let nuevaImagen = files[i];
             imagenesSubidas.push({ nombre: nuevaImagen.name, tipo: nuevaImagen.type, tamaño: nuevaImagen.size });
-        }
+        } */
 
       // Validación del nombre del destino
       if (nameTravel.value.length < 10 || /^\s|\s$/.test(nameTravel.value) || /\s{2,}/.test(nameTravel.value)) {
@@ -120,7 +146,20 @@ function addItem(nuevoViaje) {
       }
 
       // Validación de la carga de fotos
-      let allowedExtensions = /(\.jpg)$/i;
+      if((imagenesSubidas.length!=4)){   
+        console.log(imagenesSubidas.length);
+        //uploadPhotos.classList.add('is-invalid');
+        uploadPhotosError.textContent = 'Por favor sube 4 fotografías\n';
+        valid = false;
+      }else {
+       // uploadPhotos.classList.remove('is-invalid');
+        //uploadPhotos.classList.add('is-valid');
+        uploadPhotosError.textContent = ''; // Limpiar el mensaje de error
+    }
+
+
+/* Validación pasada para el input de archivos
+      let allowedExtensions = /(\.png)$/i;
       if (!allowedExtensions.exec(uploadPhotos.value)) {
           uploadPhotos.classList.add('is-invalid');
           uploadPhotosError.textContent = 'Por favor sube mínimo 1 fotografía en formato .jpg\n';
@@ -129,7 +168,8 @@ function addItem(nuevoViaje) {
           uploadPhotos.classList.remove('is-invalid');
           uploadPhotos.classList.add('is-valid');
           uploadPhotosError.textContent = ''; // Limpiar el mensaje de error
-      }
+      } 
+*/
 
       // Actualizar clases is-valid e is-invalid para fechas
       actualizarClases(startDateInput, startDateError);
@@ -152,6 +192,7 @@ function addItem(nuevoViaje) {
     
         // Llamar a la función addItem con el nuevoViaje como argumento
         addItem(nuevoViaje);
+        $('#successModal').modal('show');
     
         // Incrementar el contador de modales
         modalCounter++;
