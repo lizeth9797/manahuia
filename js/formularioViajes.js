@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+<<<<<<< HEAD
     let modalCounter = 11;
     let btnSendTravel = document.getElementById('btnSendTravel');
     let nameTravel = document.getElementById('nameTravel');
@@ -32,6 +33,65 @@ document.addEventListener("DOMContentLoaded", function () {
         const diferenciaEnDias = Math.ceil(diferenciaEnTiempo / (1000 * 60 * 60 * 24));
         return diferenciaEnDias;
     }
+=======
+  let modalCounter = 11;
+  let btnSendTravel = document.getElementById('btnSendTravel');
+  let nameTravel = document.getElementById('nameTravel');
+  let nameTravelError = document.getElementById('nameTravelError');
+  let checkboxes = [
+      document.getElementById('btncheck1'),
+      document.getElementById('btncheck2'),
+      document.getElementById('btncheck3'),
+      document.getElementById('btncheck4'),
+      document.getElementById('btncheck5'),
+      document.getElementById('btncheck6'),
+      document.getElementById('btncheck7'),
+  ];
+  let checkboxesError = document.getElementById("checkboxesError");
+  let description = document.getElementById('description');
+  let descriptionError = document.getElementById('descriptionError');
+  let priceInput = document.getElementById('priceInput');
+  let priceInputError = document.getElementById('priceInputError');
+  let uploadPhotos = document.getElementById('uploadPhotos');
+  let uploadPhotosError = document.getElementById('uploadPhotosError');
+  let startDateInput = document.getElementById('startDate');
+  let finalDateInput = document.getElementById('finalDate');
+  let startDateError = document.getElementById('startDateError');
+  let finalDateError = document.getElementById('finalDateError');
+  const cloudName = "dezqwhec1"; 
+  const uploadPreset = "ip5jqq1p"; 
+
+    let imagenesSubidas=[]
+    //pinta en el HTML la ventana para subir una imágen
+    const myWidget = cloudinary.createUploadWidget(
+        {
+        cloudName: cloudName,
+        uploadPreset: uploadPreset,
+        },
+        (error, result) => {
+        if (!error && result && result.event === "success") {
+            //console.log("Done! Here is the image info: ", result);
+            imagenesSubidas.push(result.info.secure_url);
+            //console.log("imagenesSubidasARRAY:",imagenesSubidas);
+        }
+        }
+    );
+    document.getElementById("upload_widget").addEventListener("click",function () {
+        myWidget.open();
+        },  false
+    );
+
+
+
+
+  function calcularDuracion(startDateInput, finalDateInput) {
+    const start = new Date(startDateInput);
+    const final = new Date(finalDateInput);
+    const diferenciaEnTiempo = final - start;
+    const diferenciaEnDias = Math.ceil(diferenciaEnTiempo / (1000 * 60 * 60 * 24));
+    return diferenciaEnDias;
+}
+>>>>>>> 2dff7b1e8f1a2c858d0744cb15af034863ef4287
 
 <<<<<<< HEAD
     function addItem(nuevoViaje) {
@@ -51,6 +111,7 @@ function addItem(nuevoViaje) {
 }
 >>>>>>> c01491d7e579c14214f89730bf3ffa9f186fc84d
 
+<<<<<<< HEAD
 =======
       const start = new Date(startDateInput);
       const final = new Date(finalDateInput);
@@ -89,6 +150,42 @@ function addItem(nuevoViaje) {
         if (nameTravel.value.length < 10 || /^\s|\s$/.test(nameTravel.value) || /\s{2,}/.test(nameTravel.value)) {
             nameTravel.classList.add('is-invalid');
             nameTravelError.textContent = 'Por favor escribe un nombre de viaje válido (mínimo 10 letras)';
+=======
+//BOTON CREAR
+  btnSendTravel.addEventListener('click', function (event) {
+      event.preventDefault();
+      let valid = true;
+
+
+        //Obtener y procesar las imágenes en JSON
+/*         const inputFiles = document.getElementById('uploadPhotos');
+        const files = inputFiles.files;
+        const imagenesSubidas = [];
+        for (let i = 0; i < files.length; i++) {
+            let nuevaImagen = files[i];
+            imagenesSubidas.push({ nombre: nuevaImagen.name, tipo: nuevaImagen.type, tamaño: nuevaImagen.size });
+        } */
+
+      // Validación del nombre del destino
+      if (nameTravel.value.length < 10 || /^\s|\s$/.test(nameTravel.value) || /\s{2,}/.test(nameTravel.value)) {
+          nameTravel.classList.add('is-invalid');
+          nameTravelError.textContent = 'Por favor escribe un nombre de viaje válido (mínimo 10 letras)';
+          valid = false;
+      } else {
+          nameTravel.classList.remove('is-invalid');
+          nameTravel.classList.add('is-valid');
+          nameTravelError.textContent = ''; // Limpiar el mensaje de error
+      }
+
+      // Validación de fechas
+      validarFechas();
+
+      // Validación de checkboxes
+        let selectedCheckboxes = checkboxes.filter(checkbox => checkbox.checked);
+        
+        if (selectedCheckboxes.length < 2) {
+            checkboxesError.textContent = 'Por favor escoge mínimo 2 opciones';
+>>>>>>> 2dff7b1e8f1a2c858d0744cb15af034863ef4287
             valid = false;
         } else {
             nameTravel.classList.remove('is-invalid');
@@ -108,6 +205,7 @@ function addItem(nuevoViaje) {
           } else {
               checkboxesError.textContent = ''; // Limpiar el mensaje de error
           }
+<<<<<<< HEAD
   
           // Obtener el texto de los labels asociados a los checkboxes seleccionados
           const incluyeText = selectedCheckboxes.map(checkbox => {
@@ -218,6 +316,86 @@ function addItem(nuevoViaje) {
           startDateError.textContent = 'Por favor ingresa una fecha de inicio.';
       } else if (startDate < fechaActual) {
           // Fecha de inicio menor al día actual, mostrar alerta y actualizar la fecha
+=======
+      }
+
+      // Validación de la carga de fotos
+      if((imagenesSubidas.length!=4)){   
+        console.log(imagenesSubidas.length);
+        //uploadPhotos.classList.add('is-invalid');
+        uploadPhotosError.textContent = 'Por favor sube 4 fotografías\n';
+        valid = false;
+      }else {
+       // uploadPhotos.classList.remove('is-invalid');
+        //uploadPhotos.classList.add('is-valid');
+        uploadPhotosError.textContent = ''; // Limpiar el mensaje de error
+    }
+
+
+/* Validación pasada para el input de archivos
+      let allowedExtensions = /(\.png)$/i;
+      if (!allowedExtensions.exec(uploadPhotos.value)) {
+          uploadPhotos.classList.add('is-invalid');
+          uploadPhotosError.textContent = 'Por favor sube mínimo 1 fotografía en formato .jpg\n';
+          valid = false;
+      } else {
+          uploadPhotos.classList.remove('is-invalid');
+          uploadPhotos.classList.add('is-valid');
+          uploadPhotosError.textContent = ''; // Limpiar el mensaje de error
+      } 
+*/
+
+      // Actualizar clases is-valid e is-invalid para fechas
+      actualizarClases(startDateInput, startDateError);
+      actualizarClases(finalDateInput, finalDateError);
+
+      // Si todas las validaciones son correctas, se podría enviar el formulario.
+      if (valid) {
+        // Crear el objeto JSON del nuevo viaje
+        var nuevoViaje = {
+            'id': modalCounter, // Asignar un nuevo ID
+            'nombreDestino': nameTravel.value,
+            'precio': priceInput.value,
+            'incluye': incluyeText,
+            'fechaInicio': startDate.value,
+            'fechaFin': finalDate.value,
+            'duracion': calcularDuracion(startDateInput.value, finalDateInput.value),
+            'descripcion': description.value,
+            'img': imagenesSubidas
+        };
+    
+        // Llamar a la función addItem con el nuevoViaje como argumento
+        addItem(nuevoViaje);
+        $('#successModal').modal('show');
+    
+        // Incrementar el contador de modales
+        modalCounter++;
+      }
+  });
+
+  // Función para validar fechas
+  function validarFechas() {
+      // Obtener la fecha actual
+      const fechaActual = new Date();
+
+      // Convertir los valores de las fechas a objetos Date
+      const startDate = new Date(startDateInput.value);
+      const finalDate = new Date(finalDateInput.value);
+
+      // Obtener la fecha actual en formato YYYY-MM-DD
+      const hoy = fechaActual.toISOString().split('T')[0];
+
+      // Calcular la fecha dentro de un año desde hoy
+      const fechaMaxima = new Date(fechaActual);
+      fechaMaxima.setFullYear(fechaMaxima.getFullYear() + 1);
+
+      // Limpiar los mensajes de error
+      startDateError.textContent = '';
+      finalDateError.textContent = '';
+
+      // Validar la fecha de inicio
+      if (startDate < fechaActual) {
+>>>>>>> 2dff7b1e8f1a2c858d0744cb15af034863ef4287
           Swal.fire('La fecha de inicio no puede ser menor al día actual.');
           startDateInput.value = hoy;
       }
