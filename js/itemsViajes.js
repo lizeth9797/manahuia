@@ -118,6 +118,7 @@ document.getElementById('cards-container').addEventListener('click', function (e
     }
 });
 
+
 addItem({
     'id': 1,
     'nombreDestino':'Aventura Maya en Península Yucateca',
