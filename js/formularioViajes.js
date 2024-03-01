@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let idCounter = parseInt(localStorage.getItem('idCounter')) || 11;
+
+    // obtiene el ultimo contador del input almacenado en localStorage iniciando en 11
+    let idCounter = parseInt(localStorage.getItem('nextId')) || 11;
+
+
 
     let btnSendTravel = document.getElementById('btnSendTravel');
     let nameTravel = document.getElementById('nameTravel');
@@ -102,6 +106,94 @@ document.addEventListener("DOMContentLoaded", function () {
             description.classList.add('is-valid');
             descriptionError.textContent = '';
         }
+
+    function validarFechas() {
+        // Obtener la fecha actual
+        const fechaActual = new Date();
+    
+        // Convertir los valores de las fechas a objetos Date
+        const startDate = new Date(startDateInput.value);
+        const finalDate = new Date(finalDateInput.value);
+    
+        // Limpiar los mensajes de error
+        startDateError.textContent = '';
+        finalDateError.textContent = '';
+    
+        // Función para manejar los errores de fecha
+        const manejarErrorFecha = (errorMensaje, inputFecha) => {
+            inputFecha.classList.add('is-invalid');
+            inputFecha.classList.remove('is-valid');
+            startDateError.textContent = errorMensaje;
+            finalDateError.textContent = errorMensaje;
+        };
+    
+        // Validar la fecha de inicio
+        if (!startDateInput.value || startDate < fechaActual) {
+            manejarErrorFecha('La fecha de inicio debe ser mayor al día actual.', startDateInput);
+            return false;
+        }
+    
+        // Validar la fecha final
+        if (!finalDateInput.value || finalDate < startDate) {
+            manejarErrorFecha('La fecha final no puede ser menor o igual a la fecha inicial.', finalDateInput);
+            return false;
+        }
+    
+        // Validar que las fechas no superen un año
+        const fechaMaxima = new Date(fechaActual);
+        fechaMaxima.setFullYear(fechaMaxima.getFullYear() + 1);
+    
+        if (startDate > fechaMaxima || finalDate > fechaMaxima) {
+            manejarErrorFecha('Las fechas no pueden superar un año desde hoy.', startDateInput);
+            return false;
+        }
+
+        function actualizarClases(inputElement, errorElement) {
+            if (errorElement.textContent) {
+                inputElement.classList.add('is-invalid');
+                inputElement.classList.remove('is-valid');
+            } else {
+                inputElement.classList.remove('is-invalid');
+                inputElement.classList.add('is-valid');
+            }
+        }
+        // Actualizar clases is-valid e is-invalid para fechas
+        actualizarClases(startDateInput, startDateError);
+        actualizarClases(finalDateInput, finalDateError);
+    
+        // Si todas las validaciones de fechas son correctas, retorna true
+        return true;
+    }
+    
+
+      // Si todas las validaciones son correctas, se podría enviar el formulario.
+      if (valid) {
+        // Crear el objeto JSON del nuevo viaje
+        var nuevoViaje = {
+            'id': idCounter, // Asignar un nuevo ID
+            'nombreDestino': nameTravel.value,
+            'precio': priceInput.value,
+            'incluye': incluyeText,
+            'fechaInicio': startDate.value,
+            'fechaFin': finalDate.value,
+            'duracion': calcularDuracion(startDateInput.value, finalDateInput.value),
+            'descripcion': description.value,
+            'img': imagenesSubidas
+        };
+    
+        // Llamar a la función addItem con el nuevoViaje como argumento
+        addItem(nuevoViaje);
+        $('#successModal').modal('show');
+    
+        // Incrementar el contador de modales
+        idCounter++;
+        localStorage.setItem('nextId', idCounter.toString());
+      } else {
+        $('#errorModal').modal('show');
+      }
+      });// btn eventListener
+      
+});// DOMcontent
 
         let priceInputValue = priceInput.value.trim();
 
@@ -216,3 +308,4 @@ function actualizarClases(inputElement, errorElement) {
     inputElement.classList.add('is-valid');
     errorElement.textContent = '';
 }
+
