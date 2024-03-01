@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // obtiene el ultimo contador del input almacenado en localStorage iniciando en 11
-    let idCounter = parseInt(localStorage.getItem('idCounter')) || 11;
+    let idCounter = parseInt(localStorage.getItem('nextId')) || 11;
 
   let btnSendTravel = document.getElementById('btnSendTravel');
   let nameTravel = document.getElementById('nameTravel');
@@ -169,77 +169,63 @@ function addItem(nuevoViaje) {
     }
 
 
-// Función para validar fechas
-function validarFechas() {
-    // Obtener la fecha actual
-    const fechaActual = new Date();
+    function validarFechas() {
+        // Obtener la fecha actual
+        const fechaActual = new Date();
+    
+        // Convertir los valores de las fechas a objetos Date
+        const startDate = new Date(startDateInput.value);
+        const finalDate = new Date(finalDateInput.value);
+    
+        // Limpiar los mensajes de error
+        startDateError.textContent = '';
+        finalDateError.textContent = '';
+    
+        // Función para manejar los errores de fecha
+        const manejarErrorFecha = (errorMensaje, inputFecha) => {
+            inputFecha.classList.add('is-invalid');
+            inputFecha.classList.remove('is-valid');
+            startDateError.textContent = errorMensaje;
+            finalDateError.textContent = errorMensaje;
+        };
+    
+        // Validar la fecha de inicio
+        if (!startDateInput.value || startDate < fechaActual) {
+            manejarErrorFecha('La fecha de inicio debe ser mayor al día actual.', startDateInput);
+            return false;
+        }
+    
+        // Validar la fecha final
+        if (!finalDateInput.value || finalDate < startDate) {
+            manejarErrorFecha('La fecha final no puede ser menor o igual a la fecha inicial.', finalDateInput);
+            return false;
+        }
+    
+        // Validar que las fechas no superen un año
+        const fechaMaxima = new Date(fechaActual);
+        fechaMaxima.setFullYear(fechaMaxima.getFullYear() + 1);
+    
+        if (startDate > fechaMaxima || finalDate > fechaMaxima) {
+            manejarErrorFecha('Las fechas no pueden superar un año desde hoy.', startDateInput);
+            return false;
+        }
 
-    // Convertir los valores de las fechas a objetos Date
-    const startDate = new Date(startDateInput.value);
-    const finalDate = new Date(finalDateInput.value);
-
-    // Obtener la fecha actual en formato YYYY-MM-DD
-    const hoy = fechaActual.toISOString().split('T')[0];
-
-    // Calcular la fecha dentro de un año desde hoy
-    const fechaMaxima = new Date(fechaActual);
-    fechaMaxima.setFullYear(fechaMaxima.getFullYear() + 1);
-
-    // Limpiar los mensajes de error
-    startDateError.textContent = '';
-    finalDateError.textContent = '';
-
-    // Validar la fecha de inicio
-    if (startDate < fechaActual) {
-        startDateError.textContent = 'La fecha de inicio no puede ser menor al día actual.';
-        startDateInput.value = hoy;
-        return false;
+        function actualizarClases(inputElement, errorElement) {
+            if (errorElement.textContent) {
+                inputElement.classList.add('is-invalid');
+                inputElement.classList.remove('is-valid');
+            } else {
+                inputElement.classList.remove('is-invalid');
+                inputElement.classList.add('is-valid');
+            }
+        }
+        // Actualizar clases is-valid e is-invalid para fechas
+        actualizarClases(startDateInput, startDateError);
+        actualizarClases(finalDateInput, finalDateError);
+    
+        // Si todas las validaciones de fechas son correctas, retorna true
+        return true;
     }
-
-    if (!startDateInput.value) {
-        // Fecha vacía, actualiza el error
-        startDateError.textContent = 'Por favor ingresa una fecha de inicio.';
-        return false;
-    } else if (startDate < fechaActual) {
-        // Fecha de inicio menor al día actual, mostrar alerta y actualizar la fecha
-        startDateError.textContent = 'La fecha de inicio debe ser mayor al día actual y diferente a la fecha final';
-        startDateInput.value = hoy;
-        return false;
-    }
-
-    // Validar la fecha final
-    if (finalDate < startDate) {
-        finalDateError.textContent = 'La fecha final debe ser mayor al día actual y diferente a la fecha final.';
-        finalDateInput.value = startDateInput.value;
-        return false;
-    }
-    if (!finalDateInput.value) {
-        // Fecha vacía, actualiza el error
-        finalDateError.textContent = 'Por favor ingresa una fecha final.';
-        return false;
-    } else if (finalDate < startDate) {
-        // Fecha final menor a la fecha de inicio, mostrar alerta y actualizar la fecha
-        finalDateError.textContent = 'La fecha final no puede ser menor o igual a la fecha inicial.';
-        finalDateInput.value = startDateInput.value;
-        return false;
-    }
-
-    // Validar que las fechas no superen un año
-    if (startDate > fechaMaxima || finalDate > fechaMaxima) {
-        startDateError.textContent = 'Las fechas no pueden superar un año desde hoy.';
-        startDateInput.value = hoy;
-        finalDateInput.value = hoy;
-        finalDateError.textContent = 'Las fechas no pueden superar un año desde hoy.';
-        return false;
-    }
-
-    // Actualizar clases is-valid e is-invalid para fechas
-    actualizarClases(startDateInput, startDateError);
-    actualizarClases(finalDateInput, finalDateError);
-
-    // Si todas las validaciones de fechas son correctas, retorna true
-    return true;
-}
     
 
       // Si todas las validaciones son correctas, se podría enviar el formulario.
@@ -263,7 +249,7 @@ function validarFechas() {
     
         // Incrementar el contador de modales
         idCounter++;
-        localStorage.setItem('idCounter', idCounter.toString());
+        localStorage.setItem('nextId', idCounter.toString());
       } else {
         $('#errorModal').modal('show');
       }
