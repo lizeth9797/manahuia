@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-<<<<<<< HEAD
+
     let modalCounter = 11;
     let btnSendTravel = document.getElementById('btnSendTravel');
     let nameTravel = document.getElementById('nameTravel');
