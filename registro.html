@@ -12,6 +12,19 @@
 
     <title>Contacto</title>
     <style>
+
+body {
+            background-image: url('./src/registro/Diseño-50.png');
+            background-size: cover;
+            background-position: center;
+            overflow-x: hidden;
+        }
+
+
+        body img {
+            opacity: 0.5 !important;
+        }
+
         body, html {
 
             overflow-x: hidden;
@@ -116,8 +129,12 @@
         color: rgb(107, 107, 107);
         width: 100%; 
     }
-   
-
+    
+    @media screen and (min-width:768px){
+    .registro{
+        width: 50%
+    }
+    }
     
     </style>
 </head>
@@ -148,7 +165,7 @@
     </div>
   </nav>
 
-  <div class="container-fluid" style="border-style: double; border-color: rgb(255, 255, 255); width: 50%; padding-top: 20px;" id="formulario">
+  <div class="container registro" style="border-style: double; border-color: rgb(255, 255, 255); padding-top: 20px;" id="formulario">
     <div class="card-container">
         <div class="card">
             <div class="text-center">
@@ -176,6 +193,12 @@
                         <span id="correoError" class="text-danger"></span>
                     </div>
 
+                    <div class="mb-3 pink-border">
+                        <label for="correo" class="form-label"></label>
+                        <div class="container"><input type="password" class="form-control" id="password" placeholder="Confirmar contraseña"></div>
+                        <span id="correoError" class="text-danger"></span>
+                    </div>
+
 
                     <div class="mb-3">
                         <label for="telefono" class="form-label"></label>
@@ -189,10 +212,40 @@
                     <div class="text-center">
                         <input type="button" class="btn btn-primary" value="Registrarse">
                     </div>
+                    <!--ICONO GOOGLE-->
+                    <div class="container-fluid">
+                        <img src="./src/registro/ICONO-GOOGLE.png" alt="Icono de google" class="img-fluid style=" style="width: 80px";>
+                    </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="successModal">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-body text-center">
+                <div>
+                    <i class="text-success bi bi-check-circle" ></i>
+                </div>
+                <div class="mt-4 py-2">
+                <p class="px-4 pb-0 mb-1 text-secondary">¡Hecho!</p>
+                <h4 class="h5">Tu correo ha sido enviado</h4>
+                </div>
+                <div class="py-1"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button></div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--Texto despues del boton-->
+    <div id="help" class="form-text">¿Ya tienes cuenta? <a href="#" target="_blank">Ingrese</a></div>
+    <br>
+    <!--Botón "Iniciar Sesión"-->
+    <div class="py-1"><button type="button" class="btn btn-sm rounded-pill px-5" style="background-color: #D0B8AB; color: white;" data-bs-dismiss="modal">Iniciar Sesión</button>
+    <br>
+    <br>        
+
                 </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
