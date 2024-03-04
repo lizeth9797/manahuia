@@ -15,6 +15,15 @@ document.addEventListener("DOMContentLoaded", function() {
     let passwordError = document.getElementById("passwordError");
     let confirmError = document.getElementById("confirmError");
     let telefonoError = document.getElementById("telefonoError");
+    let idCounter= document.getElementById("idCounter");
+
+
+    function addItem(nuevoRegistro) {
+        let registro = JSON.parse(localStorage.getItem('registro')) || [];
+
+        registro.push(nuevoRegistro);
+        localStorage.setItem('registro', JSON.stringify(registro));
+    }
    
 
     btnRegister.addEventListener('click', function(event) {
@@ -130,5 +139,33 @@ document.addEventListener("DOMContentLoaded", function() {
             telefonoError.textContent = '';
         }
 
-    });
+        // Si todas las validaciones son correctas, se podría enviar el formulario.
+        if (valid) {
+            var nuevoRegistro = {
+                'id': idCounter, // Asignar un nuevo ID
+                'name': name.value,
+                'username': username.value,
+                'correo': correo.value,
+                'password': password.value,
+                'passwordConfirm': passwordConfirm.value,
+                'telefono': telefono.value,
+            };
+
+            addItem(nuevoRegistro);
+            $('#successModal').modal('show');
+
+            // Limpiar los campos después de enviar el formulario
+            limpiarCampos();
+            idCounter++;
+
+            
+
+
+
+
+
+
+
+
+}});
 });
