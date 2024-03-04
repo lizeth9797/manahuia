@@ -178,7 +178,7 @@ body {
                     <div class="mb-3 text-center">
                         <label for="username" class="form-label"></label>
                         <div class="container"> <input type="text"  style="height: 80%;"  class="form-control" id="username" placeholder="Nombre de usuario"></div>
-                        <span id="nameError" class="text-danger"></span>
+                        <span id="usernameError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3 pink-border">
@@ -188,15 +188,15 @@ body {
                     </div>
 
                     <div class="mb-3 pink-border">
-                        <label for="correo" class="form-label"></label>
+                        <label for="password" class="form-label"></label>
                         <div class="container"><input type="password" class="form-control" id="password" placeholder="Contraseña"></div>
-                        <span id="correoError" class="text-danger"></span>
+                        <span id="passwordError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3 pink-border">
-                        <label for="correo" class="form-label"></label>
-                        <div class="container"><input type="password" class="form-control" id="password" placeholder="Confirmar contraseña"></div>
-                        <span id="correoError" class="text-danger"></span>
+                        <label for="passwordConfirm" class="form-label"></label>
+                        <div class="container"><input type="password" class="form-control" id="passwordConfirm" placeholder="Confirmar contraseña"></div>
+                        <span id="confirmError" class="text-danger"></span>
                     </div>
 
 
@@ -210,7 +210,7 @@ body {
                     </div>
 
                     <div class="text-center">
-                        <input type="button" class="btn btn-primary" value="Registrarse">
+                        <input type="button" class="btn btn-primary" id="btnRegister" value="Registrarse">
                     </div>
                     <!--ICONO GOOGLE-->
                     <div class="container-fluid">
@@ -307,7 +307,7 @@ integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4Qz
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
 
-<script src="js/contacto.js"></script>
+<script src="js/registro.js"></script>
 
 </body>
 </html>
