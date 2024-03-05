@@ -1,22 +1,22 @@
 
 document.addEventListener("DOMContentLoaded", function() {
+     // obtiene el ultimo contador del input almacenado en localStorage iniciando en 1
+    let idCounter = parseInt(localStorage.getItem('nextId')) || 1;
 
     let btnRegister = document.getElementById("btnRegister");
     let name = document.getElementById("name");
-    let username = document.getElementById("username");
+    // let username = document.getElementById("username");
     let correo = document.getElementById("correo");
     let password = document.getElementById("password");
     let passwordConfirm = document.getElementById("passwordConfirm");
     let telefono = document.getElementById("telefono");
     //Error message
     let nameError = document.getElementById("nameError");
-    let usernameError = document.getElementById("usernameError");
+    // let usernameError = document.getElementById("usernameError");
     let correoError = document.getElementById("correoError");
     let passwordError = document.getElementById("passwordError");
     let confirmError = document.getElementById("confirmError");
     let telefonoError = document.getElementById("telefonoError");
-    let idCounter= document.getElementById("idCounter");
-
 
     function addItem(nuevoRegistro) {
         let registro = JSON.parse(localStorage.getItem('registro')) || [];
@@ -62,43 +62,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Validación del nombre de usuario  
         // Validación del nombre de usuario  
-        if (username.value.trim() === '') {
-            username.classList.add('is-invalid');
-            usernameError.textContent = 'Por favor, ingresa un nombre de usuario.';
-            valid = false;
-        } else if (username.value.length < 4 || username.value.length > 10 || /^\s|\s$/.test(username.value) || /\s{2,}/.test(username.value)) {
-            username.classList.add('is-invalid');
-            let mensajeError = 'Por favor, escribe un nombre de usuario válido:\n';
+        // if (username.value.trim() === '') {
+        //     username.classList.add('is-invalid');
+        //     usernameError.textContent = 'Por favor, ingresa un nombre de usuario.';
+        //     valid = false;
+        // } else if (username.value.length < 4 || username.value.length > 10 || /^\s|\s$/.test(username.value) || /\s{2,}/.test(username.value)) {
+        //     username.classList.add('is-invalid');
+        //     let mensajeError = 'Por favor, escribe un nombre de usuario válido:\n';
 
-            if (username.value.length < 4) {
-                mensajeError += ' - Mínimo 4 caracteres\n';
-            } else if (username.value.length > 10) {
-                mensajeError += ' - Máximo 10 caracteres\n';
-            } else if (/^\s|\s$/.test(username.value) || /\s{2,}/.test(username.value)) {
-                mensajeError += ' - No debe contener espacios al inicio, final o duplicados\n';
-            }
+        //     if (username.value.length < 4) {
+        //         mensajeError += ' - Mínimo 4 caracteres\n';
+        //     } else if (username.value.length > 10) {
+        //         mensajeError += ' - Máximo 10 caracteres\n';
+        //     } else if (/^\s|\s$/.test(username.value) || /\s{2,}/.test(username.value)) {
+        //         mensajeError += ' - No debe contener espacios al inicio, final o duplicados\n';
+        //     }
 
-            usernameError.textContent = mensajeError;
-            usernameError.style.whiteSpace = 'pre-line';
-            valid = false;
-        } else {
-            username.classList.remove('is-invalid');
-            usernameError.textContent = '';
+        //     usernameError.textContent = mensajeError;
+        //     usernameError.style.whiteSpace = 'pre-line';
+        //     valid = false;
+        // } else {
+        //     username.classList.remove('is-invalid');
+        //     usernameError.textContent = '';
 
-            // Agregar el nuevo nombre de usuario a la lista en localStorage
-            // existingUsernames.push(username.value);
-            // localStorage.setItem('usernames', JSON.stringify(existingUsernames));
-        }
+        //     // Agregar el nuevo nombre de usuario a la lista en localStorage
+        //     // existingUsernames.push(username.value);
+        //     // localStorage.setItem('usernames', JSON.stringify(existingUsernames));
+        // }
 
+        // Obtener la lista de correos desde localStorage o inicializarla si no existe.
+        const existingCorreo = JSON.parse(localStorage.getItem('correo')) || [];
         // Validación del correo electrónico
-        let correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!correoRegex.test(correo.value)) {
+        let correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ || existingCorreo.includes(correo.value);
+        if (!(correoRegex.test(correo.value))) {
             correo.classList.add('is-invalid');
             correoError.textContent = 'Por favor, escribe un correo válido.';
             valid = false;
         } else {
             correo.classList.remove('is-invalid');
             correoError.textContent = '';
+            // Agregar el nuevo nombre de usuario a la lista en localStorage
+            existingCorreo.push(correo.value);
+            localStorage.setItem('correo', JSON.stringify(existingCorreo));
         }
 
         // validaciónes de la contraseña
@@ -144,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var nuevoRegistro = {
                 'id': idCounter, // Asignar un nuevo ID
                 'name': name.value,
-                'username': username.value,
+                // 'username': username.value,
                 'correo': correo.value,
                 'password': password.value,
                 'passwordConfirm': passwordConfirm.value,
@@ -157,15 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Limpiar los campos después de enviar el formulario
             limpiarCampos();
             idCounter++;
+            localStorage.setItem('nextId', idCounter.toString());
 
-            
-
-
-
-
-
-
-
-
-}});
-});
+    }});// eventListener
+}); 
