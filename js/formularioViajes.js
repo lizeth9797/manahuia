@@ -73,17 +73,23 @@ document.addEventListener("DOMContentLoaded", function () {
             valid = false;
         }
 
-        // Validación del nombre del destino
-        if (nameTravel.value.length < 10 || /^\s|\s$/.test(nameTravel.value) || /\s{2,}/.test(nameTravel.value)) {
-            nameTravel.classList.add('is-invalid');
-            nameTravelError.textContent = 'Por favor escribe un nombre de viaje válido (mínimo 10 letras)';
-            valid = false;
-        } else {
-            nameTravel.classList.remove('is-invalid');
-            nameTravel.classList.add('is-valid');
-            nameTravelError.textContent = ''; // Limpiar el mensaje de error
-        }
-
+            // Validación del nombre del destino
+            if (
+                nameTravel.value.length < 10 ||                            // Comprueba si la longitud es menor que 10
+                /^\s|\s$/.test(nameTravel.value) ||                       // Comprueba si hay espacios al principio o al final
+                /\s{2,}/.test(nameTravel.value) ||                        // Comprueba si hay dos o más espacios consecutivos
+                /[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s]/.test(nameTravel.value) ||      // Comprueba si hay caracteres especiales o no permitidos (acepta acentuación)
+                /(.)\1{2,}/.test(nameTravel.value)                        // Comprueba si hay más de tres veces la misma letra seguida
+            ) {
+                nameTravel.classList.add('is-invalid');                   // Agrega la clase 'is-invalid' para resaltar el error
+                nameTravelError.textContent = 'Por favor escribe un nombre de viaje válido (mínimo 10 letras y sin caracteres especiales no permitidos)'; // Muestra un mensaje de error
+                valid = false;                                            // Indica que la validación no pasó
+            } else {
+                nameTravel.classList.remove('is-invalid');                // Elimina la clase 'is-invalid'
+                nameTravel.classList.add('is-valid');                     // Agrega la clase 'is-valid' para indicar que es válido
+                nameTravelError.textContent = '';                         // Limpia el mensaje de error
+            }
+        
         // Validación de checkboxes
         let selectedCheckboxes = checkboxes.filter(checkbox => checkbox.checked);
 
@@ -101,14 +107,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }).join(', ');
 
         // Validación de la descripción
-        if (description.value.length === 0 || description.value.length > 300) {
-            description.classList.add('is-invalid');
-            descriptionError.textContent = 'Por favor escribe un comentario menor a 300 caracteres';
-            valid = false;
+        if (
+            description.value.length === 0 ||                              // Comprueba si la longitud es cero (campo vacío)
+            description.value.length > 300 ||                              // Comprueba si la longitud es mayor que 300 caracteres
+            /^\s|\s$/.test(description.value) ||                         // Comprueba si hay espacios al principio o al final
+            /\s{3,}/.test(description.value) ||                           // Comprueba si hay tres o más espacios consecutivos
+            /[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s\d.,;:!?()-]/.test(description.value)  // Comprueba si hay caracteres especiales no permitidos (acepta acentuación)
+        ) {
+            description.classList.add('is-invalid');                      // Agrega la clase 'is-invalid' para resaltar el error
+            descriptionError.textContent = 'Por favor escribe un comentario válido (menor a 300 caracteres y sin caracteres especiales no permitidos)'; // Muestra un mensaje de error
+            valid = false;                                                 // Indica que la validación no pasó
         } else {
-            description.classList.remove('is-invalid');
-            description.classList.add('is-valid');
-            descriptionError.textContent = ''; // Limpiar el mensaje de error
+            description.classList.remove('is-invalid');                   // Elimina la clase 'is-invalid'
+            description.classList.add('is-valid');                        // Agrega la clase 'is-valid' para indicar que es válido
+            descriptionError.textContent = '';                            // Limpia el mensaje de error
         }
 
         // Validación del precio
@@ -175,45 +187,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function validarFechas() {
         const fechaActual = new Date();
-
+    
         const startDate = new Date(startDateInput.value);
         const finalDate = new Date(finalDateInput.value);
-
+    
         startDateError.textContent = '';
         finalDateError.textContent = '';
-
+    
         const manejarErrorFecha = (errorMensaje, errorElement) => {
             errorElement.textContent = errorMensaje;
             errorElement.classList.add('is-invalid');
             errorElement.classList.remove('is-valid');
         };
-
+    
+        let esFechaInicialValida = true;
+        let esFechaFinalValida = true;
+    
         if (!startDateInput.value) {
             manejarErrorFecha('Debe indicar la fecha inicial', startDateError);
+            esFechaInicialValida = false;
         } else if (startDate < fechaActual) {
             manejarErrorFecha('La fecha inicial es inválida', startDateError);
-            return false;
+            esFechaInicialValida = false;
         }
-
+    
         if (!finalDateInput.value) {
             manejarErrorFecha('Debe indicar la fecha final', finalDateError);
+            esFechaFinalValida = false;
         } else if (finalDate < fechaActual || finalDate < startDate) {
             manejarErrorFecha('La fecha final es inválida.', finalDateError);
-            return false;
+            esFechaFinalValida = false;
         }
-
+    
         const fechaMaxima = new Date(fechaActual);
         fechaMaxima.setFullYear(fechaMaxima.getFullYear() + 1);
-
-        if (startDate > fechaMaxima || finalDate > fechaMaxima) {
-            manejarErrorFecha('Las fechas no pueden superar un año desde hoy.', startDateError);
-            return false;
+    
+        if (esFechaInicialValida && esFechaFinalValida) {
+            if (startDate > fechaMaxima || finalDate > fechaMaxima) {
+                manejarErrorFecha('Las fechas no pueden superar un año desde hoy.', startDateError);
+                return false;
+            }
+    
+            actualizarClases(startDateInput, startDateError);
+            actualizarClases(finalDateInput, finalDateError);
+    
+            return !(startDateError.textContent || finalDateError.textContent);
         }
-
-        actualizarClases(startDateInput, startDateError);
-        actualizarClases(finalDateInput, finalDateError);
-
-        return !(startDateError.textContent || finalDateError.textContent);
+    
+        return false;
     }
 
     function actualizarClases(inputElement, errorElement) {
