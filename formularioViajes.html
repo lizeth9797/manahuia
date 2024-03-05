@@ -187,6 +187,9 @@ h5{
         white-space: pre-line;
     }
 }
+
+
+
 </style>
 
 </head>
@@ -237,7 +240,7 @@ h5{
                 <div class="text-center"><!-- columna -->
                   
                       <!--Nombre del destino-->
-                      <div class="input-group input-group-sm" style="padding-top: 47px;">
+                      <div class="input-group input-group-sm" style="padding-top: 47px; padding-bottom: 30px;">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Nombre del destino</span>
                         <input type="text" class="form-control A" id="nameTravel"  name="nameTravel" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                       </div>
@@ -245,7 +248,7 @@ h5{
                       
        
 <!--calendario-->
-<div class="container-fluid" id="calendar" style="padding-bottom:15px ;">
+<div class="container-fluid" id="calendar" style="padding-bottom:15px ; padding-bottom: 30px;">
   <div class="row">
     <div class="col-3-lg"></div> 
     <div class="col-6-lg"> 
@@ -253,12 +256,12 @@ h5{
         <div class="row">
           <div class="col">
             <h5 for="fecha">Inicio:</h5>
-            <input type="date" id="startDate" name="startDate" style="border-color: #85586F;" required>
+            <input type="date" id="startDate" name="startDate" style="border-color: #85586F;">
             <section><span id="startDateError" class="text-danger"></span></section>
           </div>
           <div class="col">
             <h5 for="fecha">Final:</h5>
-            <input type="date" id="finalDate" name="finalDate" style="border-color: #85586F;" required>
+            <input type="date" id="finalDate" name="finalDate" style="border-color: #85586F;">
             <section> <span id="finalDateError" class="text-danger"></span></section>
           </div>
         </div>
@@ -330,7 +333,7 @@ h5{
             </div>
 
                        <!--Descripcion-->
-                       <div class="input-group" style="padding-top:20px ;">
+                       <div class="input-group" style="padding-top:20px; padding-bottom: 30px; ">
                         <span class="input-group-text">Descripción</span>
                         <textarea class="form-control" aria-label="With textarea" id="description"  name="description"></textarea>  
                       </div>
@@ -362,12 +365,6 @@ h5{
                          </div>
                       </div>
                   </div>
-                       
-                      <input class="btn btn-primary d-none d-lg-block  " type="submit" value="Crear"  id="btnSendTravel" style="--bs-btn-active-bg: #959ca1fa;">
-                          <!-- <span id="priceInputError" class="text-danger"></span> -->
-
-                        <!--Texto despues del boton-->
-                        <!-- <div id="help" class="form-text d-none d-lg-block">Regresa al Inicio <a href="in" target="_blank">Regresar</a></div> -->
                 </div>
             </div>
     
@@ -378,7 +375,10 @@ h5{
                <div class= "container text-center" >Sube tus fotografías, deben de ser 4</div>
                <br>
                 <!--<input type="file" class="form-control" id="uploadPhotos" name="uploadPhotos" multiple>--> 
-                <input class="btn btn-primary d-sm-block rounded" id="upload_widget" value="Cargar Fotos" style="--bs-btn-active-bg: #959ca1fa;"> 
+
+                  <input class="btn btn-primary d-sm-block rounded" id="upload_widget" value="Cargar Fotos" style="--bs-btn-active-bg: #959ca1fa;" >
+
+                 
                 </div>
                 
 
@@ -386,13 +386,12 @@ h5{
                <div class="comentario text-center">
                 <img src="./src/formulario/Viaje.png" class="img-fluid estilo_imagen d-lg-block" alt="...">
             </div>
-            
-
-
-            <!--Boton submit-->
-             <input class="btn btn-primary d-sm-block d-lg-none" type="submit" id="btnSendTravel" value="Enviar" style="--bs-btn-active-bg: #959ca1fa;"> 
-            <!--Texto despues del boton-->
+            <div class="grid-container">
+                 
+              <input class="btn btn-primary d-sm-block  " type="submit" value="Crear"  id="btnSendTravel" style="--bs-btn-active-bg: #959ca1fa; width: 200px;">
+               <!--Texto despues del boton-->
             <div id="help" class="form-text d-sm-block d-lg-none">Regresa a Inicio <a href="index.html" target="_blank" >Regresar</a></div>
+           
           </div>
         </div>
     </div>
