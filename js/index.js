@@ -5,16 +5,16 @@ const cardsPerGroup = 3;
 
 function addItem(item) {
     const container = document.getElementById('cards-container');
-    
+
     // Crear la tarjeta
     const card = document.createElement('div');
     card.classList.add('card', 'col-md-3', 'mb-5', 'mx-auto');
-    
+
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
     const modalId = `exampleModal_${idCounter}`;
     const carouselId = `carouselExample_${idCounter}`;
     idCounter++;
-    
+
     const cardHTML = `
         <!-- Contenido de la tarjeta -->
         <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
@@ -108,6 +108,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const storedItem = viajes[i];
         addItem(storedItem);
     }
+
+    // Inicializar el carrusel después de cargar los elementos
+    const carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(carousel => {
+        new bootstrap.Carousel(carousel, {
+            interval: 5000, // Establece el intervalo de cambio de diapositivas en milisegundos
+            wrap: true, // Permite el rebobinado del carrusel
+            keyboard: true // Permite la navegación con el teclado
+        });
+    });
 });
 
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
@@ -123,8 +133,6 @@ document.getElementById('cards-container').addEventListener('click', function (e
         }
     }
 });
-
-
 addItem({
     'id': 1,
     'nombreDestino':'Aventura Maya en Península Yucateca',
