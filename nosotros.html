@@ -120,9 +120,8 @@
         }
 
         .card-body p {
-            background-color: #DDD3C5;
             text-align: center;
-            color: #7E5A6E;
+            color: #DDD3C5;
             font-family: "Urbanist";
             font-weight: 300;
             font-style: normal;
@@ -157,18 +156,34 @@
             font-weight: 500;
             font-style: normal;
             font-size: 20px;
-            color: #7E5A6E;
+            color: #DDD3C5;
             text-align: center;
             padding: 2px;
         }
 
         .card {
-            background-image: url(./src/nosotros/fondo1.png);
-            background-size: cover;
-            margin-bottom: 20px; /* Espacio entre las tarjetas */
-            transform-style: preserve-3d;
-        }
+    background-image: url(./src/nosotros/fondo1.png);
+    background-size: cover;
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+    transform-style: preserve-3d;
+    border-radius: 20px;
+    position: relative; /* Añadido para que el pseudo-elemento use coordenadas relativas a la tarjeta */
+}
 
+.card::before {
+    content: "";
+    position: absolute;
+    padding: 10px; /* Corregido: Utiliza un solo valor para el padding */
+    border-radius: 20px;
+
+    top: 10%; /* Ajusta según sea necesario */
+    left: 10%; /* Ajusta según sea necesario */
+    width: 80%; /* Ajusta según sea necesario */
+    height: 80%; /* Ajusta según sea necesario */
+    background-color: #85586F; /* Color del fondo semirectangular */
+    
+    z-index: -1; /* Para colocar el fondo detrás de la tarjeta */
+}
 /*
 
         .img {
@@ -191,17 +206,25 @@
 */
         .card-text {
             font-family: "Urbanist";
-            font-size: 16px;
+            font-size: 20px;
+            font-weight: 100;
             height: 230px;
         }
 
         .card-img-top {
             width: 50%; 
             margin-left:25%;
+            border-radius:50%
+
             /*width: 100%; /* Ajusta el ancho al 100% */
             /*max-width: 150px; /* Establece un ancho máximo */
             /*margin: auto;*/
         }
+        .card-img-top::before{
+            background-image: url(./src/nosotros/fondo1.png);
+            
+            }
+
 
 
         .imagen{
@@ -226,7 +249,7 @@
         }
 
         .card-body{
-            margin-top: 200px;
+            margin-top: 100px;
           }
    
         @media only screen and (max-width: 767px) {
@@ -234,14 +257,21 @@
                 display: flexbox;
             }
         }
-
+    .img-fluid{
+        position: relative;
+        
+    }
+    .card-text{
+        margin: 10px;
+    }
+    
     /*celulares*/
-    @media(min-width:576px){ /*Con este min decimos que de 576 a 767 tendrá este formato*/
+    @media(min-width:320px){ /*Con este min decimos que de 576 a 767 tendrá este formato*/
         .card-body {
             margin-top: 200px;
         }
         .card-text {
-          min-height: 12vh;
+          min-height: 20vh;
         }
     }
     @media(max-width:600px){  /*Con este maximo decimos que desde el mas pequeño hasta los 600px se respeta esta condición*/
@@ -249,30 +279,40 @@
           margin-top: 200px;
       }
       .card-text {
-        min-height: 12vh;
+        min-height: 30vh;
       }
+      
     }
-    /*tablet*/
-    @media(min-width:768px){
-      .card-body {
-          margin-top: 130px;
-      }
-      .card-text {
-        min-height: 18vh;
-      }
-      .card-img-top {
-        max-width: 300px;
-      }
-    }
+
     /*escritorio*/
     @media(min-width:992px){
       .card-body {
-          margin-top: 180px;
+          margin-top: 200px;
       }
       .card-text {
-        min-height: 12vh;
+        min-height: 40vh;
       }
     }
+       /*laptop*/
+       @media(min-width:503px)and (max-width:1024){
+      .card-body {
+          margin-top:200px;
+      }
+      .card-text {
+        min-height: 60vh;
+      }
+    }
+
+           /*tablet*/
+
+    @media (min-width: 503px) and (max-width: 768px) {
+        .card-body {
+          margin-top: 150px;
+      }
+      .card-text {
+        min-height: 35vh;
+      }
+}
 
     /*escritorio L*/
     @media(min-width:1440px){
@@ -280,19 +320,24 @@
           margin-top: 250px;
       }
       .card-text {
-        min-height: 10vh;
+        min-height: 30vh;
       }
     }
 
      /*escritorio 4k*/
-     @media(min-width:2560px){
+     @media(min-width:1024px)and (max-width: 2560px){
       .card-body {
-          margin-top: 350px;
+          margin-top: 300px;
+
+          .card-text {
+            padding: 20px;
+            width: 80%;
+            text-align: center;
+            margin-left: 50px;
+          }
       }
-      .card-text {
-        min-height: 7vh;
-      }
-    }
+      
+}
 
 
     </style>
@@ -300,17 +345,20 @@
 
 <nav class="navbar navbar-expand-lg"> <!--Añadí un style en el archivo css de la clase navbar para guiarme en como debe quedar el diseño -->
     <div class="container">
-        <a href="./index.html"><img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top"></a>
+      <a href="./index.html"><img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top"></a>
+      <a class="navbar-brand" style="margin-left:3%; color:#85586F; font-size: 25px; font-weight: 400;">Administrador</a>
+      <a class="navbar-brand" style="padding-left: 50px; color:#85586F;"></a>   <!--Le agregue el color y el padding a la linea para ir viendolos mas estructurados-->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto spacing-nav"> <!--Cree una nueva clase aqui llamada spacing-nav para añadirle estilo en la hoja de css-->
+        <!--pop up de bienvebida al usuario o administador-->
           <!--<a class="nav-link ms-auto" href="./index.html">Inicio</a>-->
           <a class="nav-link ms-auto" href="./nosotros.html">Nosotros</a>
           <!--<a class="nav-link ms-auto" href="./catalogoViajes.html">Viajes</a>-->
-          <a class="nav-link ms-auto" href="./itemsViajes.html">Paquetes</a>
-        <!--<a class="nav-link ms-auto" href="./formularioViajes.html">Formulario</a>-->
+          <!-- <a class="nav-link ms-auto" href="./itemsViajes.html">Paquetes</a> -->
+          <a class="nav-link ms-auto" href="./formularioViajes.html">Formulario</a>
           <a class="nav-link ms-auto" href="./carrito.html">Carrito</a>
           <a class="nav-link ms-auto" href="./contacto.html">Contacto</a>
           <a class="nav-link ms-auto" href="./registro.html">Registro</a>

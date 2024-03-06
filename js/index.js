@@ -5,16 +5,16 @@ const cardsPerGroup = 3;
 
 function addItem(item) {
     const container = document.getElementById('cards-container');
-    
+
     // Crear la tarjeta
     const card = document.createElement('div');
-    card.classList.add('card', 'col-md-3', 'mb-5', 'mx-auto');
-    
+    card.classList.add('card', 'col-12', 'col-sm-6', 'col-md-4', 'mb-4', 'mx-auto', 'small-card');
+
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
     const modalId = `exampleModal_${idCounter}`;
     const carouselId = `carouselExample_${idCounter}`;
     idCounter++;
-    
+
     const cardHTML = `
         <!-- Contenido de la tarjeta -->
         <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
@@ -33,7 +33,7 @@ function addItem(item) {
                 <div class="modal-content">
                     <div class="modal-body row" style= "background-color:#F8EDE3">
                         <!-- Carrusel de imágenes en el lado izquierdo -->
-                        <div class="col-lg-6" style="align-self: center;">
+                        <div class="col-lg-5" style="align-self: center;">
                             <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <!-- Aquí deberías agregar tus imágenes dinámicamente -->
@@ -108,6 +108,38 @@ document.addEventListener('DOMContentLoaded', function () {
         const storedItem = viajes[i];
         addItem(storedItem);
     }
+
+    // Inicializar el carrusel después de cargar los elementos
+    const carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(carousel => {
+        new bootstrap.Carousel(carousel, {
+            interval: 5000, // Establece el intervalo de cambio de diapositivas en milisegundos
+            wrap: true, // Permite el rebobinado del carrusel
+            keyboard: true // Permite la navegación con el teclado
+        });
+    });
+});
+document.getElementById('cards-container').addEventListener('click', function (event) {
+    if (event.target.classList.contains('details-btn')) {
+        const modalId = event.target.getAttribute('data-bs-target'); // Obtiene el ID del modal desde el atributo data-bs-target
+        const modal = new bootstrap.Modal(document.querySelector(modalId));
+
+        // Muestra el modal
+        modal.show();
+    }
+
+    // Manejo de clics en los botones del carrusel
+    if (event.target.classList.contains('carousel-control-prev')) {
+        const carouselId = event.target.getAttribute('data-bs-target');
+        const carousel = new bootstrap.Carousel(document.getElementById(carouselId));
+        carousel.prev();
+    }
+
+    if (event.target.classList.contains('carousel-control-next')) {
+        const carouselId = event.target.getAttribute('data-bs-target');
+        const carousel = new bootstrap.Carousel(document.getElementById(carouselId));
+        carousel.next();
+    }
 });
 
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
@@ -123,8 +155,6 @@ document.getElementById('cards-container').addEventListener('click', function (e
         }
     }
 });
-
-
 addItem({
     'id': 1,
     'nombreDestino':'Aventura Maya en Península Yucateca',
