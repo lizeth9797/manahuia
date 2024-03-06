@@ -8,7 +8,7 @@ function addItem(item) {
 
     // Crear la tarjeta
     const card = document.createElement('div');
-    card.classList.add('card', 'col-12', 'col-sm-6', 'col-md-4', 'mb-4', 'mx-auto', 'small-card');
+    card.classList.add('card', 'mb-3', 'col-12', 'col-sm-6', 'col-md-4', 'mx-auto', 'small-card');
 
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
     const modalId = `exampleModal_${idCounter}`;
@@ -21,17 +21,18 @@ function addItem(item) {
         <div class="card-body d-flex flex-column" style="margin: 5px; padding: 5px;">
             <h5 class="card-title">${item.nombreDestino}</h5>
             <p class="card-text flex-grow-1">${truncatedDescription}...</p>
-            <button type="button" style="background-color: #85586F" class="btn btn-secondary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
+            <button type="button" style="background-color: #85586F" class="btn btn-secondary details-btn"
+                data-bs-toggle="modal" data-bs-target="#${modalId}">
                 Detalles
             </button>
         </div> <!-- card-body -->
 
         <!-- Modal -->
-        <div class="modal fade custom-modal"  id="${modalId}" tabindex="-1" 
+        <div class="modal fade custom-modal" id="${modalId}" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
-                    <div class="modal-body row" style= "background-color:#F8EDE3">
+                    <div class="modal-body row" style="background-color:#F8EDE3">
                         <!-- Carrusel de imágenes en el lado izquierdo -->
                         <div class="col-lg-5" style="align-self: center;">
                             <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
@@ -43,22 +44,25 @@ function addItem(item) {
                                         </div>
                                     `).join('')}
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#${carouselId}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button"   data-bs-target="#${carouselId}" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#${carouselId}" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
                         </div>
-        
+
                         <!-- Informacion a la derecha -->
                         <div class="col-lg-6">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">${item.nombreDestino}</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <p class="modal-description" style="text-align: justify;">${item.descripcion}</p>
@@ -70,7 +74,8 @@ function addItem(item) {
                                 <p class="text-end modal-price"><strong>${item.precio} MXN</strong></p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" style= "background-color:#85586F" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" style="background-color:#85586F"
+                                    class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </div>
@@ -80,14 +85,23 @@ function addItem(item) {
     `;
 
     card.innerHTML = cardHTML;
-    
+
+    // Crear un contenedor de fila
+    const row = document.createElement('div');
+    row.classList.add('row');
+
     // Crear el espacio entre tarjetas
     const space = document.createElement('div');
-    space.classList.add('col-md-auto'); 
-    
+    space.classList.add('col-md-1'); // Cambia el tamaño del espacio según sea necesario
+
+    // Agregar la tarjeta y el espacio al contenedor de fila
+    // Agregar la tarjeta y el espacio al contenedor principal
+    container.appendChild(row);
+
     // Agregar la tarjeta y el espacio al contenedor
     container.appendChild(card);
     container.appendChild(space);
+
 
     // Agregar la tarjeta al grupo actual
     const currentGroup = cardGroups[currentGroupIndex];
@@ -100,61 +114,53 @@ function addItem(item) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const storedViajes = localStorage.getItem('viajes');
-    const viajes = storedViajes ? JSON.parse(storedViajes) : [];
+document.getElementById('carouselExampleControls').addEventListener('click', function (event) {
+    const carousel = new bootstrap.Carousel(document.getElementById('carouselExampleControls'));
 
-    for (let i = 0; i < viajes.length; i++) {
-        const storedItem = viajes[i];
-        addItem(storedItem);
-    }
-
-    // Inicializar el carrusel después de cargar los elementos
-    const carousels = document.querySelectorAll('.carousel');
-    carousels.forEach(carousel => {
-        new bootstrap.Carousel(carousel, {
-            interval: 5000, // Establece el intervalo de cambio de diapositivas en milisegundos
-            wrap: true, // Permite el rebobinado del carrusel
-            keyboard: true // Permite la navegación con el teclado
-        });
-    });
-});
-document.getElementById('cards-container').addEventListener('click', function (event) {
-    if (event.target.classList.contains('details-btn')) {
-        const modalId = event.target.getAttribute('data-bs-target'); // Obtiene el ID del modal desde el atributo data-bs-target
-        const modal = new bootstrap.Modal(document.querySelector(modalId));
-
-        // Muestra el modal
-        modal.show();
-    }
-
-    // Manejo de clics en los botones del carrusel
-    if (event.target.classList.contains('carousel-control-prev')) {
-        const carouselId = event.target.getAttribute('data-bs-target');
-        const carousel = new bootstrap.Carousel(document.getElementById(carouselId));
+    if (event.target.classList.contains('carousel-control-prev') || event.target.closest('.carousel-control-prev')) {
         carousel.prev();
     }
 
-    if (event.target.classList.contains('carousel-control-next')) {
-        const carouselId = event.target.getAttribute('data-bs-target');
-        const carousel = new bootstrap.Carousel(document.getElementById(carouselId));
+    if (event.target.classList.contains('carousel-control-next') || event.target.closest('.carousel-control-next')) {
         carousel.next();
     }
 });
 
-// Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
     if (event.target.classList.contains('details-btn')) {
-        const modalId = event.target.getAttribute('data-bs-target'); // Obtiene el ID del modal desde el atributo data-bs-target
-        const modal = document.querySelector(modalId);
+        const modalId = event.target.getAttribute('data-bs-target');
+        const modal = new bootstrap.Modal(document.querySelector(modalId));
 
-        // Muestra el modal
-        if (!modal) {
-            const modal = new bootstrap.Modal(document.querySelector(modalId));
-            modal.show();
-        }
+        modal.show();
+    }else {
+    document.querySelector('.modal-backdrop').remove();
+    //remove Modal
+}
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const carousels = new bootstrap.Carousel(document.getElementById('carouselExampleControls'), {
+            interval: 5000,
+            wrap: true,
+            keyboard: true
+        });
+    });
+
+        // Verificar si el elemento existe antes de realizar operaciones
+        const closeButton = document.querySelector('.close-btn');
+        if (closeButton) {
+            // Agregar un evento al botón de cierre si existe
+            closeButton.addEventListener('click', function () {
+                // Realizar operaciones aquí
+                // Por ejemplo, eliminar el elemento padre
+                const parentElement = closeButton.parentElement;
+                if (parentElement) {
+                    parentElement.remove();
+            }
+        });
     }
 });
+
+
 addItem({
     'id': 1,
     'nombreDestino':'Aventura Maya en Península Yucateca',
