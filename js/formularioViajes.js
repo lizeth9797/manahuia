@@ -109,12 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Validación de la descripción
         if (
             description.value.length === 0 ||                              // Comprueba si la longitud es cero (campo vacío)
-            description.value.length > 300 ||                              // Comprueba si la longitud es mayor que 300 caracteres
+            description.value.length > 400 ||                              // Comprueba si la longitud es mayor que 300 caracteres
             /^\s|\s$/.test(description.value)                       // Comprueba si hay espacios al principio o al final
            
         ) {
             description.classList.add('is-invalid');                      // Agrega la clase 'is-invalid' para resaltar el error
-            descriptionError.textContent = 'Por favor escribe un comentario válido (menor a 300 caracteres y sin caracteres especiales no permitidos)'; // Muestra un mensaje de error
+            descriptionError.textContent = 'Por favor escribe un comentario válido (menor a 400 caracteres)'; // Muestra un mensaje de error
             valid = false;                                                 // Indica que la validación no pasó
         } else {
             description.classList.remove('is-invalid');                   // Elimina la clase 'is-invalid'
