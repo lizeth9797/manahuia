@@ -119,6 +119,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+document.getElementById('cards-container').addEventListener('click', function (event) {
+    if (event.target.classList.contains('details-btn')) {
+        const modalId = event.target.getAttribute('data-bs-target'); // Obtiene el ID del modal desde el atributo data-bs-target
+        const modal = new bootstrap.Modal(document.querySelector(modalId));
+
+        // Muestra el modal
+        modal.show();
+    }
+
+    // Manejo de clics en los botones del carrusel
+    if (event.target.classList.contains('carousel-control-prev')) {
+        const carouselId = event.target.getAttribute('data-bs-target');
+        const carousel = new bootstrap.Carousel(document.getElementById(carouselId));
+        carousel.prev();
+    }
+
+    if (event.target.classList.contains('carousel-control-next')) {
+        const carouselId = event.target.getAttribute('data-bs-target');
+        const carousel = new bootstrap.Carousel(document.getElementById(carouselId));
+        carousel.next();
+    }
+});
 
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
