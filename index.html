@@ -1,18 +1,14 @@
-<!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100..900&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Urbanist:wght@100..900&display=swap"
-        rel="stylesheet">
-    <title>Pagina principal -Manahuia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Urbanist:wght@100..900&display=swap" rel="stylesheet">
+    <title>Pagina principal - Manahuia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" sizes="32x32" type="image/x-icon" href="./src/navbaryfooter/icon.ico">
     <style>
@@ -40,7 +36,7 @@ body, html {
 }
 .containerSearch
 {
-  .container 
+  position: absolute; 
   margin: auto;
   top: 0;
   left: 0;
@@ -274,103 +270,9 @@ body, html {
     color:#85586F;
     width: 50px;
     height: auto;
-
- /* Estilos para teléfonos */
-@media screen and (max-width: 375px) {
-  .containerSearch {
-    text-align: center;
-  }
-
-  .search {
-    width: 20px;
-    height: 20px;
-    background: #85586F;
-    border-radius: 50%;
-    transition: all 1s;
-    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
-  }
-
-  .search::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width: 12px;
-    height: 2px;
-    background: white;
-    transition: all 0.5s;
-  }
-
-  .search::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 2px solid white;
-    transition: all 0.5s;
-  }
-
-  input {
-    width: 20px;
-    height: 20px;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    background: #85586F;
-    color: white;
-    text-shadow: 0 0 10px #85586F;
-    padding: 0 30px 0 10px;
-    border-radius: 15px;
-    box-shadow: 0 0 25px 0 #85586F, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 0 25px 0 rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-    opacity: 0;
-    font-weight: bolder;
-    letter-spacing: 0.1em;
-  }
-
-  input::placeholder {
-    color: white;
-    opacity: 0.5;
-    font-weight: bolder;
-  }
-
-  .containerSearch:focus-within input {
-    width: 200px;
-    opacity: 1;
-    cursor: text;
-  }
-
-  .containerSearch:focus-within .search {
-    width: 20px;
-    height: 20px;
-  }
-
-  .containerSearch:focus-within .search::before {
-    top: 0;
-    left: 0;
-    width: 25px;
-  }
-
-  .containerSearch:focus-within .search::after {
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 2px;
-    border: none;
-    background: white;
-    border-radius: 0%;
-    transform: rotate(-45deg);
-  }
 }
 
-
-    </style>
+</style>
   </head>
 
   <body class="fondoprincipal">
@@ -397,12 +299,13 @@ body, html {
       </div>
     </nav>
   <header>
+  <form class="search-form" action="/ruta-de-búsqueda" method="GET">
     <div class= "col-lg-12">
-    <div class="containerSearch">
-      <input type="text" placeholder="Explora destinos">
+    <div class="containerSearch" class="margin-left:00px">
+      <input type="text" name="q" placeholder="Explora destinos">
       <div class="search"></div>
     </div>
-
+</form>
     <div class="col-lg-2" style="background-color: #fff; width: auto; height: 100px; font-family: Lato; " >
       <div class="col text-center" style="color: #85586F; font-family: Urbanist; font-size: 30px;">
         Viaja más allá de las expectativas...
@@ -491,7 +394,7 @@ body, html {
     <!--Termino de carrusel de selección de viajes-->
 
   </div> <!--Cierre del grid container-fluid-->
-
+</body>
   <!--FOOTER-->
   <footer style="background-color:#F8EDE3;"class="pt-4 pb-5">
     <div class="container-footer text-center text-mx-start">
@@ -530,23 +433,16 @@ body, html {
   </footer>
   
   <!-- TERMINO DE FOOTER-->
+<!-- Coloca esto al final del cuerpo del documento -->
+<!-- Coloca esto al final del cuerpo del documento -->
+
 
 
     <!--Archivos necesarios de JS-->  
-        <scritp src="./js/index.js"></scritp>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
-      
-    <!--Boostrap archivo necesario para intervalo para carrusel-->
-    <script> $('.carousel').carousel({interval: 7000})</script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
-</html>
-
-
-
-
-      
-      
   
+    <script src="./js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>
