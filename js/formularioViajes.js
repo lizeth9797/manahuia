@@ -110,9 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (
             description.value.length === 0 ||                              // Comprueba si la longitud es cero (campo vacío)
             description.value.length > 300 ||                              // Comprueba si la longitud es mayor que 300 caracteres
-            /^\s|\s$/.test(description.value) ||                         // Comprueba si hay espacios al principio o al final
-            /\s{3,}/.test(description.value) ||                           // Comprueba si hay tres o más espacios consecutivos
-            /[^a-zA-ZáéíóúüÁÉÍÓÚÜ\s\d.,;:!?()-]/.test(description.value)  // Comprueba si hay caracteres especiales no permitidos (acepta acentuación)
+            /^\s|\s$/.test(description.value)                       // Comprueba si hay espacios al principio o al final
+           
         ) {
             description.classList.add('is-invalid');                      // Agrega la clase 'is-invalid' para resaltar el error
             descriptionError.textContent = 'Por favor escribe un comentario válido (menor a 300 caracteres y sin caracteres especiales no permitidos)'; // Muestra un mensaje de error
