@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -271,7 +271,27 @@ body, html {
     width: 50px;
     height: auto;
 }
+.small-card {
+    max-width: 250px; /* O ajusta según tus necesidades */
+    
+}
+@media (max-width: 425px) {
+            .small-card {
+                min-height: 200px;
+                .cards-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+            }
+        }
 
+        @media (max-width: 768px) {
+            .card {
+                width: 100%; /* O ajusta según tus necesidades */
+                
+            }
+        }
 </style>
   </head>
 
@@ -385,20 +405,10 @@ body, html {
      <hr style="color: transparent;"><!--Se ponen estos dos separadores transparentes para darle espacio entre el carrusel y la misión y visión del proyecto-->
      <hr style="color: transparent;">
 
-     <!--div para traer las cards desde js,-->
-     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner card-wrapped" id="cards-container">
-          <!-- Tarjetas se agregarán aquí dinámicamente -->
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-      </button>
-  </div>
+     <div class="container-fluid">
+      <div id="cards-container" class="row"></div>
+  </div><!--Cierre de las Cards-->
+  
     <!--Termino de carrusel de selección de viajes-->
 
   </div> <!--Cierre del grid container-fluid-->

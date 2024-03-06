@@ -8,7 +8,7 @@ function addItem(item) {
 
     // Crear la tarjeta
     const card = document.createElement('div');
-    card.classList.add('card', 'col-md-3', 'mb-5', 'mx-auto');
+    card.classList.add('card', 'col-12', 'col-sm-6', 'col-md-4', 'mb-4', 'mx-auto', 'small-card');
 
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
     const modalId = `exampleModal_${idCounter}`;
@@ -33,7 +33,7 @@ function addItem(item) {
                 <div class="modal-content">
                     <div class="modal-body row" style= "background-color:#F8EDE3">
                         <!-- Carrusel de imágenes en el lado izquierdo -->
-                        <div class="col-lg-6" style="align-self: center;">
+                        <div class="col-lg-5" style="align-self: center;">
                             <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <!-- Aquí deberías agregar tus imágenes dinámicamente -->
