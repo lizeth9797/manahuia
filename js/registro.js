@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function() {
             $('#successModal').modal('show');
 
             // Limpiar los campos después de enviar el formulario
-            // limpiarCampos();
+            limpiarCampos();
             idCounter++;
             localStorage.setItem('nextIdUser', idCounter.toString());
             // Agregar el nuevo correo a la lista en localStorage solo si no existe previamente
@@ -175,4 +175,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 $('#errorModal').modal('show');
         }//if(valid)
     });//eventListener 
-}); 
+
+    function limpiarCampos() {
+        // Limpiar los campos después de enviar el formulario
+        name.value = '';
+        correo.value = '';
+        password.value = '';
+        passwordConfirm.value = '';
+        telefono.value = '';
+    }
+}); //DOMcontent

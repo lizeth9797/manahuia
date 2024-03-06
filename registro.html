@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="icon" sizes="32x32" type="image/x-icon" href="./src/navbaryfooter/icon.ico">
-
-    <title>Contacto</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Urbanist:wght@100..900&display=swap"
+        rel="stylesheet">
+    <title>Registro</title>
     <style>
+        
+    
+
 
 body {
             background-image: url('./src/registro/Diseño-50.png');
@@ -21,7 +27,7 @@ body {
         }
 
 
-        body img {
+       body img {
             opacity: 0.5 !important;
         }
 
@@ -45,37 +51,78 @@ body {
             word-spacing: 15pt; 
         }
 
+        .card-header {
+            font-family: "Lato", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 25px;
+            color: #7E5A6E;
+            text-align: center;
+            padding: 2px;
+        }
 
-        /*Footer*/
+        /*----FOOTER-----*/
         /*Líneas hr que se hicieron como separadores*/
-       
-
-    /*Parte responsiva de las lineas separadoras de los iconos*/
-    .footer {
-            background-color: #F8EDE3;
-            padding-top: 4rem; /* Ajusta según sea necesario */
-            width: 100%;
-        }
-
-        .line-wrapped1,
-        .line-wrapped2 {
-            width: 100%; /* Ajusta según sea necesario */
-        }
         .line-wrapped1{
-                    float: left;
-                    background-color: #85586F;
-                    height: 10px;
-                    margin-left: 0%;
-                    width: 40%;
-                }
-        .line-wrapped2{
-            float: right;
-            background-color: #85586F;
-            height: 10px;
-            margin-right: 0%;
-            width: 40%;
+         float: left;
+         background-color: #85586F;
+         height: 10px;
+         margin-left: 0%;
+         width: 40%;
+         }
+.line-wrapped2{
+    float: right;
+    background-color: #85586F;
+    height: 10px;
+    margin-right: 0%;
+    width: 40%;
 
-        }
+}
+
+/*Parte responsiva de las lineas separadoras de los iconos*/
+
+@media screen and (max-width:768px){
+    .line-wrapped1{
+        float: left;
+        background-color: #85586F;
+        height: 5px;
+        margin-left: 0%;
+        width: 20%;
+    }
+    .line-wrapped2{
+        float: right;
+        background-color: #85586F;
+        height: 5px;
+        margin-right: 0%;
+        width: 20%;
+    
+    }
+
+
+}
+
+/*Iconos*/
+/*Facebook*/
+.bi-facebook{
+    color:#85586F;
+    width: 50px;
+    height: auto;
+}
+/*Instagram*/
+.bi-instagram{
+    margin-left: 15px;
+    color:#85586F;
+    width: 50px;
+    height: auto;
+}
+/*Whatsapp*/
+.bi-whatsapp{
+    margin-left: 15px;
+    color:#85586F;
+    width: 50px;
+    height: auto;
+}
+
         /* Ajuste del contenedor principal */
         .main-container {
             min-height: 100vh;
@@ -135,6 +182,37 @@ body {
         width: 50%
     }
     }
+
+
+    input[type="password"] {
+    padding-right: 30px; /* espacio para el ícono */
+}
+
+input[type="password"] + .bx {
+    position: absolute;
+    top: 29.4%;
+    right: 40px; /* posición horizontal del ícono */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.bx{
+            font-size: 18px;
+            transform: translateX(-35px);
+            cursor: pointer;
+            opacity: 100%;
+            
+        }
+
+        .bxx{
+            font-size: 18px;
+            transform: translateX(-35px);
+            cursor: pointer;
+            opacity: 100%;
+            
+        }
+
+
+
     
     </style>
 </head>
@@ -146,19 +224,20 @@ body {
 
  <nav class="navbar navbar-expand-lg"> <!--Añadí un style en el archivo css de la clase navbar para guiarme en como debe quedar el diseño -->
       <div class="container">
-        <img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top"> 
+        <a href="./index.html"><img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto spacing-nav"> <!--Cree una nueva clase aqui llamada spacing-nav para añadirle estilo en la hoja de css-->
-          <a class="nav-link ms-auto" href="./index.html">Inicio</a>
+          <!--<a class="nav-link ms-auto" href="./index.html">Inicio</a>-->
           <a class="nav-link ms-auto" href="./nosotros.html">Nosotros</a>
-          <a class="nav-link ms-auto" href="./catalogoViajes.html">Viajes</a>
+          <!--<a class="nav-link ms-auto" href="./catalogoViajes.html">Viajes</a>-->
           <a class="nav-link ms-auto" href="./itemsViajes.html">Paquetes</a>
-          <a class="nav-link ms-auto" href="./formularioViajes.html">Formulario</a>
+          <!--<a class="nav-link ms-auto" href="./formularioViajes.html">Formulario</a>-->
           <a class="nav-link ms-auto" href="./carrito.html">Carrito</a>
           <a class="nav-link ms-auto" href="./contacto.html">Contacto</a>
+          <a class="nav-link ms-auto" href="./registro.html">Registro</a>
           <a class="nav-link ms-auto" href="./login.html">Login</a>
         </div>
       </div>
@@ -166,6 +245,11 @@ body {
   </nav>
 
   <div class="container registro" style="border-style: double; border-color: rgb(255, 255, 255); padding-top: 20px;" id="formulario">
+    <h1 class="card-header" style="font-size: 40px; text-align: center;">Registro</h1>
+    <!--ICONO GOOGLE-->
+    <div class="container-fluid text-center">
+        <img src="./src/navbaryfooter/Manahuia.png" alt="Icono de google" class="img-fluid" style="width: 100px";>
+    </div>
     <div class="card-container">
         <div class="card">
             <div class="text-center">
@@ -187,18 +271,24 @@ body {
                         <span id="correoError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3 pink-border">
-                        <label for="password" class="form-label"></label>
-                        <div class="container"><input type="password" class="form-control" id="password" placeholder="Contraseña"></div>
-                        <span id="passwordError" class="text-danger"></span>
-                    </div>
+                <!------------------------------------------------------------------------>
+                <div class="mb-3 pink-border">
+                    <label for="password" class="form-label"></label>
+                    <div class="container">
+                    <input type="password" class="form-control" id="password" placeholder="Contraseña" ></div>
+                    <input type="checkbox" onclick="myFunction()">Mostrar contraseña.
+                    <span id="passwordError" class="text-danger"></span>
+                </div>
+                <!------------------------------------------------------------------------>
+               <div class="mb-3 pink-border">
+                    <label for="passwordConfirm" class="form-label"></label>
+                    <div class="container"><input type="password" class="form-control" id="passwordConfirm" placeholder="Confirmar contraseña"></div>
+                    <input type="checkbox" onclick="myFunction2()" style="margin-left: auto; margin-right: 5px;">Mostrar contraseña. 
+                     
+                    <span id="confirmError" class="text-danger"></span>
+                </div> 
 
-                    <div class="mb-3 pink-border">
-                        <label for="passwordConfirm" class="form-label"></label>
-                        <div class="container"><input type="password" class="form-control" id="passwordConfirm" placeholder="Confirmar contraseña"></div>
-                        <span id="confirmError" class="text-danger"></span>
-                    </div>
-
+             
 
                     <div class="mb-3">
                         <label for="telefono" class="form-label"></label>
@@ -306,7 +396,7 @@ integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4Qz
 <!-- Se importa librería de jquery para mandar a llamar al popup MODAL-->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
-
+<script src="js/ojo.js"></script>
 <script src="js/registro.js"></script>
 
 </body>
