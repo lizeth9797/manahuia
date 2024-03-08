@@ -5,7 +5,7 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
 
     // Validar correo
     if(!correo.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
-        document.getElementById("correoError").innerText = "Ingrese un correo electrónico válido.";
+        document.getElementById("correoError").innerText = "El correo es incorrecto";
         valid = false;
     } else {
         document.getElementById("correoError").innerText = "";
@@ -13,7 +13,7 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
 
     // Validar contraseña
     if(password.length < 6){
-        document.getElementById("passwordError").innerText =  "La contraseña debe tener al menos 6 caracteres.";
+        document.getElementById("passwordError").innerText =  "La contraseña es incorrecta.";
         valid = false;
     } else {
         document.getElementById("passwordError").innerText = "";
