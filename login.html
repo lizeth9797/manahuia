@@ -326,22 +326,59 @@ input[type="password"] + .bx {
                         <a href="./registro.html">¿No tienes cuenta?</a>
                     </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="successModal">
-        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-body text-center">
-                <div>
-                    <i class="text-success bi bi-check-circle" ></i>
+                <!-- Agrega este bloque de HTML para los modales en tu archivo HTML -->
+                <!-- Modal para Administradores -->
+                <div class="modal" id="modalAdmin">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal para Administradores</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Contenido del modal para administradores -->
+                                ¡Bienvenida proveedora!
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-4 py-2">
-                <p class="px-4 pb-0 mb-1 text-secondary">Bienvenida</p>
-                <h4 class="h5">Tu registro ha sido exitoso</h4>
+
+                <!-- Modal para Viajeros -->
+                <div class="modal" id="modalViajero">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal para Viajeros</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Contenido del modal para viajeros -->
+                                ¡Bienvenida, viajera!
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="py-1"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button></div>
-            </div>
-            </div>
-        </div>
-    </div>
+
+                <div class="modal fade" tabindex="-1" role="dialog" id="successModal">
+                        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-body text-center">
+                                <div>
+                                    <i class="text-success bi bi-check-circle" ></i>
+                                </div>
+                                <div class="mt-4 py-2">
+                                <p class="px-4 pb-0 mb-1 text-secondary">Bienvenida</p>
+                                <h4 class="h5">Tu registro ha sido exitoso</h4>
+                                </div>
+                                <div class="py-1"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
 </form>
 
 
