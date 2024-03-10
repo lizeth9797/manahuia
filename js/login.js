@@ -5,28 +5,18 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
     var password = document.getElementById("password").value.trim();
     var valid = true;
 
-    // Validar si el correo está vacío o solo tiene espacios
-    if(correo === ""){
-        document.getElementById("correoError").innerText = "Información obligatoria";
-
-    //Se agrega la funcion Json
-     function addItem(nuevoLogin) {
-    let login = JSON.parse(localStorage.getItem('login')) || [];
-
-    login.push(nuevoLogin);
-    localStorage.setItem('login', JSON.stringify(login));
-    }//function addItem(nuevoLogin)-->Función para agregar un elemento al almacenamiento local
-
     // Validar correo
     //1. deja pasar espacios al inicio
     //2. deja pasar espacios al final del todo el correo
-   
-    if(!correo.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+    // Validar si el correo está vacío o solo tiene espacios
+    if(correo === ""){
+        document.getElementById("correoError").innerText = "Información obligatoria";
+        valid = false;
+    }
+    else if(!correo.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
         document.getElementById("correoError").innerText = "El correo es incorrecto";
-
         valid = false;
     } else {
-        // Validar formato de correo
         if(!correo.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
             document.getElementById("correoError").innerText = "El correo es incorrecto";
             valid = false;
@@ -40,28 +30,34 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
         document.getElementById("passwordError").innerText = "Información obligatoria";
         valid = false;
     } else {
-        // Validar longitud de contraseña
+        // Validar que la contraseña coincida con el correo guardado
         if(password.length < 6){
             document.getElementById("passwordError").innerText = "La contraseña es incorrecta.";
             valid = false;
         } else {
             document.getElementById("passwordError").innerText = "";
+            console.log(valid);
         }
     }
-
     // Evitar el envío si hay errores
     if(!valid){
         event.preventDefault();
     }
 
-
+    //Se agrega la funcion Json
+    function addItem(nuevoLogin) {
+        let login = JSON.parse(localStorage.getItem('login')) || [];
+        login.push(nuevoLogin);
+        localStorage.setItem('login', JSON.stringify(login));
+    }//function addItem(nuevoLogin)-->Función para agregar un elemento al almacenamiento local
+    
     //Almacenar datos en localstorage
     if (valid) {
         var nuevoLogin= {
             'id': idCounter, // Asignar un nuevo ID
             'correo': correo.value,
             'password': password.value,
-        };//if
+    };//if
 
         addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
         
@@ -75,9 +71,6 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
         localStorage.setItem('correo', JSON.stringify(existingCorreo));
 
     } //if(valid)
-
-
-
 });//eventListener 
 
 function limpiarCampos() {
@@ -87,4 +80,3 @@ function limpiarCampos() {
     password.value = '';
     
 }//funcion limpiarCampos
-});//document.addEventListener
