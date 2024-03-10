@@ -1,15 +1,13 @@
 
-document.addEventListener("DOMContentLoaded", function() {
-    
-    document.getElementById("btnRegister").addEventListener("click", function(event){
-    // obtiene el ultimo contador del input almacenado en localStorage iniciando en 1
-    let idCounter = parseInt(localStorage.getItem('nextIdUser')) || 1;
-    
-    var correo = document.getElementById("correo").value;
-    var password = document.getElementById("password").value;
+
+document.getElementById("btnRegister").addEventListener("click", function(event){
+    var correo = document.getElementById("correo").value.trim();
+    var password = document.getElementById("password").value.trim();
     var valid = true;
 
-
+    // Validar si el correo está vacío o solo tiene espacios
+    if(correo === ""){
+        document.getElementById("correoError").innerText = "Información obligatoria";
 
     //Se agrega la funcion Json
      function addItem(nuevoLogin) {
@@ -19,28 +17,36 @@ document.addEventListener("DOMContentLoaded", function() {
     localStorage.setItem('login', JSON.stringify(login));
     }//function addItem(nuevoLogin)-->Función para agregar un elemento al almacenamiento local
 
-
-
-
-
-
     // Validar correo
     //1. deja pasar espacios al inicio
     //2. deja pasar espacios al final del todo el correo
    
     if(!correo.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
         document.getElementById("correoError").innerText = "El correo es incorrecto";
+
         valid = false;
     } else {
-        document.getElementById("correoError").innerText = "";
+        // Validar formato de correo
+        if(!correo.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+            document.getElementById("correoError").innerText = "El correo es incorrecto";
+            valid = false;
+        } else {
+            document.getElementById("correoError").innerText = "";
+        }
     }
 
-    // Validar contraseña
-    if(password.length < 6){
-        document.getElementById("passwordError").innerText =  "La contraseña es incorrecta.";
+    // Validar si la contraseña está vacía o solo tiene espacios
+    if(password === ""){
+        document.getElementById("passwordError").innerText = "Información obligatoria";
         valid = false;
     } else {
-        document.getElementById("passwordError").innerText = "";
+        // Validar longitud de contraseña
+        if(password.length < 6){
+            document.getElementById("passwordError").innerText = "La contraseña es incorrecta.";
+            valid = false;
+        } else {
+            document.getElementById("passwordError").innerText = "";
+        }
     }
 
     // Evitar el envío si hay errores

@@ -1,5 +1,21 @@
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    var checkboxAdmin = document.getElementById("chekAdmin");
+    var inputCodigoAdmin = document.getElementById("codigoAdmin");
+
+    inputCodigoAdmin.style.display = 'none';
+
+    // Manejar el cambio en el estado del checkbox
+    checkboxAdmin.addEventListener('change', function() {
+        if (this.checked) {
+            inputCodigoAdmin.style.display = 'block'; // Mostrar el input
+        } else {
+            inputCodigoAdmin.style.display = 'none'; // Ocultar el input
+            inputCodigoAdmin.value = ''; // Limpiar el campo cuando se oculta
+        }
+    });s
+        
      // obtiene el ultimo contador del input almacenado en localStorage iniciando en 1
     let idCounter = parseInt(localStorage.getItem('nextIdUser')) || 1;
 
@@ -17,6 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let passwordError = document.getElementById("passwordError");
     let confirmError = document.getElementById("confirmError");
     let telefonoError = document.getElementById("telefonoError");
+
+    
+
 
     function addItem(nuevoRegistro) {
         let registro = JSON.parse(localStorage.getItem('registro')) || [];
@@ -184,4 +203,5 @@ document.addEventListener("DOMContentLoaded", function() {
         passwordConfirm.value = '';
         telefono.value = '';
     }
+
 }); //DOMcontent
