@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             inputCodigoAdmin.style.display = 'none'; // Ocultar el input
             inputCodigoAdmin.value = ''; // Limpiar el campo cuando se oculta
         }
-    });s
+    });
         
      // obtiene el ultimo contador del input almacenado en localStorage iniciando en 1
     let idCounter = parseInt(localStorage.getItem('nextIdUser')) || 1;
