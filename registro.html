@@ -287,9 +287,11 @@ input[type="password"] + .bx {
                 <!------------------------------------------------------------------------>
                 <div class="mb-3 pink-border">
                     <label for="password" class="form-label"></label>
-                    <div class="container">
-                    <input type="password" class="form-control" id="password" placeholder="Contraseña" ></div>
+                <div class="container">
+                    <input type="password" class="form-control" id="password" placeholder="Contraseña" >
+                </div>
                     <input type="checkbox" onclick="myFunction()">Mostrar contraseña.
+                    <br>
                     <span id="passwordError" class="text-danger"></span>
                 </div>
                 <!------------------------------------------------------------------------>
@@ -297,17 +299,16 @@ input[type="password"] + .bx {
                     <label for="passwordConfirm" class="form-label"></label>
                     <div class="container"><input type="password" class="form-control" id="passwordConfirm" placeholder="Confirmar contraseña"></div>
                     <input type="checkbox" onclick="myFunction2()" style="margin-left: auto; margin-right: 5px;">Mostrar contraseña. 
-                     
+                     <br>
                     <span id="confirmError" class="text-danger"></span>
                 </div> 
-                <div>
-                    <input type="checkbox" onclick="myFunction()"id="chekAdmin">Tengo codigo admin Manahuia
+                <div class=" container">
+                    <input type="checkbox" onclick="myFunction()"id="chekAdmin">Acceder con código de administración
                 <div>    
                     <input type="text" class="form-control" id="codigoAdmin" placeholder="Codigo Manahuia" ></div>
-                </div>
+                    <span id="codAdminError" class="text-danger"></span>
                 </div>
 
-             
 
                     <div class="mb-3">
                         <label for="telefono" class="form-label"></label>
@@ -328,35 +329,42 @@ input[type="password"] + .bx {
                         <div class="linea">&nbsp;</div>
                         <div class="leyenda">ó</div>
                         <div class="linea">&nbsp;</div>
-                        </div>
+                    </div>
                     <br>
                     <br>
                     <!--ICONO GOOGLE-->
-                    <div class="container-fluid">
+                    <div class="container-fluid d-flex" style="justify-content: center;">
                         <img src="./src/registro/ICONO-GOOGLE.png" alt="Icono de google" class="img-fluid style=" style="width: 80px";>
                     </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="successModal">
-        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-body text-center">
-                <div>
-                    <i class="text-success bi bi-check-circle" ></i>
+        <div class="modal fade" tabindex="-1" role="dialog" id="successModal">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div>
+                        <i class="text-success bi bi-check-circle" ></i>
+                    </div>
+                    <div class="mt-4 py-2">
+                    <p class="px-4 pb-0 mb-1 text-secondary">Bienvenida</p>
+                    <h4 class="h5">Tu registro ha sido exitoso</h4>
+                    </div>
+                    <div class="py-1"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button></div>
                 </div>
-                <div class="mt-4 py-2">
-                <p class="px-4 pb-0 mb-1 text-secondary">Bienvenida</p>
-                <h4 class="h5">Tu registro ha sido exitoso</h4>
                 </div>
-                <div class="py-1"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button></div>
-            </div>
             </div>
         </div>
-    </div>
     <!--Texto despues del boton-->
     <div id="help" class="form-text">¿Ya tienes cuenta? <a href="./login.html">Ingrese</a></div>
     <br>
-    <!--Botón "Iniciar Sesión"-->
-    <div class="py-1"><a href="./login.html"><button type="button" class="btn btn-sm rounded-pill px-5" style="background-color: #D0B8AB; color: white;" data-bs-dismiss="modal">Iniciar Sesión</button></a>
+  
+    <!-- Botón para Iniciar Sesión -->
+<div class="py-1 d-flex justify-content-center">
+    <a href="./login.html">
+        <button type="button" class="btn btn-sm rounded-pill px-5" style="background-color: #D0B8AB; color: white;" data-bs-dismiss="modal">
+            Iniciar Sesión
+        </button>
+    </a>
+</div>
     <br>
     <br>        
 
@@ -402,6 +410,8 @@ input[type="password"] + .bx {
         </div>
     </footer>
 
+<!-- Se importa librería de jquery para mandar a llamar al popup MODAL-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
 
 <!--Bootstrap-->
@@ -422,8 +432,6 @@ integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4Qz
       });
    })();
 </script>
-<!-- Se importa librería de jquery para mandar a llamar al popup MODAL-->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
 <script src="js/ojo.js"></script>
 <script src="js/registro.js"></script>

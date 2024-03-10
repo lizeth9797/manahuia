@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var checkboxAdmin = document.getElementById("chekAdmin");
     var inputCodigoAdmin = document.getElementById("codigoAdmin");
+    var codError = document.getElementById("codError");
+    var codAdminError = document.getElementById("codAdminError")
+    
+
 
     inputCodigoAdmin.style.display = 'none';
 
@@ -13,9 +17,39 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             inputCodigoAdmin.style.display = 'none'; // Ocultar el input
             inputCodigoAdmin.value = ''; // Limpiar el campo cuando se oculta
+           
         }
-    });s
-        
+    });
+
+
+    //Objeto JSON para contraseña del proveedor (temporal hasta manejar node.js )
+    const proveedorPassword = {
+        contrasena: "admin123"
+    };
+
+    
+    
+    $(document).ready(function() {
+        // Asignar la función al evento de cambio en el campo de código de administrador
+        $('#inputCodigoAdmin').on('input', function() {
+            var codigoIngresado = $(this).val().trim();
+            var codAdminError = $('#codAdminError');
+    
+            // Verificar si la contraseña ingresada coincide con la del proveedor
+            if (codigoIngresado === proveedorPassword.contrasena) {
+                // Limpiar el mensaje de error
+                codAdminError.text('');
+    
+                // Acciones específicas para administradores
+                // ...
+            } else {
+                // Mostrar mensaje de error en el span
+                codAdminError.text('No tiene las credenciales para ingresar como administrador.');
+            }
+        });
+    });
+
+
      // obtiene el ultimo contador del input almacenado en localStorage iniciando en 1
     let idCounter = parseInt(localStorage.getItem('nextIdUser')) || 1;
 
