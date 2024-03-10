@@ -21,32 +21,20 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-
-    //Objeto JSON para contraseña del proveedor (temporal hasta manejar node.js )
+    // Objeto JSON para contraseña del proveedor (temporal hasta manejar node.js)
     const proveedorPassword = {
         contrasena: "admin123"
     };
 
-    
-    
-    $(document).ready(function() {
-        // Asignar la función al evento de cambio en el campo de código de administrador
-        $('#inputCodigoAdmin').on('input', function() {
-            var codigoIngresado = $(this).val().trim();
-            var codAdminError = $('#codAdminError');
-    
-            // Verificar si la contraseña ingresada coincide con la del proveedor
-            if (codigoIngresado === proveedorPassword.contrasena) {
-                // Limpiar el mensaje de error
-                codAdminError.text('');
-    
-                // Acciones específicas para administradores
-                // ...
-            } else {
-                // Mostrar mensaje de error en el span
-                codAdminError.text('No tiene las credenciales para ingresar como administrador.');
-            }
-        });
+    // Asignar la función al evento de cambio en el campo de código de administrador
+    inputCodigoAdmin.addEventListener('input', function() {
+        var codigoIngresado = inputCodigoAdmin.value.trim();
+        codAdminError.textContent = ''; // Limpiar el mensaje de error
+
+        // Verificar si la contraseña ingresada coincide con la del proveedor
+        if (codigoIngresado !== proveedorPassword.contrasena) {
+            codAdminError.textContent = 'No tiene las credenciales para ingresar como administrador.';
+        }
     });
 
 
