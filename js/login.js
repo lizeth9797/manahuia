@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
    //Se obtienen usuarios registrados y almacenados en LocalStorage:
    const storedUsers = localStorage.getItem('registro');
    const users = storedUsers ? JSON.parse(storedUsers) : [];
+   var modalAdmin = document.getElementById('modalAdmin');
+   var modalViajero = document.getElementById('modalAdmin')
 
     //Se agrega la funcion Json
     function addItem(nuevoLogin) {
@@ -88,14 +90,23 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
         var nuevoLogin= {   
             'id': idCounter, // Asignar un nuevo ID
             'correo': correo.value,
-            'password': password
+            'password': password,
+            'code': codigo,
         };
         addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
+        $('#successModal').modalAdmin('show');
         
         // Limpiar los campos después de enviar el formulario
-        limpiarCampos();
+        
         idCounter++;
         localStorage.setItem('nextIdLogin', idCounter.toString());
+
+
+
+
+
+
+        limpiarCampos();
     } //if(valid)
 });//eventListener 
 
