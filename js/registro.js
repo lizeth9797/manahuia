@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var inputCodigoAdmin = document.getElementById("codigoAdmin");
     var codError = document.getElementById("codError");
     var codAdminError = document.getElementById("codAdminError")
-    
+    var tipoUsuario=0;
+
 
 
     inputCodigoAdmin.style.display = 'none';
@@ -30,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
     inputCodigoAdmin.addEventListener('input', function() {
         var codigoIngresado = inputCodigoAdmin.value.trim();
         codAdminError.textContent = ''; // Limpiar el mensaje de error
+        console.log("adminCorrecto");
+        tipoUsuario=1;
 
         // Verificar si la contraseña ingresada coincide con la del proveedor
         if (codigoIngresado !== proveedorPassword.contrasena) {
@@ -200,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 'password': password.value,
                 'passwordConfirm': passwordConfirm.value,
                 'telefono': telefono.value,
+                'tipoUsuario':tipoUsuario
             };
 
             addItem(nuevoRegistro);
