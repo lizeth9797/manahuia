@@ -1,5 +1,16 @@
 {
   "dependencies": {
-    "express": "^4.18.3"
-  }
+    "express": "^4.18.3",
+    "nodemailer": "^6.9.12"
+  },
+  "name": "manahuia",
+  "description": "Plataforma de viajes para Mujeres",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
