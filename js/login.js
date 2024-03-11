@@ -19,6 +19,7 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
     let idCounter = parseInt(localStorage.getItem('nextIdLogin')) || 1;
     let valid = true;
     let correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var tipoUsuario=0;
 
     // Validar correo
     //1. deja pasar espacios al inicio
@@ -69,6 +70,8 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
                 if(users[i].correo==correo.value){//si existe el correo en el localStorage, entonces compara la contraseña
                     if(users[i].password==password){
                         document.getElementById("correoError").innerText = "";
+                        tipoUsuario=users[i].tipoUsuario;
+                        console.log("id usuario:",users[i].tipoUsuario);
                         i=users.length;
                         valid=true; 
                     }else{
@@ -91,7 +94,11 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
             'id': idCounter, // Asignar un nuevo ID
             'correo': correo.value,
             'password': password,
+<<<<<<< HEAD
             'code': codigo,
+=======
+            'tipoUsuario':tipoUsuario
+>>>>>>> 44308ade5886906113d597f87920c85f9f5bc98a
         };
         addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
         $('#successModal').modalAdmin('show');
