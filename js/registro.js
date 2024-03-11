@@ -144,12 +144,11 @@ document.addEventListener("DOMContentLoaded", function() {
             valid = false;
         } else if (existingCorreo.includes(correo.value)) {
             correo.classList.add('is-invalid');
-            correoError.textContent = 'Este correo ya está registrado, Por favor, utiliza otro.';
+            correoError.textContent = 'Este correo ya está registrado, por favor, utiliza otro.';
             valid = false;
         } else {
             correo.classList.remove('is-invalid');
             correoError.textContent = '';
-            
         }
 
         // validaciónes de la contraseña
@@ -157,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
         /*/^(?=.*?[A-Z])(?=.*[a-z])[\w\d]{8,}$/*/ 
         if (!passwordRegex.test(password.value)) {
             password.classList.add('is-invalid');
-            passwordError.textContent = 'La contraseña debe tener al menos 8 caracteres, minimo una letra en mayúscula y sin espacios.\n';
+            passwordError.textContent = 'La contraseña debe tener al menos 8 caracteres, mínimo una mayúscula, un caracter especial, y sin espacios.\n';
             passwordError.style.whiteSpace = 'pre-line';
             valid = false;
         } else {
@@ -204,15 +203,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             addItem(nuevoRegistro);
             $('#successModal').modal('show');
-
-            // Limpiar los campos después de enviar el formulario
-            limpiarCampos();
-            idCounter++;
+            
             localStorage.setItem('nextIdUser', idCounter.toString());
             // Agregar el nuevo correo a la lista en localStorage solo si no existe previamente
             existingCorreo.push(correo.value);
             localStorage.setItem('correo', JSON.stringify(existingCorreo));
-
+            idCounter++;
+           // Limpiar los campos después de enviar el formulario
+           limpiarCampos();
         } else {
                 $('#errorModal').modal('show');
         }//if(valid)
