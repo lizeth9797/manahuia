@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
            
         }
     });
-<<<<<<< HEAD
 
     // Objeto JSON para contraseña del proveedor (temporal hasta manejar node.js)
     const proveedorPassword = {
@@ -39,9 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
-=======
-        
->>>>>>> e6880b84ae638e7f02153e2bbc139f509b28b1ca
      // obtiene el ultimo contador del input almacenado en localStorage iniciando en 1
     let idCounter = parseInt(localStorage.getItem('nextIdUser')) || 1;
 
