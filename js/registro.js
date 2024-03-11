@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
+
      // obtiene el ultimo contador del input almacenado en localStorage iniciando en 1
     let idCounter = parseInt(localStorage.getItem('nextIdUser')) || 1;
 
