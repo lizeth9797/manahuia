@@ -14,7 +14,7 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
     let correo = document.getElementById("correo");
     let password = document.getElementById("password");
     // obtiene el ultimo contador del input almacenado en localStorage iniciando en 1
-    let idCounter = parseInt(localStorage.getItem('nextIdUser')) || 1;
+    let idCounter = parseInt(localStorage.getItem('nextIdLogin')) || 1;
     let valid = true;
     let correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -57,26 +57,32 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
     }
 
     function userExist(){
-        for(let i=0;i<users.length;i++){
-            document.getElementById("correoError").innerText = "";
-            if(users[i].correo==correo.value){//si existe el correo en el localStorage, entonces compara la contraseña
-                if(users[i].password==password){
-                    document.getElementById("correoError").innerText = "";
-                    i=users.length;
-                    valid=true; 
+        if(users.length==0){
+            valid=false;
+            document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidos"; //mandar a escribir el error
+        }else{
+            for(let i=0;i<users.length;i++){
+                console.log("entro al for");
+                document.getElementById("correoError").innerText = "";
+                if(users[i].correo==correo.value){//si existe el correo en el localStorage, entonces compara la contraseña
+                    if(users[i].password==password){
+                        document.getElementById("correoError").innerText = "";
+                        i=users.length;
+                        valid=true; 
+                    }else{
+                        document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidos"; //mandar a escribir el error
+                        valid=false; 
+                    }
                 }else{
-                    document.getElementById("passwordError").innerText = "La contraseña es incorrecta. Vuelve a intentarlo."; //mandar a escribir el error
+                    document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidos"; //mandar a escribir el error
                     valid=false; 
                 }
-            }else{
-                document.getElementById("correoError").innerText = "No existe una cuenta asociada a este correo"; //mandar a escribir el error
-                valid=false; 
             }
         }
     }//userExist
+    
 
     userExist(); //verifica si el usuario existe antes de registrarlo en el LocalStorage
-
     //Almacenar datos en localstorage
     if (valid) {
         var nuevoLogin= {   
@@ -84,15 +90,15 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
             'correo': correo.value,
             'password': password
         };
-
         addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
         
         // Limpiar los campos después de enviar el formulario
         limpiarCampos();
         idCounter++;
-        localStorage.setItem('nextIdUser', idCounter.toString());
+        localStorage.setItem('nextIdLogin', idCounter.toString());
     } //if(valid)
 });//eventListener 
+
 
 function limpiarCampos() {
     // Limpiar los campos después de enviar el formulario
