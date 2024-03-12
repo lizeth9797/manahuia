@@ -45,37 +45,28 @@
       html {
         overflow-x: hidden;
       }
-      body,
-      html {
-        overflow-x: hidden;
-      }
-
-      /*----NAVBAR----*/
-      .navbar {
-        background-color: #f8ede3;
-      }
-      .navbar-nav a {
-        color: #85586f;
-        font-size: 15px;
-        font-weight: 500;
-      }
-      .navbar-brand {
-        color: #85586f;
-      }
-      .spacing-nav {
-        padding-right: 25px;
-        letter-spacing: 2pt;
-        word-spacing: 15pt;
-      }
+      
 /*----NAVBAR----*/
 .navbar {
     background-color: #F8EDE3;
+    max-width: 100%;
 }
 .navbar-nav a{
     color: #85586F;
     font-size: 15px;
     font-weight: 500;
+    /*--------Se ajusta espacio entre palabras----------- */
+    word-spacing: normal;
+
 }
+
+/* Dropdown menu item spacing */
+.dropdown-menu .dropdown-item {
+    margin: 0;
+    padding: 5px;
+}
+
+
 .navbar-brand{
     color: #85586F;
 }
@@ -84,6 +75,42 @@
     letter-spacing: 2pt;
     word-spacing: 15pt; 
 }
+
+ /* Estilo para la imagen de icono viajera/admin*/
+ .zoomable-image {
+        width: 25px;
+        height: 25px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Aplicar el zoom al pasar el cursor */
+    .zoomable-image:hover {
+        transform: scale(1.2); /*Zoom icono */
+    }
+
+.dropdown-menu {
+        padding: 0; 
+    }
+    .dropdown-item {
+        margin: 0; 
+        padding: 5px; 
+        right: auto; /* Restablece la posición derecha predeterminada */
+        left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+    }
+
+  /* Ajustes responsivos */
+@media (max-width: 2560px) {
+    /* Estilos para pantallas pequeñas */
+    .navbar-nav {
+        text-align: center; /* Centrar los elementos de navegación */
+    }
+    .navbar-nav a {
+        display: inline-block; /* Mostrar elementos de navegación en línea */
+        margin: 0 10px; /* Agregar margen entre los elementos */
+        max-width: 100%;
+    }
+}
+
 .containerSearch
 {
   position: absolute; 
@@ -454,13 +481,12 @@
           <a class="nav-link ms-auto" href="./registro.html">Registro</a>
            <!-- <a class="nav-link ms-auto" href="./login.html">Login</a> -->
            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-            <img src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
+            <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
           </button>
           <ul class="dropdown-menu dropdown-menu-lg-end">
-            <li><a class="dropdown-item" href="./login.html">Iniciar sesión</a></li>
-            <li><a class="dropdown-item" href="./registro.html">Crea tu cuenta</a></li>
-
-            <li><a class="dropdown-item" href="./index.html">Cerrar sesión</a></li>
+            <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+            <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+            <li><a class="dropdown-item" href="./index.html" style="padding: 20px">Cerrar sesión</a></li>
           </ul>
       </div>
     </div>
@@ -473,13 +499,7 @@
       <div class="search"></div>
     </div>
 </form>
-    <div class="col-lg-2" style="background-color: #fff; width: auto; height: 100px; font-family: Lato; " >
-      <div class="col text-center" style="color: #85586F; font-family: Urbanist; font-size: 30px;">
-        Viaja más allá de las expectativas...
-      </div>
-
-  </div>
-  </header>
+  
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -492,7 +512,7 @@
   <div class="row">
     <div class="col">
 <!-- Carrusel con imágenes -->
-<div id="carouselExampleIndicators" class="carousel carousel-black slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel carousel-black slide" data-ride="carousel" style="width: 100%;">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to=""></li>
@@ -501,13 +521,13 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <!-- Cambiar las 3 imágenes que se pusieron en este carrusel -->
-      <img class="img-fluid" id="imgCarrousel" src="./src/index/1 .jpeg" alt="Primera imagen">
+      <img class="img-fluid" id="imgCarrousel" src="./src/index/1.jpg" style="width: 100%;" alt="Primera imagen">
     </div>
     <div class="carousel-item">
-      <img class="img-fluid" id="imgCarrousel" src="./src/index/2.jpeg" alt="Segunda imagen">
+      <img class="img-fluid" id="imgCarrousel" src="./src/index/2.jpg" style="width: 100%;"alt="Segunda imagen">
     </div>
     <div class="carousel-item">
-      <img class="img-fluid" id="imgCarrousel" src="./src/index/3.jpeg" alt="Tercera imagen">
+      <img class="img-fluid" id="imgCarrousel" src="./src/index/3.jpg" style="width: 100%;"alt="Tercera imagen">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -522,7 +542,7 @@
     </div>
   </div>
 </div>  
-
+</header>
      <!--Termino de carrusel con imagenes-->
 
       <hr style="color: transparent" />

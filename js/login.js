@@ -96,28 +96,30 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         }
-    }//userExist
-     
- 
-     userExist(); //verifica si el usuario existe antes de registrarlo en el LocalStorage
-     //Almacenar datos en localstorage
-     if (valid) {
-         var nuevoLogin= {   
-             'id': idCounter, // Asignar un nuevo ID
-             'correo': correo.value,
-             'password': password,
-             'tipoUsuario': tipoUsuario
-         };
-         addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
- 
-         function modalBienvenida (tipoUsuario) {
-             console.log("tipo usuario en function modal:",tipoUsuario);
-             if (tipoUsuario == 1){
-                 $('#modalAdmin').modal('show');
-             } else if(tipoUsuario == 0){
-                 $('#modalViajera').modal ('show');
-             }
-         }
+    }
+},//userExist
+    
+
+    userExist() {//verifica si el usuario existe antes de registrarlo en el LocalStorage
+    //Almacenar datos en localstorage
+    if (valid) {
+        var nuevoLogin= {   
+            'id': idCounter, // Asignar un nuevo ID
+            'correo': correo.value,
+            'password': password,
+            'tipoUsuario': tipoUsuario,
+        };
+        addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
+
+        function modalBienvenida (tipoUsuario) {
+            if (tipoUsuario === 0) {
+                $('#modalAdmin').modal('show');
+
+            } else (tipoUsuario === 1); {
+                $('#modalViajera').modal ('show');
+            };
+        }
+       
         
          
          // Limpiar los campos después de enviar el formulario
@@ -134,6 +136,5 @@ document.addEventListener("DOMContentLoaded", function() {
      // Limpiar los campos después de enviar el formulario
      correo.value = '';
      password.value = '';
- }//funcion limpiarCampos
- 
- });
+ }}//funcion limpiarCampos 
+)
