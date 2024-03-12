@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
    //Se obtienen usuarios registrados y almacenados en LocalStorage:
    const storedUsers = localStorage.getItem('registro');
    const users = storedUsers ? JSON.parse(storedUsers) : [];
+   var modalAdmin = document.getElementById('modalAdmin');
+   var modalViajera = document.getElementById('modalViajera');
 
     //Se agrega la funcion Json
     function addItem(nuevoLogin) {
@@ -17,6 +19,7 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
     let idCounter = parseInt(localStorage.getItem('nextIdLogin')) || 1;
     let valid = true;
     let correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var tipoUsuario=0;
 
     // Validar correo
     //1. deja pasar espacios al inicio
@@ -67,8 +70,14 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
                 if(users[i].correo==correo.value){//si existe el correo en el localStorage, entonces compara la contraseña
                     if(users[i].password==password){
                         document.getElementById("correoError").innerText = "";
-                        i=users.length;
-                        valid=true; 
+                        tipoUsuario=users[i].tipoUsuario;
+                        console.log("id usuario:",users[i].tipoUsuario);
+                        //i=users.length;
+                        //valid=true; 
+                    //Permitir acceso a ambos: Viajera y Admin
+                     if (tipoUsuario === 0 || tipoUsuario===1){
+
+                        valid = true;
                     }else{
                         document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidos"; //mandar a escribir el error
                         valid=false; 
@@ -79,7 +88,8 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
                 }
             }
         }
-    }//userExist
+    }
+}//userExist
     
 
     userExist(); //verifica si el usuario existe antes de registrarlo en el LocalStorage
@@ -88,14 +98,27 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
         var nuevoLogin= {   
             'id': idCounter, // Asignar un nuevo ID
             'correo': correo.value,
-            'password': password
+            'password': password,
+            'tipoUsuario': tipoUsuario,
         };
         addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
+
+        function modalBienvenida (tipoUsuario) {
+            if (tipoUsuario === 0) {
+                $('#modalAdmin').modal('show');
+
+            } else (tipoUsuario === 1); {
+                $('#modalViajera').modal ('show');
+            }
+        }
+       
         
         // Limpiar los campos después de enviar el formulario
-        limpiarCampos();
+        
         idCounter++;
         localStorage.setItem('nextIdLogin', idCounter.toString());
+        modalBienvenida(tipoUsuario);
+        limpiarCampos();
     } //if(valid)
 });//eventListener 
 
