@@ -109,7 +109,7 @@ document.getElementById("btnRegister").addEventListener("click", function(event)
 
             } else (tipoUsuario === 1); {
                 $('#modalViajera').modal ('show');
-            }
+            };
         }
        
         
