@@ -8,6 +8,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+function cerrarModal() {
+    // Cierra el modal
+    $('#miModal').modal('hide');
+    
+    // Elimina las clases relacionadas con el modal
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+}
+
+
+
 document.getElementById('cards-container').addEventListener('click', function (event) {
     if (event.target.classList.contains('details-btn')) {
         const modalId = event.target.getAttribute('data-bs-target');
@@ -76,12 +87,16 @@ function addItem(item) {
                             </div>
                             <div class="modal-footer">
                                 <button onclick= "cerrarModal ()" type="button" style="background-color:#85586F" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>`;
+
+
 
     card.innerHTML = cardHTML;
     container.appendChild(card);
