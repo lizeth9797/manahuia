@@ -259,7 +259,13 @@
     /* ... Resto de tus estilos ... */
   }
 
+  .card {
+        transition: transform 0.3s;
+    }
 
+    .card:hover {
+        transform: scale(1.1);
+    }
 
       /*----PÁGINA PRINCIPAL-----*/
       /*Carrousel de cards*/
@@ -479,31 +485,33 @@
           <a class="nav-link ms-auto" href="./contacto.html">Contacto</a>
            <!-- <a class="nav-link ms-auto" href="./login.html">Login</a> -->
 
-           <!-- Navbar para usuario normal -->
-           <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-            <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
-          </button>
-          <ul class="dropdown-menu dropdown-menu-lg-end">
-<<<<<<< HEAD
-            <li><a id= "loginLink" class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
-            <li><a id="registerLink" class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
-            <li><a id="logoutLink" class="dropdown-item" href="./index.html" style="padding: 20px">Cerrar sesión</a></li>
-=======
-            <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
-            <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
-            <li><a class="dropdown-item" id="logout" href="./index.html" style="padding: 20px">Cerrar sesión</a></li>
->>>>>>> 29357d86d1166fb2825f5b3d94f007489bb17e63
-          </ul>
+            <!-- Navbar para usuario sin iniciar sesion -->
+            <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+              <img class= "zoomable-image"src="./src/navbaryfooter/usuarioNegro.png" alt="" width="25px" height="25px">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+              <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+            </ul>
 
+            <!-- Navbar para usuario normal -->
+            <button id="userDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+              <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+              <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+              <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
+            </ul>
           
             <!-- Navbar para administrador -->
             <button id="adminDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-              <img id="adminIcon" class="zoomable-image" src="./src/navbaryfooter/adminNegro.png" alt="" width="25px" height="25px">
+              <img id="adminIcon" class="zoomable-image" src="./src/navbaryfooter/viajeVioleta.png" alt="" width="25px" height="25px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end">
               <li><a class="dropdown-item" href="./formularioViajes.html" style="padding: 20px">Crear viaje</a></li>
               <li><a class="dropdown-item" href="#" style="padding: 20px">Editar viaje </a></li>
-              <li><a class="dropdown-item" href="#" style="padding: 20px">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="./login.html" id="logoutAdmin" style="padding: 20px">Cerrar sesión</a></li>
             </ul>
 
           
@@ -592,20 +600,12 @@
      </div>
      <hr style="color: transparent" />
 
-     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-         <div class="carousel-inner card-wrapped" id="cards-container">
-             <!-- Tarjetas se agregarán aquí dinámicamente -->
-         </div>
-     
-         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-             <span class="visually-hidden">Previous</span>
-         </button>
-         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-             <span class="visually-hidden">Next</span>
-         </button>
-     </div>
+
+
+
+     <div class="container-fluid" id="cards-container">
+      <!-- Las cards se agregarán aquí dinámicamente -->
+    </div>
 
    
 
@@ -620,7 +620,6 @@
 </body> 
 
   <!-- TERMINO DE FOOTER-->
-<!-- Coloca esto al final del cuerpo del documento -->
 <!-- Coloca esto al final del cuerpo del documento -->
     <!--FOOTER-->
     <footer style="background-color:#F8EDE3;" class="footer pt-4 pb-5 mt-5">
@@ -680,6 +679,7 @@
     <!-- <script> $('.carousel').carousel({interval: 7000})</script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
-    <script src="js/logout.js"></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/logout.js"></script>
   </body>
 </html>
