@@ -3,6 +3,10 @@ let cardGroups = [[]];
 let currentGroupIndex = 0;
 const cardsPerGroup = 3;
 
+
+
+
+
 function addItem(item) {
     const container = document.getElementById('cards-container');
 
