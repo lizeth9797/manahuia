@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidos"; //mandar a escribir el error
         }else{
             for(let i=0;i<users.length;i++){
-               console.log("entro al for");
                 document.getElementById("correoError").innerText = "";
                 if(users[i].correo==correo.value){//si existe el correo en el localStorage, entonces compara la contraseña
                     if(users[i].password==password){
@@ -90,36 +89,32 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
                 else if(i==(users.length)-1) {
-                   console.log("entro al else del ultimo for");
-                    document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidossss"; //mandar a escribir el error
+                    document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidos"; //mandar a escribir el error
                     valid=false; 
                 }
             }
         }
-    }
-},//userExist
-    
-
-    userExist() {//verifica si el usuario existe antes de registrarlo en el LocalStorage
-    //Almacenar datos en localstorage
-    if (valid) {
-        var nuevoLogin= {   
-            'id': idCounter, // Asignar un nuevo ID
-            'correo': correo.value,
-            'password': password,
-            'tipoUsuario': tipoUsuario,
-        };
-        addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
-
-        function modalBienvenida (tipoUsuario) {
-            if (tipoUsuario === 0) {
-                $('#modalAdmin').modal('show');
-
-            } else (tipoUsuario === 1); {
-                $('#modalViajera').modal ('show');
-            };
-        }
-       
+    }//userExist
+     
+ 
+     userExist(); //verifica si el usuario existe antes de registrarlo en el LocalStorage
+     //Almacenar datos en localstorage
+     if (valid) {
+         var nuevoLogin= {   
+             'id': idCounter, // Asignar un nuevo ID
+             'correo': correo.value,
+             'password': password,
+             'tipoUsuario': tipoUsuario
+         };
+         addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
+ 
+         function modalBienvenida (tipoUsuario) {
+             if (tipoUsuario == 1){
+                 $('#modalAdmin').modal('show');
+             } else if(tipoUsuario == 0){
+                 $('#modalViajera').modal ('show');
+             }
+         }
         
          
          // Limpiar los campos después de enviar el formulario
@@ -136,5 +131,6 @@ document.addEventListener("DOMContentLoaded", function() {
      // Limpiar los campos después de enviar el formulario
      correo.value = '';
      password.value = '';
- }}//funcion limpiarCampos 
-)
+ }//funcion limpiarCampos
+ 
+ });
