@@ -184,28 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }); // btn eventListener
 
-<<<<<<< HEAD
-        // Cargar datos almacenados en localStorage
-        if (localStorage.getItem("datos") !== null) {
-            datos = JSON.parse(localStorage.getItem("datos"));
-
-            // Puedes hacer algo con los datos aquí, por ejemplo:
-            datos.forEach(item => {
-                // Ejemplo: Mostrar información en la consola
-                console.log("ID:", item.id);
-                console.log("Nombre del destino:", item.nombreDestino);
-                console.log("Precio:", item.precio);
-                console.log("Duración:", item.duracion);
-                // ... Hacer algo más con otros atributos
-
-                // Ejemplo: Crear elementos en el DOM con la información
-                var nuevoElemento = document.createElement("div");
-                nuevoElemento.innerHTML = `<p>ID: ${item.id}</p>
-                                           <p>Nombre del destino: ${item.nombreDestino}</p>
-                                           <p>Precio: ${item.precio}</p>
-                                           <p>Duración: ${item.duracion}</p>`;
-            });
-=======
     function validarFechas() {
         const fechaActual = new Date();
     
@@ -230,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (startDate < fechaActual) {
             manejarErrorFecha('La fecha inicial es inválida', startDateError);
             esFechaInicialValida = false;
->>>>>>> b2c5b337efb9c6f2d6761c9e9ef251d23b00916f
         }
     
         if (!finalDateInput.value) {
