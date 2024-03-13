@@ -1,14 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-    
-    function logout() {// si se presiona el botón logout entonces borra el registro del localStorage
-         localStorage.removeItem('login');
-         localStorage.removeItem('nextIdLogin');
-     }
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener referencia al elemento del botón de cierre de sesión
+    var logoutViajera = document.getElementById('logoutViajera');
+    var logoutAdmin = document.getElementById('logoutAdmin');
 
-
-    document.getElementById("logout").addEventListener("click", function(event){
-        event.preventDefault();
-        logout();
+    // Agregar el event listener al enlace de cierre de sesión para usuario viajero
+    logoutViajera.addEventListener('click', function (event) {
+        // Eliminar datos de inicio de sesión del almacenamiento local
+        localStorage.removeItem('login');
+        localStorage.removeItem('nextIdLogin');
+        localStorage.removeItem('tipoUsuario');
     });
 
+    // Agregar el event listener al enlace de cierre de sesión para administrador
+    logoutAdmin.addEventListener('click', function (event) {
+        // Eliminar datos de inicio de sesión del almacenamiento local
+        localStorage.removeItem('login');
+        localStorage.removeItem('nextIdLogin');
+        localStorage.removeItem('tipoUsuario');
+    });
 });
