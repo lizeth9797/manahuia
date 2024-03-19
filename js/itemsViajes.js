@@ -72,7 +72,9 @@ function addItem(item) {
                                 </p>
                                 <p class="text-end modal-price"><strong>${item.precio} MXN</strong></p>
                             </div>
+                            
                             <div class="modal-footer">
+                            <div class= "btnCompra"><button type="button" style= "background-color:#85586F" class="btn btn-secondary">Añadir a carrito </button> </div>
                                 <button type="button" style= "background-color:#85586F" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
