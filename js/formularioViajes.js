@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let priceInputValue = priceInput.value.trim();
 
         // Validar que el campo de precio solo contenga números
-        if (!/^\d+$/.test(priceInputValue)) {
+        if (!/^\d.+$/.test(priceInputValue)) {
             priceInput.classList.add('is-invalid');
             priceInputError.textContent = 'Ingresa solo números en el campo de precio.';
             valid = false;

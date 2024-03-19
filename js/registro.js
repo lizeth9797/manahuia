@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
         /*/^(?=.*?[A-Z])(?=.*[a-z])[\w\d]{8,}$/*/ 
         if (!passwordRegex.test(password.value)) {
             password.classList.add('is-invalid');
-            passwordError.textContent = 'La contraseña debe tener al menos 8 caracteres, mínimo una mayúscula, un caracter especial, y sin espacios.\n';
+            passwordError.textContent = 'El formato es incorrecto.\n';
             passwordError.style.whiteSpace = 'pre-line';
             valid = false;
         } else {
