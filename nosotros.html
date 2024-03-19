@@ -22,19 +22,66 @@
             overflow-x: hidden;
         }
            
-        /*Navbar*/
-        .navbar {
+       /*----NAVBAR----*/
+       .navbar {
             background-color: #F8EDE3;
-        }   
+            max-width: 100%;
+        }
         .navbar-nav a{
             color: #85586F;
             font-size: 15px;
             font-weight: 500;
+            /*--------Se ajusta espacio entre palabras----------- */
+            word-spacing: normal;
+
+        }
+
+        /* Dropdown menu item spacing */
+        .dropdown-menu .dropdown-item {
+            margin: 0;
+            padding: 5px;
+        }
+
+
+        .navbar-brand{
+            color: #85586F;
         }
         .spacing-nav{
             padding-right: 25px;
             letter-spacing: 2pt;
             word-spacing: 15pt; 
+        }
+
+        .dropdown-menu {
+            padding: 0; 
+        }
+        .dropdown-item {
+            margin: 0; 
+            padding: 5px; 
+            right: auto; /* Restablece la posición derecha predeterminada */
+            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+        }
+
+        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
+            color: #85586F; 
+            background-color: #F8EDE3; 
+
+        }
+
+        .dropdown-menu {
+            padding: 0; 
+        }
+        .dropdown-item {
+            margin: 0; 
+            padding: 5px; 
+            right: auto; /* Restablece la posición derecha predeterminada */
+            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+        }
+
+        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
+            color: #85586F; 
+            background-color: #F8EDE3; 
+
         }
 
 
@@ -351,15 +398,22 @@
     }
 }
 
+.footer svg {
+    width: 50px; /* Tamaño deseado */
+    height: 50px; /* Tamaño deseado */
+    color:#85586F
+}
+
 
 
     </style>
 </head>
 
+<!--NAVBAR-->
 <nav class="navbar navbar-expand-lg"> <!--Añadí un style en el archivo css de la clase navbar para guiarme en como debe quedar el diseño -->
     <div class="container">
       <a href="./index.html"><img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top"></a>
-      <a class="navbar-brand" style="margin-left:3%; color:#85586F; font-size: 25px; font-weight: 400;"></a>
+      <a class="navbar-brand" style="margin-left: 3%; color:#85586F; font-size: 25px; font-weight: 400;"></a>
       <a class="navbar-brand" style="padding-left: 50px; color:#85586F;"></a>   <!--Le agregue el color y el padding a la linea para ir viendolos mas estructurados-->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -373,7 +427,42 @@
           <a class="nav-link ms-auto" href="./itemsViajes.html">Paquetes</a>
           <a class="nav-link ms-auto" href="./carrito.html">Carrito</a>
           <a class="nav-link ms-auto" href="./contacto.html">Contacto</a>
-        </div>
+          <!-- <a class="nav-link ms-auto" href="./login.html">Login</a> -->
+
+          <!-- Navbar para usuario sin iniciar sesion -->
+          <div class="position-relative"> 
+              <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img class="zoomable-image" src="./src/navbaryfooter/usuarioNegro.png" alt="" width="25px" height="25px">
+              </button>
+              <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
+                  <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+                  <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+              </ul>
+          </div>
+
+          <!-- Navbar para usuario normal -->
+          <div class="position-relative"> 
+            <button id="userDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
+              <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+              <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+              <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
+            </ul>
+          </div>
+          
+          <!-- Navbar para administrador -->
+          <div class="position-relative"> 
+            <button id="adminDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" aria-expanded="false">
+              <img id="adminIcon" class="zoomable-image" src="./src/navbaryfooter/viajeVioleta.png" alt="" width="25px" height="25px">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
+              <li><a class="dropdown-item" href="./formularioViajes.html" style="padding: 20px">Crear viaje</a></li>
+              <!-- <li><a class="dropdown-item" href="#" style="padding: 20px">Editar viaje </a></li> -->
+              <li><a class="dropdown-item" id="logoutAdmin" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
+            </ul>
+          </div>
       </div>
     </div>
   </nav>
@@ -601,10 +690,10 @@
     <footer style="background-color:#F8EDE3;" class="footer pt-4 pb-5 mt-5">
         <div class="container-footer text-center text-mx-start">
           <div class="row text-center text-mx-start">
-            <div class=" mx-auto">
+            <div class="mx-auto">
                 <hr class="line-wrapped1"><!--Se creo esta clase para poder utilizar hr como un separador a la izquierda -->              
                 <!--Icono de facebook--> <!--Falta ingresar a facebook, whatsapp e instagram el vinculo-->
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook " viewBox="0 0 16 16">
+                <a href="" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook " viewBox="0 0 16 16">
                   <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
                 </svg></a>
                 <!--Icono de whatsapp-->
@@ -651,6 +740,8 @@
             });
         });
     </script>
+     <script src="./js/navbar.js"></script>
+     <script src="./js/logout.js"></script>
 
 </body>
 

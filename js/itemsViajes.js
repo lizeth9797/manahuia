@@ -9,7 +9,6 @@ function addItem(item) {
     
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
     const modalId = `exampleModal_${idCounter}`;
-    const carouselId = `carouselExample_${idCounter}`;
     idCounter++;
     
     const cardHTML = `
@@ -24,14 +23,14 @@ function addItem(item) {
         </div> <!-- card-body -->
 
         <!-- Modal -->
-        <div class="modal fade custom-modal"  id="exampleModal_${item.id}" tabindex="-1" 
+        <div class="modal fade custom-modal"  id="${modalId}" tabindex="-1" 
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-body row" style= "background-color:#F8EDE3">
                         <!-- Carrusel de imágenes en el lado izquierdo -->
                         <div class="col-lg-6" style="align-self: center;">
-                            <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <!-- Aquí deberías agregar tus imágenes dinámicamente -->
                                     <div class="carousel-item active">
@@ -47,11 +46,11 @@ function addItem(item) {
                                         <img src="${item.img[3]}" class="d-block w-100" alt="Slide 1">
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#${modalId}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button"   data-bs-target="#${carouselId}" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button"   data-bs-target="#${modalId}" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -118,7 +117,7 @@ document.getElementById('cards-container').addEventListener('click', function (e
     }
 });
 
-
+// Aquí añade los elementos usando la función addItem() como hiciste anteriormente
 addItem({
     'id': 1,
     'nombreDestino':'Aventura Maya en Península Yucateca',

@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidos"; //mandar a escribir el error
         }else{
             for(let i=0;i<users.length;i++){
+               console.log("entro al for");
                 document.getElementById("correoError").innerText = "";
                 if(users[i].correo==correo.value){//si existe el correo en el localStorage, entonces compara la contraseña
                     if(users[i].password==password){
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
                 else if(i==(users.length)-1) {
+                   console.log("entro al else del ultimo for");
                     document.getElementById("passwordError").innerText = "Nombre de usuario o contraseña inválidos"; //mandar a escribir el error
                     valid=false; 
                 }
@@ -96,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }//userExist
      
- 
      userExist(); //verifica si el usuario existe antes de registrarlo en el LocalStorage
      //Almacenar datos en localstorage
      if (valid) {
@@ -109,10 +110,11 @@ document.addEventListener("DOMContentLoaded", function() {
          addItem(nuevoLogin);//Llamada a la función para agregar un nuevo login al almacenamiento local
  
          function modalBienvenida (tipoUsuario) {
-             if (tipoUsuario == 1){
-                 $('#modalAdmin').modal('show');
-             } else if(tipoUsuario == 0){
-                 $('#modalViajera').modal ('show');
+             console.log("tipo usuario en function modal:",tipoUsuario);
+             if (tipoUsuario === 0){
+                 $(modalViajera).modal('show');
+             } else if(tipoUsuario === 1){
+                 $(modalAdmin).modal ('show');
              }
          }
         
@@ -122,15 +124,48 @@ document.addEventListener("DOMContentLoaded", function() {
          idCounter++;
          localStorage.setItem('nextIdLogin', idCounter.toString());
          modalBienvenida(tipoUsuario);
+            // Después de que el usuario inicie sesión o se registre con éxito y obtengas el tipo de usuario
+            // Actualiza el tipo de usuario en el almacenamiento local
+            localStorage.setItem('tipoUsuario', tipoUsuario);
+            // Llama a la función para actualizar el navbar con el nuevo tipo de usuario
+            actualizarNavbar(tipoUsuario);
          limpiarCampos();
      } //if(valid)
  });//eventListener 
  
- 
- function limpiarCampos() {
-     // Limpiar los campos después de enviar el formulario
-     correo.value = '';
-     password.value = '';
- }//funcion limpiarCampos
- 
- });
+    function limpiarCampos() {
+        // Limpiar los campos después de enviar el formulario
+        correo.value = '';
+        password.value = '';
+    }//funcion limpiarCampos
+
+        // Obtener el tipo de usuario desde el almacenamiento local o establecerlo en 0 (usuario normal) por defecto
+        var tipoUsuario = localStorage.getItem('tipoUsuario');
+
+        // Actualizar la visibilidad del navbar según el tipo de usuario
+        actualizarNavbar(tipoUsuario);
+
+        // Función para actualizar el navbar según el tipo de usuario
+        function actualizarNavbar(tipoUsuario) {
+    // Obtener elementos del navbar
+    var defaultDropdown = document.getElementById('defaultDropdown');
+    var userDropdown = document.getElementById("userDropdown");
+    var adminDropdown = document.getElementById("adminDropdown");
+
+    // Si el tipo de usuario es administrador, mostrar el navbar de administrador y ocultar el de usuario normal
+    if (tipoUsuario === "1") {
+        userDropdown.classList.add('d-none');
+        adminDropdown.classList.remove('d-none');
+        defaultDropdown.classList.add('d-none');
+    } else if (tipoUsuario === "0") { // Si el tipo de usuario es usuario normal
+        userDropdown.classList.remove('d-none');
+        adminDropdown.classList.add('d-none');
+        defaultDropdown.classList.add('d-none');
+    } else { // Si no se ha definido un tipo de usuario o es otro valor
+        userDropdown.classList.add('d-none');
+        adminDropdown.classList.add('d-none');
+        defaultDropdown.classList.remove('d-none');
+    }
+}
+
+});// DOMContentLoaded
