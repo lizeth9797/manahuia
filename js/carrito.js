@@ -20,21 +20,31 @@ function mostrarCarrito() {
     // Obtener el div del carrito en el DOM
     const carritoContainer = document.getElementById('carrito');
 
-    // Limpiar el contenido existente del carrito
-    carritoContainer.innerHTML = '';
-
     // Verificar si hay elementos en el carrito
     if (viajes.length === 0) {
-        carritoContainer.innerHTML = '<p>El carrito está vacío</p>';
+        carritoHTML.innerHTML = '<p>El carrito está vacío</p>';
     } else {
+              // Construir el HTML completo del carrito
+              let carritoHTML = '';
+        // Agregar los títulos de las columnas fuera del bucle
+        carritoContainer.innerHTML += `
+            <div class="row">
+            <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Producto</h3></div>
+                <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Viajeras</h3></div>
+                <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Total</h3></div>
+            </div>
+            <br>
+            <br>
+        `;
+
         // Iterar sobre los viajes en el carrito y agregarlos al DOM
         viajes.forEach((item, index) => { // Add index parameter to forEach
             const uniqueId = `Quantity-${index + 1}`; // Generate unique ID
             const viajeHTML = `
             <div class="item-carrito">
             <div class="info-carrito">
-                <img src="${item.imagen}" alt="${item.nombreDestino}" class="imagen-carrito" style="width: 200px; height: 200px;">
-                <div class="descripcion-precio">
+                <img src="${item.imagen}" alt="${item.nombreDestino}" class="imagen-carrito" style="width: 200px; height: 200px; padding:20px">
+                <div class="descripcion-precio"> 
                     <h5>${item.nombreDestino}</h5>
                 </div>
             </div>
@@ -63,17 +73,19 @@ function mostrarCarrito() {
                       <cart-remove-button id="Remove-${index + 1}" data-index="${index + 1}>
                         <a href="/cart/change?id=44506753827101:8da1baf98f0e3bed301e48d9caa514bd&amp;quantity=0" class="button button--tertiary" aria-label="Remove Femmetravel Croatia Signature Retreat">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false" role="presentation" class="icon icon-remove">
-  <path d="M14 3h-3.53a3.07 3.07 0 00-.6-1.65C9.44.82 8.8.5 8 .5s-1.44.32-1.87.85A3.06 3.06 0 005.53 3H2a.5.5 0 000 1h1.25v10c0 .28.22.5.5.5h8.5a.5.5 0 00.5-.5V4H14a.5.5 0 000-1zM6.91 1.98c.23-.29.58-.48 1.09-.48s.85.19 1.09.48c.2.24.3.6.36 1.02h-2.9c.05-.42.17-.78.36-1.02zm4.84 11.52h-7.5V4h7.5v9.5z" fill="currentColor"></path>
-  <path d="M6.55 5.25a.5.5 0 00-.5.5v6a.5.5 0 001 0v-6a.5.5 0 00-.5-.5zM9.45 5.25a.5.5 0 00-.5.5v6a.5.5 0 001 0v-6a.5.5 0 00-.5-.5z" fill="currentColor"></path>
-</svg>
-
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false" role="presentation" class="icon icon-remove">
+                          <path d="M14 3h-3.53a3.07 3.07 0 00-.6-1.65C9.44.82 8.8.5 8 .5s-1.44.32-1.87.85A3.06 3.06 0 005.53 3H2a.5.5 0 000 1h1.25v10c0 .28.22.5.5.5h8.5a.5.5 0 00.5-.5V4H14a.5.5 0 000-1zM6.91 1.98c.23-.29.58-.48 1.09-.48s.85.19 1.09.48c.2.24.3.6.36 1.02h-2.9c.05-.42.17-.78.36-1.02zm4.84 11.52h-7.5V4h7.5v9.5z" fill="currentColor"></path>
+                          <path d="M6.55 5.25a.5.5 0 00-.5.5v6a.5.5 0 001 0v-6a.5.5 0 00-.5-.5zM9.45 5.25a.5.5 0 00-.5.5v6a.5.5 0 001 0v-6a.5.5 0 00-.5-.5z" fill="currentColor"></path>
+                        </svg>
                         </a>
-                      </cart-remove-button>
-                    </div>
-            <div class="precio-carrito">
-                <strong><h4>Precio: ${item.precio}</h4></strong>
-            </div>
-        </div>
+                        </cart-remove-button>
+                        </div>
+                        <div class="precio-carrito">
+                            <strong><h4>Precio: ${item.precio}</h4></strong>
+                        </div>
+                        </div>
+                        
+        
         `;
             carritoContainer.innerHTML += viajeHTML;
         });
@@ -81,8 +93,9 @@ function mostrarCarrito() {
 }
 
 // Llamar a la función para mostrar el carrito cuando la página carrito.html se cargue completamente
-document.addEventListener('DOMContentLoaded', mostrarCarrito);
+document.addEventListener('DOMContentLoaded', mostrarCarrito)
 
 // Exportar la función addToCart para que pueda ser utilizada en otros archivos
 export { addToCart };
+
 
