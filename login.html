@@ -89,17 +89,18 @@ body {
             background-color: #F8EDE3; 
 
         }
-        /* Estilo para la imagen de icono viajera/admin*/
-    .zoomable-image {
-        width: 40px;
-        height: 40px;
-        transition: transform 0.3s ease;
-    }
+                            /* Estilo para la imagen de icono viajera/admin*/
+        .zoomable-image {
+            width: 45px;
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
 
-    /* Aplicar el zoom al pasar el cursor */
-    .zoomable-image:hover {
-        transform: scale(1.2); /*Zoom icono */
-    }
+        /* Aplicar el zoom al pasar el cursor */
+        .zoomable-image:hover {
+            transform: scale(1.2); /*Zoom icono */
+        }
+
 
         .card-header {
             font-family: "Lato", sans-serif;
@@ -310,7 +311,7 @@ input[type="password"] + .bx {
           <!-- Navbar para usuario sin iniciar sesion -->
           <div class="position-relative"> 
               <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario-Violeta.png" alt="" width="45px" height="45px">
+                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="25px" height="25px">
               </button>
               <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
                   <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
@@ -321,7 +322,7 @@ input[type="password"] + .bx {
           <!-- Navbar para usuario normal -->
           <div class="position-relative"> 
             <button id="userDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class= "zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="45px" height="45px">
+              <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
               <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
@@ -415,7 +416,7 @@ input[type="password"] + .bx {
                             </div>
                             <div class="modal-body">
                                 <!-- Contenido del modal para administradores -->
-                                ¡Bienvenida proveedora!
+                                ¡Bienvenido administrador!
                             </div>                                
                             <div class="py-1"><a href="./index.html"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal" style="background-color: #85586F; color: #F8EDE3; border-color: #F8EDE3; margin-bottom: 10px;">Iniciar</button></a></div>
                         </div>

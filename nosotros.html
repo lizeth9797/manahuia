@@ -22,38 +22,70 @@
             overflow-x: hidden;
         }
            
-           /*----NAVBAR----*/
-.navbar {
-    background-color: #F8EDE3;
-    max-width: 100%;
-}
-.navbar-nav a{
-    color: #85586F;
-    font-size: 15px;
-    font-weight: 500;
-    /*--------Se ajusta espacio entre palabras----------- */
-    word-spacing: normal;
+    /*----NAVBAR----*/
+    .navbar {
+            background-color: #F8EDE3;
+            max-width: 100%;
+        }
+        .navbar-nav a{
+            color: #85586F;
+            font-size: 15px;
+            font-weight: 500;
+            /*--------Se ajusta espacio entre palabras----------- */
+            word-spacing: normal;
 
-}
+        }
 
-/* Dropdown menu item spacing */
-.dropdown-menu .dropdown-item {
-    margin: 0;
-    padding: 5px;
-}
+        /* Dropdown menu item spacing */
+        .dropdown-menu .dropdown-item {
+            margin: 0;
+            padding: 5px;
+        }
 
 
-.navbar-brand{
-    color: #85586F;
-}
-.spacing-nav{
-    padding-right: 25px;
-    letter-spacing: 2pt;
-    word-spacing: 15pt; 
-}
+        .navbar-brand{
+            color: #85586F;
+        }
+        .spacing-nav{
+            padding-right: 25px;
+            letter-spacing: 2pt;
+            word-spacing: 15pt; 
+        }
 
- /* Estilo para la imagen de icono viajera/admin*/
- .zoomable-image {
+        .dropdown-menu {
+            padding: 0; 
+        }
+        .dropdown-item {
+            margin: 0; 
+            padding: 5px; 
+            right: auto; /* Restablece la posición derecha predeterminada */
+            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+        }
+
+        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
+            color: #85586F; 
+            background-color: #F8EDE3; 
+
+        }
+
+        .dropdown-menu {
+            padding: 0; 
+        }
+        .dropdown-item {
+            margin: 0; 
+            padding: 5px; 
+            right: auto; /* Restablece la posición derecha predeterminada */
+            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+        }
+
+        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
+            color: #85586F; 
+            background-color: #F8EDE3; 
+
+        }
+
+                /* Estilo para la imagen de icono viajera/admin*/
+    .zoomable-image {
         width: 45px;
         height: 45px;
         transition: transform 0.3s ease;
@@ -62,16 +94,6 @@
     /* Aplicar el zoom al pasar el cursor */
     .zoomable-image:hover {
         transform: scale(1.2); /*Zoom icono */
-    }
-
-.dropdown-menu {
-        padding: 0; 
-    }
-    .dropdown-item {
-        margin: 0; 
-        padding: 5px; 
-        right: auto; /* Restablece la posición derecha predeterminada */
-        left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
     }
 
   /* Ajustes responsivos */
@@ -432,15 +454,16 @@
           <a class="nav-link ms-auto" href="./contacto.html">Contacto</a>
           <!-- <a class="nav-link ms-auto" href="./login.html">Login</a> -->
 
-          <!-- Navbar para usuario sin iniciar sesion -->
-          <div class="position-relative"> 
-              <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario-Violeta.png" alt="" width="45px" height="45px">
-              </button>
-              <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
-                  <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
-              </ul>
-          </div>
+            <!-- Navbar para usuario sin iniciar sesion -->
+            <div class="position-relative"> 
+                <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="45px" height="45px">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
+                    <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+                    <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+                </ul>
+            </div>
 
           <!-- Navbar para usuario normal -->
           <div class="position-relative"> 
