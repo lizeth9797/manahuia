@@ -64,6 +64,17 @@
             background-color: #F8EDE3; 
 
         }
+        /* Estilo para la imagen de icono viajera/admin*/
+  .zoomable-image {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Aplicar el zoom al pasar el cursor */
+    .zoomable-image:hover {
+        transform: scale(1.2); /*Zoom icono */
+    }
 
         /*Footer*/
         /*Líneas hr que se hicieron como separadores*/
@@ -299,8 +310,6 @@ h5{
               <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
-              <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
-              <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
               <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
             </ul>
           </div>
