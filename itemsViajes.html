@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/itemsViajes.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!--Cambiar el font al nuestro, estos solo fueron tomados como muestra para la creación de la estructura-->
@@ -64,14 +64,6 @@
             background-color: #F8EDE3; 
 
         }
-        .card {
-        transition: transform 0.3s;
-    }
-
-    .card:hover {
-        transform: scale(1.1);
-    }
-
 
 /*Footer*/
 /*Líneas hr que se hicieron como separadores*/
@@ -176,7 +168,7 @@
           <!-- Navbar para usuario sin iniciar sesion -->
           <div class="position-relative"> 
               <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="zoomable-image" src="./src/navbaryfooter/usuarioNegro.png" alt="" width="25px" height="25px">
+                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario-Violeta.png" alt="" width="45px" height="45px">
               </button>
               <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
                   <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
@@ -187,11 +179,11 @@
           <!-- Navbar para usuario normal -->
           <div class="position-relative"> 
             <button id="userDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
+              <img class= "zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="45px" height="45px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
-              <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
-              <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+              <li><a id="iniciar_sesionUN" class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+              <li><a id="Crear_cuentaUN" class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
               <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
             </ul>
           </div>
@@ -210,8 +202,6 @@
       </div>
     </div>
   </nav>
-
-  
 
 
 

@@ -9,7 +9,7 @@
     <!--Cambiar el font al nuestro, estos solo fueron tomados como muestra para la creación de la estructura-->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Monomaniac+One&display=swap" rel="stylesheet">
-    <title>Carrito</title>
+    <title>Navbar y Footer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" sizes="32x32" type="image/x-icon" href="./src/navbaryfooter/icon.ico">
     <style>
@@ -141,16 +141,6 @@
     height: auto;
 }
 
-
-#carrito {
-    width: 80%; /* Ajusta el ancho según sea necesario */
-    height: 500px; /* Ajusta la altura según sea necesario */
-    background-color: #F8EDE3;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
     </style>
   </head>
   <body class="fondoprincipal"><!--Cree esta clase de fondo principal para darle un color al fondo, igual en la realizacion del css se puede quitar-->
@@ -177,7 +167,7 @@
           <!-- Navbar para usuario sin iniciar sesion -->
           <div class="position-relative"> 
               <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="zoomable-image" src="./src/navbaryfooter/usuarioNegro.png" alt="" width="25px" height="25px">
+                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario-Violeta.png" alt="" width="45px" height="45px">
               </button>
               <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
                   <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
@@ -188,11 +178,11 @@
           <!-- Navbar para usuario normal -->
           <div class="position-relative"> 
             <button id="userDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
+              <img class= "zoomable-image" src="./src/navbaryfooter//Usuario-Negro.png" alt="" width="45px" height="45px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
-              <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
-              <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+              <li><a id="iniciar_sesionUN" class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+              <li><a id="Crear_cuentaUN" class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
               <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
             </ul>
           </div>
@@ -211,15 +201,7 @@
       </div>
     </div>
   </nav>
-    
-    <div class="container">
-      <h1 class="py-4">Tu Carrito</h1> <!-- Agrega un margen inferior -->
-  </div>
-  <div class="container" id="carrito">
-    <h3>Producto</h3>
-  </div>
-
-   
+    <h1>Carrito</h1>
 
     <!--TERMINO DE NAVBAR-->
 
@@ -264,6 +246,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./js/navbar.js"></script>
     <script src="./js/logout.js"></script>
+    <script src="./js/carrito.js"></script>
   </body>
 </html>
 
