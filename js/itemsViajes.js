@@ -1,4 +1,4 @@
-import { addToCart } from './carrito.js';
+// import { addToCart } from './carrito.js';
 let idCounter = 1;
 
 function addItem(item) {
@@ -47,14 +47,14 @@ function addItem(item) {
                                         <img src="${item.img[3]}" class="d-block w-100" alt="Slide 1">
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#${modalId}" data-bs-slide="prev">
+                                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#${modalId}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
                                 <button class="carousel-control-next" type="button"   data-bs-target="#${modalId}" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
         
@@ -96,6 +96,19 @@ function addItem(item) {
     // Agregar la tarjeta y el espacio al contenedor
     container.appendChild(card);
     container.appendChild(space);
+}
+
+// Función para añadir un artículo al carrito
+function addToCart(item) {
+    // Obtener el arreglo actual de viajes en el carrito desde el LocalStorage
+    const storedViajes = localStorage.getItem('carrito');
+    const viajes = storedViajes ? JSON.parse(storedViajes) : [];
+
+    // Agregar el nuevo item al arreglo
+    viajes.push(item);
+
+    // Almacenar el arreglo actualizado en el LocalStorage
+    localStorage.setItem('carrito', JSON.stringify(viajes));
 }
 
 document.addEventListener('DOMContentLoaded', function () {
