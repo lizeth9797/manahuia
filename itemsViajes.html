@@ -14,146 +14,175 @@
     <link rel="icon" sizes="32x32" type="image/x-icon" href="./src/navbaryfooter/icon.ico">
 
     <style>
+   /* se tranfieren algunos estilos a hoja css*/
+        /*----FONDO PRINCIPAL -----*/
+        body,
+      html {
+        overflow-x: hidden;
+      }
       
-      body, html {
-      overflow-x: hidden;
-    }
-
-        /*----NAVBAR----*/
-        .navbar {
-            background-color: #F8EDE3;
-            max-width: 100%;
-        }
-        .navbar-nav a{
-            color: #85586F;
-            font-size: 15px;
-            font-weight: 500;
-            /*--------Se ajusta espacio entre palabras----------- */
-            word-spacing: normal;
-
-        }
-
-        /* Dropdown menu item spacing */
-        .dropdown-menu .dropdown-item {
-            margin: 0;
-            padding: 5px;
-        }
-
-
-        .navbar-brand{
-            color: #85586F;
-        }
-        .spacing-nav{
-            padding-right: 25px;
-            letter-spacing: 2pt;
-            word-spacing: 15pt; 
-        }
-
-        .dropdown-menu {
-            padding: 0; 
-        }
-        .dropdown-item {
-            margin: 0; 
-            padding: 5px; 
-            right: auto; /* Restablece la posición derecha predeterminada */
-            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
-        }
-
-        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
-            color: #85586F; 
-            background-color: #F8EDE3; 
-
-    
-    /*Se agregan efectos en las cards*/
-    }
-    .card-img-top {
-    transition: transform 0.3s;
-    }
-
-    .card-img-top:hover {
-        transform: scale(1.1);
-    }
-
-
-
-
-
-/*Footer*/
-/*Líneas hr que se hicieron como separadores*/
-.line-wrapped1{
-    float: left;
-    background-color: #85586F;
-    height: 10px;
-    margin-left: 0%;
-    width: 40%;
+/*----NAVBAR----*/
+.navbar {
+    background-color: #F8EDE3;
+    max-width: 100%;
 }
-.line-wrapped2{
-    float: right;
-    background-color: #85586F;
-    height: 10px;
-    margin-right: 0%;
-    width: 40%;
+.navbar-nav a{
+    color: #85586F;
+    font-size: 15px;
+    font-weight: 500;
+    /*--------Se ajusta espacio entre palabras----------- */
+    word-spacing: normal;
 
 }
 
-/*Parte responsiva de las lineas separadoras de los iconos*/
+/* Dropdown menu item spacing */
+.dropdown-menu .dropdown-item {
+    margin: 0;
+    padding: 5px;
+}
 
-@media screen and (max-width:768px){
-    .line-wrapped1{
-        float: left;
-        background-color: #85586F;
-        height: 5px;
-        margin-left: 0%;
-        width: 20%;
+
+.navbar-brand{
+    color: #85586F;
+}
+.spacing-nav{
+    padding-right: 25px;
+    letter-spacing: 2pt;
+    word-spacing: 15pt; 
+}
+
+ /* Estilo para la imagen de icono viajera/admin*/
+ .zoomable-image {
+        width: 25px;
+        height: 25px;
+        transition: transform 0.3s ease;
     }
-    .line-wrapped2{
-        float: right;
-        background-color: #85586F;
-        height: 5px;
-        margin-right: 0%;
-        width: 20%;
-    
+
+    /* Aplicar el zoom al pasar el cursor */
+    .zoomable-image:hover {
+        transform: scale(1.2); /*Zoom icono */
     }
 
+.dropdown-menu {
+        padding: 0; 
+    }
+    .dropdown-item {
+        margin: 0; 
+        padding: 5px; 
+        right: auto; /* Restablece la posición derecha predeterminada */
+        left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+    }
 
+  /* Ajustes responsivos */
+@media (max-width: 2560px) {
+    /* Estilos para pantallas pequeñas */
+    .navbar-nav {
+        text-align: center; /* Centrar los elementos de navegación */
+    }
+    .navbar-nav a {
+        display: inline-block; /* Mostrar elementos de navegación en línea */
+        margin: 0 10px; /* Agregar margen entre los elementos */
+        max-width: 100%;
+    }
 }
-
-/*Iconos*/
-/*Facebook*/
-.bi-facebook{
-    color:#85586F;
-    width: 50px;
-    height: auto;
-}
-/*Instagram*/
-.bi-instagram{
-    margin-left: 15px;
-    color:#85586F;
-    width: 50px;
-    height: auto;
-}
-/*Whatsapp*/
-.bi-whatsapp{
-    margin-left: 15px;
-    color:#85586F;
-    width: 50px;
-    height: auto;
-}
-
-        /* Estilos para la ventana emergente */
-        #ventanaEmergente {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
+      /*Se agregan efectos en las cards*/
+          
+      .card-img-top
+      {
+        border-radius: 10px;
+      }
+      .card-img-botto
+      {
+        border-radius: 10px;
+      }
+      .card-img-top {
+      transition: transform 0.3s;
+      }
+  
+      .card-img-top:hover {
+          transform: scale(1.1);
+          
+      }
 
   
+  
+  
+  /*Footer*/
+  /*Líneas hr que se hicieron como separadores*/
+  .line-wrapped1{
+      float: left;
+      background-color: #85586F;
+      height: 10px;
+      margin-left: 0%;
+      width: 40%;
+  }
+  .line-wrapped2{
+      float: right;
+      background-color: #85586F;
+      height: 10px;
+      margin-right: 0%;
+      width: 40%;
+  
+  }
+  
+  /*Parte responsiva de las lineas separadoras de los iconos*/
+  
+  @media screen and (max-width:768px){
+      .line-wrapped1{
+          float: left;
+          background-color: #85586F;
+          height: 5px;
+          margin-left: 0%;
+          width: 20%;
+      }
+      .line-wrapped2{
+          float: right;
+          background-color: #85586F;
+          height: 5px;
+          margin-right: 0%;
+          width: 20%;
+      
+      }
+
+  
+  }
+  
+  /*Iconos*/
+  /*Facebook*/
+  .bi-facebook{
+      color:#85586F;
+      width: 50px;
+      height: auto;
+  }
+  /*Instagram*/
+  .bi-instagram{
+      margin-left: 15px;
+      color:#85586F;
+      width: 50px;
+      height: auto;
+  }
+  /*Whatsapp*/
+  .bi-whatsapp{
+      margin-left: 15px;
+      color:#85586F;
+      width: 50px;
+      height: auto;
+  }
+  
+          /* Estilos para la ventana emergente */
+          #ventanaEmergente {
+              display: none;
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              padding: 20px;
+              background-color: #fff;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+              z-index: 999;
+          }
+  
+    
     </style>
   </head>
   <body class="fondoprincipal"><!--Cree esta clase de fondo principal para darle un color al fondo, igual en la realizacion del css se puede quitar-->
