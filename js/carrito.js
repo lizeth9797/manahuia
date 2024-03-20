@@ -3,6 +3,7 @@ function addToCart(item) {
     // Obtener el arreglo actual de viajes en el carrito desde el LocalStorage
     const storedViajes = localStorage.getItem('carrito');
     const viajes = storedViajes ? JSON.parse(storedViajes) : [];
+    let carrito = document.getElementById('carrito');
 
     // Agregar el nuevo item al arreglo
     viajes.push(item);
@@ -22,20 +23,22 @@ function mostrarCarrito() {
 
     // Verificar si hay elementos en el carrito
     if (viajes.length === 0) {
-        carritoHTML.innerHTML = '<p>El carrito está vacío</p>';
+        carritoContainer.innerHTML = '<p>El carrito está vacío</p>';
     } else {
               // Construir el HTML completo del carrito
-              let carritoHTML = '';
-        // Agregar los títulos de las columnas fuera del bucle
-        carritoContainer.innerHTML += `
-            <div class="row">
-            <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Producto</h3></div>
-                <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Viajeras</h3></div>
-                <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Total</h3></div>
-            </div>
-            <br>
-            <br>
-        `;
+              // Remove the unused variable declaration
+              // let carritoHTML = '';
+
+              // Agregar los títulos de las columnas fuera del bucle
+              carrito.innerHTML += `
+                <div class="row">
+                  <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Producto</h3></div>
+                  <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Viajeras</h3></div>
+                  <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Total</h3></div>
+                </div>
+                <br>
+                <br>
+              `;
 
         // Iterar sobre los viajes en el carrito y agregarlos al DOM
         viajes.forEach((item, index) => { // Add index parameter to forEach

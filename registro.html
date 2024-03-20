@@ -78,6 +78,17 @@ body {
             background-color: #F8EDE3; 
 
         }
+                                    /* Estilo para la imagen de icono viajera/admin*/
+                                    .zoomable-image {
+            width: 45px;
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Aplicar el zoom al pasar el cursor */
+        .zoomable-image:hover {
+            transform: scale(1.2); /*Zoom icono */
+        }
 
         .card-header {
             font-family: "Lato", sans-serif;
@@ -285,7 +296,7 @@ input[type="password"] + .bx {
           <!-- Navbar para usuario sin iniciar sesion -->
           <div class="position-relative"> 
               <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario2Violeta.png" alt="" width="45px" height="45px">
+                  <img class="zoomable-image" src="./src/navbaryfooter/usuarioNegro.png" alt="" width="25px" height="25px">
               </button>
               <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
                   <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
@@ -296,7 +307,7 @@ input[type="password"] + .bx {
           <!-- Navbar para usuario normal -->
           <div class="position-relative"> 
             <button id="userDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class= "zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="45px" height="45px">
+              <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
               <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
@@ -352,6 +363,8 @@ input[type="password"] + .bx {
                     <label for="password" class="form-label"></label>
                 <div class="container">
                     <input type="password" class="form-control" id="password" placeholder="Contraseña" >
+                    <label for="password" class="form-label">Debe contener mínimo 8 caracteres que incluyan una mayúscula, una minúscula, un número y un caracter especial</label>
+
                 </div>
                     <input type="checkbox" onclick="myFunction()" style="accent-color: #85586F;">Mostrar contraseña.
                     <br>

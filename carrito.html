@@ -65,20 +65,22 @@
         left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
     }
 
-  /* Ajustes responsivos */
-@media (max-width: 2560px) {
-    /* Estilos para pantallas pequeñas */
-    .navbar-nav {
-        text-align: center; /* Centrar los elementos de navegación */
-    }
-    .navbar-nav a {
-        display: inline-block; /* Mostrar elementos de navegación en línea */
-        margin: 0 10px; /* Agregar margen entre los elementos */
-        max-width: 100%;
-    }
-}
+        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
+            color: #85586F; 
+            background-color: #F8EDE3; 
 
+        }
+/* Estilo para la imagen de icono viajera/admin*/
+    .zoomable-image {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.3s ease;
+    }
 
+    /* Aplicar el zoom al pasar el cursor */
+    .zoomable-image:hover {
+        transform: scale(1.2); /*Zoom icono */
+    }
 
 /*Botón para limpiar datos*/
 input.btn.btn-primary {
@@ -337,10 +339,10 @@ input.btn.btn-primary {
           <a class="nav-link ms-auto" href="./contacto.html">Contacto</a>
           <!-- <a class="nav-link ms-auto" href="./login.html">Login</a> -->
 
-          <!-- Navbar para usuario sin iniciar sesion -->
-          <div class="position-relative"> 
+            <!-- Navbar para usuario sin iniciar sesion -->
+            <div class="position-relative"> 
               <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario2Violeta.png" alt="" width="45px" height="45px">
+                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="45px" height="45px">
               </button>
               <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
                   <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
@@ -354,8 +356,6 @@ input.btn.btn-primary {
               <img class= "zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="45px" height="45px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
-            <li><a id="iniciar_sesionUN" class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
-              <li><a id="Crear_cuentaUN" class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
               <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
             </ul>
           </div>
@@ -381,7 +381,7 @@ input.btn.btn-primary {
 
 
 <div class="container">
-    <div class="container-fluid" style="margin-top: 20px;" id="carrito">
+    <div id="carrito"class="container-fluid" style="margin-top: 20px;" >
 
 			<div class="container-icon" >
 				<div class="container-cart-icon">
