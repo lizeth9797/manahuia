@@ -3,7 +3,6 @@ function addToCart(item) {
     // Obtener el arreglo actual de viajes en el carrito desde el LocalStorage
     const storedViajes = localStorage.getItem('carrito');
     const viajes = storedViajes ? JSON.parse(storedViajes) : [];
-    let carrito = document.getElementById('carrito');
 
     // Agregar el nuevo item al arreglo
     viajes.push(item);
@@ -95,10 +94,12 @@ function mostrarCarrito() {
     }
 }
 
+
+document.getElementById("btnLimpiar").onclick = function() {
+  localStorage.removeItem('carrito');
+  window.location.reload();
+};
+
+
 // Llamar a la función para mostrar el carrito cuando la página carrito.html se cargue completamente
 document.addEventListener('DOMContentLoaded', mostrarCarrito)
-
-// Exportar la función addToCart para que pueda ser utilizada en otros archivos
-export { addToCart };
-
-
