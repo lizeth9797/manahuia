@@ -19,61 +19,69 @@
         }
 
         /*----NAVBAR----*/
-        .navbar {
-            background-color: #F8EDE3;
-            max-width: 100%;
-        }
-        .navbar-nav a{
-            color: #85586F;
-            font-size: 15px;
-            font-weight: 500;
-            /*--------Se ajusta espacio entre palabras----------- */
-            word-spacing: normal;
+.navbar {
+    background-color: #F8EDE3;
+    max-width: 100%;
+}
+.navbar-nav a{
+    color: #85586F;
+    font-size: 15px;
+    font-weight: 500;
+    /*--------Se ajusta espacio entre palabras----------- */
+    word-spacing: normal;
 
-        }
+}
 
-        /*Estilo de CONTACTO*/
-        .card-header {
-            font-family: "Lato", sans-serif;
-            font-weight: 700;
-            font-style: normal;
-            font-size: 25px;
-            color: #7E5A6E;
-            text-align: center;
-            padding: 2px;
-        }
-
-        /* Dropdown menu item spacing */
-        .dropdown-menu .dropdown-item {
-            margin: 0;
-            padding: 5px;
-        }
+/* Dropdown menu item spacing */
+.dropdown-menu .dropdown-item {
+    margin: 0;
+    padding: 5px;
+}
 
 
-        .navbar-brand{
-            color: #85586F;
-        }
-        .spacing-nav{
-            padding-right: 25px;
-            letter-spacing: 2pt;
-            word-spacing: 15pt; 
-        }
+.navbar-brand{
+    color: #85586F;
+}
+.spacing-nav{
+    padding-right: 25px;
+    letter-spacing: 2pt;
+    word-spacing: 15pt; 
+}
 
-        .dropdown-menu {
-            padding: 0; 
-        }
-        .dropdown-item {
-            margin: 0; 
-            padding: 5px; 
-            right: auto; /* Restablece la posición derecha predeterminada */
-            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
-        }
+ /* Estilo para la imagen de icono viajera/admin*/
+ .zoomable-image {
+        width: 45px;
+        height: 45px;
+        transition: transform 0.3s ease;
+    }
 
-        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
-            color: #85586F; 
-            background-color: #F8EDE3; 
+    /* Aplicar el zoom al pasar el cursor */
+    .zoomable-image:hover {
+        transform: scale(1.2); /*Zoom icono */
+    }
 
-        }
+.dropdown-menu {
+        padding: 0; 
+    }
+    .dropdown-item {
+        margin: 0; 
+        padding: 5px; 
+        right: auto; /* Restablece la posición derecha predeterminada */
+        left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+    }
+
+  /* Ajustes responsivos */
+@media (max-width: 2560px) {
+    /* Estilos para pantallas pequeñas */
+    .navbar-nav {
+        text-align: center; /* Centrar los elementos de navegación */
+    }
+    .navbar-nav a {
+        display: inline-block; /* Mostrar elementos de navegación en línea */
+        margin: 0 10px; /* Agregar margen entre los elementos */
+        max-width: 100%;
+    }
+}
 
 
     /*Footer*/
@@ -270,7 +278,7 @@
   </nav>
 
   <div class="container contacto" style= "padding-top: 20px;" id="formulario">
-    <h1 class="card-header" style="font-size: 40px; text-align: center;">Contacto</h1>
+    <h1 class="card-header" style="font-size: 40px; text-align: center; color: #85586F; ;">Contacto</h1>
       </div>
 
     <div class="container-fluid" style="border-style: double; border-color: rgb(255, 255, 255);" id="formulario">
