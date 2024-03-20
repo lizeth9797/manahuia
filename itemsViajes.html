@@ -21,57 +21,67 @@
         overflow-x: hidden;
       }
       
-/*----NAVBAR----*/
-.navbar {
-    background-color: #F8EDE3;
-    max-width: 100%;
-}
-.navbar-nav a{
-    color: #85586F;
-    font-size: 15px;
-    font-weight: 500;
-    /*--------Se ajusta espacio entre palabras----------- */
-    word-spacing: normal;
+ /*----NAVBAR----*/
+ .navbar {
+            background-color: #F8EDE3;
+            max-width: 100%;
+        }
+        .navbar-nav a{
+            color: #85586F;
+            font-size: 15px;
+            font-weight: 500;
+            /*--------Se ajusta espacio entre palabras----------- */
+            word-spacing: normal;
 
-}
+        }
 
-/* Dropdown menu item spacing */
-.dropdown-menu .dropdown-item {
-    margin: 0;
-    padding: 5px;
-}
+        /* Dropdown menu item spacing */
+        .dropdown-menu .dropdown-item {
+            margin: 0;
+            padding: 5px;
+        }
 
 
-.navbar-brand{
-    color: #85586F;
-}
-.spacing-nav{
-    padding-right: 25px;
-    letter-spacing: 2pt;
-    word-spacing: 15pt; 
-}
+        .navbar-brand{
+            color: #85586F;
+        }
+        .spacing-nav{
+            padding-right: 25px;
+            letter-spacing: 2pt;
+            word-spacing: 15pt; 
+        }
 
- /* Estilo para la imagen de icono viajera/admin*/
- .zoomable-image {
-        width: 25px;
-        height: 25px;
-        transition: transform 0.3s ease;
-    }
+        .dropdown-menu {
+            padding: 0; 
+        }
+        .dropdown-item {
+            margin: 0; 
+            padding: 5px; 
+            right: auto; /* Restablece la posición derecha predeterminada */
+            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+        }
 
-    /* Aplicar el zoom al pasar el cursor */
-    .zoomable-image:hover {
-        transform: scale(1.2); /*Zoom icono */
-    }
+        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
+            color: #85586F; 
+            background-color: #F8EDE3; 
 
-.dropdown-menu {
-        padding: 0; 
-    }
-    .dropdown-item {
-        margin: 0; 
-        padding: 5px; 
-        right: auto; /* Restablece la posición derecha predeterminada */
-        left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
-    }
+        }
+
+        .dropdown-menu {
+            padding: 0; 
+        }
+        .dropdown-item {
+            margin: 0; 
+            padding: 5px; 
+            right: auto; /* Restablece la posición derecha predeterminada */
+            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+        }
+
+        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
+            color: #85586F; 
+            background-color: #F8EDE3; 
+
+        }
 
   /* Ajustes responsivos */
 @media (max-width: 2560px) {
