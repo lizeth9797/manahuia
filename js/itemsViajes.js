@@ -1,3 +1,4 @@
+import { addToCart } from './carrito.js';
 let idCounter = 1;
 
 function addItem(item) {
@@ -13,7 +14,7 @@ function addItem(item) {
     
     const cardHTML = `
         <!-- Contenido de la tarjeta -->
-        <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
+        <img src="${item.img[0]}" class="card-img-top" alt="no disponible">
         <div class="card-body d-flex flex-column" style="margin: 5px; padding: 5px;">
             <h5 class="card-title">${item.nombreDestino}</h5>
             <p class="card-text flex-grow-1">${truncatedDescription}...</p>
@@ -74,7 +75,9 @@ function addItem(item) {
                             </div>
                             
                             <div class="modal-footer">
-                            <div class= "btnCompra"><button type="button" style= "background-color:#85586F" class="btn btn-secondary">Añadir a carrito </button> </div>
+                            <div class="btnCompra">
+                                <button id="btnAñadirCarrito" type="button" style="background-color:#85586F" class="btn btn-secondary">Añadir a carrito</button>
+                            </div>
                                 <button type="button" style= "background-color:#85586F" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
@@ -108,14 +111,29 @@ document.addEventListener('DOMContentLoaded', function () {
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
     if (event.target.classList.contains('details-btn')) {
-        const modalId = event.target.getAttribute('data-bs-target'); // Obtiene el ID del modal desde el atributo data-bs-target
+        const modalId = event.target.getAttribute('data-bs-target');
         const modal = document.querySelector(modalId);
 
-        // Muestra el modal
         if (!modal) {
             const modal = new bootstrap.Modal(document.querySelector(modalId));
             modal.show();
         }
+    }
+
+    // Verificamos si el clic ocurrió en el botón de añadir al carrito por su ID
+    if (event.target.id === 'btnAñadirCarrito') {
+        const card = event.target.closest('.card'); // Obtener la tarjeta padre del botón
+        const nombreDestino = card.querySelector('.card-title').innerText;
+        const imagen = card.querySelector('.card-img-top').getAttribute('src');
+        const precio = card.querySelector('.modal-price').innerText;
+
+        const item = {
+            nombreDestino: nombreDestino,
+            imagen: imagen,
+            precio: precio
+        };
+
+        addToCart(item); // Añadir el artículo al carrito
     }
 });
 
