@@ -3,64 +3,92 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/carrito.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!--Cambiar el font al nuestro, estos solo fueron tomados como muestra para la creación de la estructura-->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Monomaniac+One&display=swap" rel="stylesheet">
-    <title>Carrito</title>
+    <title>Navbar y Footer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" sizes="32x32" type="image/x-icon" href="./src/navbaryfooter/icon.ico">
     <style>
-        body, html {
-            overflow-x: hidden;
-        }
-        /*----NAVBAR----*/
-        .navbar {
-            background-color: #F8EDE3;
-            max-width: 100%;
-        }
-        .navbar-nav a{
-            color: #85586F;
-            font-size: 15px;
-            font-weight: 500;
-            /*--------Se ajusta espacio entre palabras----------- */
-            word-spacing: normal;
+      /*----NAVBAR----*/
+.navbar {
+    background-color: #F8EDE3;
+    max-width: 100%;
+}
+.navbar-nav a{
+    color: #85586F;
+    font-size: 15px;
+    font-weight: 500;
+    /*--------Se ajusta espacio entre palabras----------- */
+    word-spacing: normal;
 
-        }
+}
 
-        /* Dropdown menu item spacing */
-        .dropdown-menu .dropdown-item {
-            margin: 0;
-            padding: 5px;
-        }
+/* Dropdown menu item spacing */
+.dropdown-menu .dropdown-item {
+    margin: 0;
+    padding: 5px;
+}
 
 
-        .navbar-brand{
-            color: #85586F;
-        }
-        .spacing-nav{
-            padding-right: 25px;
-            letter-spacing: 2pt;
-            word-spacing: 15pt; 
-        }
+.navbar-brand{
+    color: #85586F;
+}
+.spacing-nav{
+    padding-right: 25px;
+    letter-spacing: 2pt;
+    word-spacing: 15pt; 
+}
 
-        .dropdown-menu {
-            padding: 0; 
-        }
-        .dropdown-item {
-            margin: 0; 
-            padding: 5px; 
-            right: auto; /* Restablece la posición derecha predeterminada */
-            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
-        }
+ /* Estilo para la imagen de icono viajera/admin*/
+ .zoomable-image {
+        width: 45px;
+        height: 45px;
+        transition: transform 0.3s ease;
+    }
 
-        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
-            color: #85586F; 
-            background-color: #F8EDE3; 
+    /* Aplicar el zoom al pasar el cursor */
+    .zoomable-image:hover {
+        transform: scale(1.2); /*Zoom icono */
+    }
 
-        }
+.dropdown-menu {
+        padding: 0; 
+    }
+    .dropdown-item {
+        margin: 0; 
+        padding: 5px; 
+        right: auto; /* Restablece la posición derecha predeterminada */
+        left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+    }
+
+  /* Ajustes responsivos */
+@media (max-width: 2560px) {
+    /* Estilos para pantallas pequeñas */
+    .navbar-nav {
+        text-align: center; /* Centrar los elementos de navegación */
+    }
+    .navbar-nav a {
+        display: inline-block; /* Mostrar elementos de navegación en línea */
+        margin: 0 10px; /* Agregar margen entre los elementos */
+        max-width: 100%;
+    }
+}
+
+
+
+/*Botón para limpiar datos*/
+input.btn.btn-primary {
+        background-color: #85586F;
+        border-color: #85586F; 
+        text-align: center;
+        margin: 10px auto; 
+        padding: 10px;
+      
+    }
 
 
 /*Footer*/
@@ -143,18 +171,153 @@
 
 
 #carrito {
-    width: 80%; /* Ajusta el ancho según sea necesario */
-    height: 500px; /* Ajusta la altura según sea necesario */
+    height: auto; /* Ajusta la altura según sea necesario */
     background-color: #F8EDE3;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilo para el contenedor de cada artículo en el carrito */
+.item-carrito {
+    display: flex; /* Usar flexbox para alinear los elementos */
+    justify-content: space-between; /* Espaciar los elementos para que el precio esté a la derecha */
+    align-items: center; /* Alinear verticalmente los elementos */
+    margin-bottom: 20px; /* Añadir margen inferior entre cada artículo */
+}
+
+/* Estilo para el div que contiene la descripción y el precio */
+.info-carrito {
+    display: flex; /* Usar flexbox para alinear los elementos */
+    align-items: center; /* Alinear verticalmente los elementos */
+}
+
+/* Estilo para la imagen del artículo */
+.imagen-carrito {
+    width: 200px;
+    height: 200px;
+}
+
+/* Estilo para el div del precio */
+.precio-carrito {
+    margin-left: 10px; /* Añadir margen a la izquierda para separarlo del contenido */
+}
+
+.cart-item__quantity-wrapper {
+    display: flex;
+}
+
+/* component-quantity */
+.quantity {
+  color: rgba(var(--color-foreground));
+  position: relative;
+  width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+  display: flex;
+  border-radius: var(--inputs-radius);
+  min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+}
+
+.quantity:after {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  top: var(--inputs-border-width);
+  right: var(--inputs-border-width);
+  bottom: var(--inputs-border-width);
+  left: var(--inputs-border-width);
+  border: 0.1rem solid transparent;
+  border-radius: var(--inputs-radius);
+  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  transition: box-shadow var(--duration-short) ease;
+  z-index: 1;
+}
+
+.quantity:before {
+  background: rgb(var(--color-background));
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--inputs-radius-outset);
+  box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius) rgba(var(--color-base-text), var(--inputs-shadow-opacity));
+  z-index: -1;
+}
+
+.quantity__input {
+  color: currentColor;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.85;
+  text-align: center;
+  background-color: transparent;
+  border: 1;
+  padding: 0 0.5rem;
+  width: 100%;
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.quantity__button {
+  border: 1px solid rgba(var(--color-foreground));
+  background-color: transparent;
+}
+
+.quantity__button:first-child {
+  margin-left: calc(var(--inputs-border-width));
+}
+
+.quantity__button:last-child {
+  margin-right: calc(var(--inputs-border-width));
+}
+
+.quantity__button svg {
+  width: 1rem;
+  pointer-events: none;
+}
+
+.quantity__button:focus-visible,
+.quantity__input:focus-visible {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+
+.quantity__button:focus,
+.quantity__input:focus {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+
+.quantity__button:not(:focus-visible):not(.focused),
+.quantity__input:not(:focus-visible):not(.focused) {
+  box-shadow: inherit;
+  background-color: inherit;
+}
+
+.quantity__input:-webkit-autofill,
+.quantity__input:-webkit-autofill:hover,
+.quantity__input:-webkit-autofill:active {
+  box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
+  -webkit-box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
+}
+
+.quantity__input::-webkit-outer-spin-button,
+.quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity__input[type='number'] {
+  -moz-appearance: textfield;
+}
+
     </style>
   </head>
   <body class="fondoprincipal"><!--Cree esta clase de fondo principal para darle un color al fondo, igual en la realizacion del css se puede quitar-->
-    <!--NAVBAR-->
+  <!--NAVBAR-->
   <nav class="navbar navbar-expand-lg"> <!--Añadí un style en el archivo css de la clase navbar para guiarme en como debe quedar el diseño -->
     <div class="container">
       <a href="./index.html"><img src="./src/navbaryfooter/Manahuia.png" alt="" width="100px" height="100px" class="d-inline-block align-text-top"></a>
@@ -177,7 +340,7 @@
           <!-- Navbar para usuario sin iniciar sesion -->
           <div class="position-relative"> 
               <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="zoomable-image" src="./src/navbaryfooter/usuarioNegro.png" alt="" width="25px" height="25px">
+                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario2Violeta.png" alt="" width="45px" height="45px">
               </button>
               <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
                   <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
@@ -188,11 +351,11 @@
           <!-- Navbar para usuario normal -->
           <div class="position-relative"> 
             <button id="userDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
+              <img class= "zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="45px" height="45px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
-              <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
-              <li><a class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
+            <li><a id="iniciar_sesionUN" class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+              <li><a id="Crear_cuentaUN" class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
               <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
             </ul>
           </div>
@@ -211,13 +374,81 @@
       </div>
     </div>
   </nav>
+  
+  <div class="container">
+    <h1 class="py-4" style="color: #85586F;">Tu Carrito</h1> <!-- Agrega un margen inferior -->
+</div>
+
+
+<div class="container">
+    <div class="container-fluid" style="margin-top: 20px;" id="carrito">
+
+			<div class="container-icon" >
+				<div class="container-cart-icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="icon-cart"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+						/>
+					</svg>
+
+         
+					<div class="count-products">
+						<span id="contador-productos">0</span>
+					</div>
+				</div>
+
+				<div class="container-cart-products hidden-cart">
+					<div class="row-product hidden">
+						<div class="cart-product">
+							<div class="info-cart-product">
+								<span class="cantidad-producto-carrito">1</span>
+								<p class="titulo-producto-carrito"></p>
+								<span class="precio-producto-carrito"></span>
+							</div>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="icon-close"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</div>
+					</div>
+
+					<div class="cart-total hidden">
+						<h3>Total:</h3>
+						<span class="total-pagar">$200</span>
+					</div>
+					<p class="cart-empty">El carrito está vacío</p>
+				</div>
+			</div>  
+      
+		</div>
+
+    <div class="container-fluid d-flex justify-content-center align-items-center">
+      <input type="button" class="btn btn-primary" id="btnLimpiar" value="Limpiar el carrito" style="margin-top: 30px;">
+  </div>
     
-    <div class="container">
-      <h1 class="py-4">Tu Carrito</h1> <!-- Agrega un margen inferior -->
-  </div>
-  <div class="container" id="carrito">
-    <h3>Producto</h3>
-  </div>
+</div>
+
+
+    
 
    
 
@@ -264,6 +495,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./js/navbar.js"></script>
     <script src="./js/logout.js"></script>
+    <script src="./js/carrito.js" type="module"></script>
   </body>
 </html>
 
