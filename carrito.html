@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/carrito.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!--Cambiar el font al nuestro, estos solo fueron tomados como muestra para la creación de la estructura-->
@@ -61,6 +61,17 @@
             background-color: #F8EDE3; 
 
         }
+
+
+/*Botón para limpiar datos*/
+input.btn.btn-primary {
+        background-color: #85586F;
+        border-color: #85586F; 
+        text-align: center;
+        margin: 10px auto; 
+        padding: 10px;
+      
+    }
 
 
 /*Footer*/
@@ -141,6 +152,151 @@
     height: auto;
 }
 
+
+#carrito {
+    height: auto; /* Ajusta la altura según sea necesario */
+    background-color: #F8EDE3;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el contenedor de cada artículo en el carrito */
+.item-carrito {
+    display: flex; /* Usar flexbox para alinear los elementos */
+    justify-content: space-between; /* Espaciar los elementos para que el precio esté a la derecha */
+    align-items: center; /* Alinear verticalmente los elementos */
+    margin-bottom: 20px; /* Añadir margen inferior entre cada artículo */
+}
+
+/* Estilo para el div que contiene la descripción y el precio */
+.info-carrito {
+    display: flex; /* Usar flexbox para alinear los elementos */
+    align-items: center; /* Alinear verticalmente los elementos */
+}
+
+/* Estilo para la imagen del artículo */
+.imagen-carrito {
+    width: 200px;
+    height: 200px;
+}
+
+/* Estilo para el div del precio */
+.precio-carrito {
+    margin-left: 10px; /* Añadir margen a la izquierda para separarlo del contenido */
+}
+
+.cart-item__quantity-wrapper {
+    display: flex;
+}
+
+/* component-quantity */
+.quantity {
+  color: rgba(var(--color-foreground));
+  position: relative;
+  width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+  display: flex;
+  border-radius: var(--inputs-radius);
+  min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+}
+
+.quantity:after {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  top: var(--inputs-border-width);
+  right: var(--inputs-border-width);
+  bottom: var(--inputs-border-width);
+  left: var(--inputs-border-width);
+  border: 0.1rem solid transparent;
+  border-radius: var(--inputs-radius);
+  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  transition: box-shadow var(--duration-short) ease;
+  z-index: 1;
+}
+
+.quantity:before {
+  background: rgb(var(--color-background));
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--inputs-radius-outset);
+  box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius) rgba(var(--color-base-text), var(--inputs-shadow-opacity));
+  z-index: -1;
+}
+
+.quantity__input {
+  color: currentColor;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.85;
+  text-align: center;
+  background-color: transparent;
+  border: 1;
+  padding: 0 0.5rem;
+  width: 100%;
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.quantity__button {
+  border: 1px solid rgba(var(--color-foreground));
+  background-color: transparent;
+}
+
+.quantity__button:first-child {
+  margin-left: calc(var(--inputs-border-width));
+}
+
+.quantity__button:last-child {
+  margin-right: calc(var(--inputs-border-width));
+}
+
+.quantity__button svg {
+  width: 1rem;
+  pointer-events: none;
+}
+
+.quantity__button:focus-visible,
+.quantity__input:focus-visible {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+
+.quantity__button:focus,
+.quantity__input:focus {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+
+.quantity__button:not(:focus-visible):not(.focused),
+.quantity__input:not(:focus-visible):not(.focused) {
+  box-shadow: inherit;
+  background-color: inherit;
+}
+
+.quantity__input:-webkit-autofill,
+.quantity__input:-webkit-autofill:hover,
+.quantity__input:-webkit-autofill:active {
+  box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
+  -webkit-box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
+}
+
+.quantity__input::-webkit-outer-spin-button,
+.quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity__input[type='number'] {
+  -moz-appearance: textfield;
+}
+
     </style>
   </head>
   <body class="fondoprincipal"><!--Cree esta clase de fondo principal para darle un color al fondo, igual en la realizacion del css se puede quitar-->
@@ -201,7 +357,86 @@
       </div>
     </div>
   </nav>
+<<<<<<< HEAD
     <h1>Carrito</h1>
+=======
+  <div class="container">
+    <h1 class="py-4" style="color: #85586F;">Tu Carrito</h1> <!-- Agrega un margen inferior -->
+</div>
+
+
+<div class="container">
+    <div class="container-fluid" style="margin-top: 20px;" id="carrito">
+
+			<div class="container-icon" >
+				<div class="container-cart-icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="icon-cart"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+						/>
+					</svg>
+
+         
+					<div class="count-products">
+						<span id="contador-productos">0</span>
+					</div>
+				</div>
+
+				<div class="container-cart-products hidden-cart">
+					<div class="row-product hidden">
+						<div class="cart-product">
+							<div class="info-cart-product">
+								<span class="cantidad-producto-carrito">1</span>
+								<p class="titulo-producto-carrito"></p>
+								<span class="precio-producto-carrito"></span>
+							</div>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="icon-close"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</div>
+					</div>
+
+					<div class="cart-total hidden">
+						<h3>Total:</h3>
+						<span class="total-pagar">$200</span>
+					</div>
+					<p class="cart-empty">El carrito está vacío</p>
+				</div>
+			</div>  
+      
+		</div>
+
+    <div class="container-fluid d-flex justify-content-center align-items-center">
+      <input type="button" class="btn btn-primary" id="btnLimpiar" value="Limpiar el carrito" style="margin-top: 30px;">
+  </div>
+    
+</div>
+
+
+    
+
+   
+>>>>>>> 948a24d7b8ae97ca071f51841d118a221a497074
 
     <!--TERMINO DE NAVBAR-->
 
@@ -246,7 +481,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./js/navbar.js"></script>
     <script src="./js/logout.js"></script>
+<<<<<<< HEAD
     <script src="./js/carrito.js"></script>
+=======
+    <script src="./js/carrito.js" type="module"></script>
+>>>>>>> 948a24d7b8ae97ca071f51841d118a221a497074
   </body>
 </html>
 
