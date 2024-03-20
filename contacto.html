@@ -19,54 +19,39 @@
         }
 
         /*----NAVBAR----*/
-        .navbar {
-            background-color: #F8EDE3;
-            max-width: 100%;
-        }
-        .navbar-nav a{
-            color: #85586F;
-            font-size: 15px;
-            font-weight: 500;
-            /*--------Se ajusta espacio entre palabras----------- */
-            word-spacing: normal;
+.navbar {
+    background-color: #F8EDE3;
+    max-width: 100%;
+}
+.navbar-nav a{
+    color: #85586F;
+    font-size: 15px;
+    font-weight: 500;
+    /*--------Se ajusta espacio entre palabras----------- */
+    word-spacing: normal;
 
-        }
+}
 
-        /* Dropdown menu item spacing */
-        .dropdown-menu .dropdown-item {
-            margin: 0;
-            padding: 5px;
-        }
+/* Dropdown menu item spacing */
+.dropdown-menu .dropdown-item {
+    margin: 0;
+    padding: 5px;
+}
 
 
-        .navbar-brand{
-            color: #85586F;
-        }
-        .spacing-nav{
-            padding-right: 25px;
-            letter-spacing: 2pt;
-            word-spacing: 15pt; 
-        }
+.navbar-brand{
+    color: #85586F;
+}
+.spacing-nav{
+    padding-right: 25px;
+    letter-spacing: 2pt;
+    word-spacing: 15pt; 
+}
 
-        .dropdown-menu {
-            padding: 0; 
-        }
-        .dropdown-item {
-            margin: 0; 
-            padding: 5px; 
-            right: auto; /* Restablece la posición derecha predeterminada */
-            left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
-        }
-
-        .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover {
-            color: #85586F; 
-            background-color: #F8EDE3; 
-
-        }
-        /* Estilo para la imagen de icono viajera/admin*/
-    .zoomable-image {
-        width: 40px;
-        height: 40px;
+ /* Estilo para la imagen de icono viajera/admin*/
+ .zoomable-image {
+        width: 45px;
+        height: 45px;
         transition: transform 0.3s ease;
     }
 
@@ -74,6 +59,29 @@
     .zoomable-image:hover {
         transform: scale(1.2); /*Zoom icono */
     }
+
+.dropdown-menu {
+        padding: 0; 
+    }
+    .dropdown-item {
+        margin: 0; 
+        padding: 5px; 
+        right: auto; /* Restablece la posición derecha predeterminada */
+        left: 0; /* Ajusta el dropdown para que aparezca a la izquierda */
+    }
+
+  /* Ajustes responsivos */
+@media (max-width: 2560px) {
+    /* Estilos para pantallas pequeñas */
+    .navbar-nav {
+        text-align: center; /* Centrar los elementos de navegación */
+    }
+    .navbar-nav a {
+        display: inline-block; /* Mostrar elementos de navegación en línea */
+        margin: 0 10px; /* Agregar margen entre los elementos */
+        max-width: 100%;
+    }
+}
 
 
     /*Footer*/
@@ -234,7 +242,7 @@
           <!-- Navbar para usuario sin iniciar sesion -->
           <div class="position-relative"> 
               <button id="defaultDropdown" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="zoomable-image" src="./src/navbaryfooter/usuarioNegro.png" alt="" width="25px" height="25px">
+                  <img class="zoomable-image" src="./src/navbaryfooter/Usuario-Violeta.png" alt="" width="45px" height="45px">
               </button>
               <ul class="dropdown-menu dropdown-menu-lg-end position-absolute" style="right: 0;"> <!-- Menú desplegable -->
                   <li><a class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
@@ -245,9 +253,11 @@
           <!-- Navbar para usuario normal -->
           <div class="position-relative"> 
             <button id="userDropdown" type="button" class="btn dropdown-toggle d-none" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class= "zoomable-image"src="./src/navbaryfooter/usuario-violeta.png" alt="" width="25px" height="25px">
+              <img class= "zoomable-image" src="./src/navbaryfooter/Usuario-Negro.png" alt="" width="45px" height="45px">
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end position-absolute"  style="right: 0;">
+              <li><a id="iniciar_sesionUN" class="dropdown-item" href="./login.html" style="padding: 20px">Iniciar sesión</a></li>
+              <li><a id="Crear_cuentaUN" class="dropdown-item" href="./registro.html" style="padding: 20px">Crea tu cuenta</a></li>
               <li><a class="dropdown-item" id="logoutViajera" href="./login.html" style="padding: 20px">Cerrar sesión</a></li>
             </ul>
           </div>
@@ -267,8 +277,8 @@
     </div>
   </nav>
 
-      <div class="col text-center" style="color: #85586F; font-family: Urbanist; font-size: 30px; padding: 10px;">
-        Contacto
+  <div class="container contacto" style= "padding-top: 20px;" id="formulario">
+    <h1 class="card-header" style="font-size: 40px; text-align: center; color: #85586F; ;">Contacto</h1>
       </div>
 
     <div class="container-fluid" style="border-style: double; border-color: rgb(255, 255, 255);" id="formulario">
@@ -322,7 +332,7 @@
                         <input class="btn btn-primary" type="submit" value="Enviar">
                         <!--  -->
                         <!--Texto despues del boton-->
-                        <div id="help" class="form-text">¿Ya tienes cuenta? <a href="#" target="_blank">Ingrese</a></div>
+                        <div id="help" class="form-text">¿Ya tienes cuenta? <a href="./login.html">Ingrese</a></div>
                     </form>
                 </div>
             </div>

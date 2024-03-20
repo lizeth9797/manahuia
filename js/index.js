@@ -1,27 +1,72 @@
-import { addToCart } from './carrito.js';
-let idCounter = 1;
+document.addEventListener('DOMContentLoaded', function () {
+    const storedViajes = localStorage.getItem('viajes');
+    const viajes = storedViajes ? JSON.parse(storedViajes) : [];
+
+    for (let i = 0; i < viajes.length; i++) {
+        const storedItem = viajes[i];
+        addItem(storedItem);
+    }
+        //Se obtiene miembro login de localStorage (OCULTAR DEL LOGUEO DE USUARIO)
+        let iniciar_sesionUN = document.getElementById("iniciar_sesionUN");
+        let Crear_cuentaUN = document.getElementById("Crear_cuentaUN");
+
+        let miembroLogin = localStorage.getItem("login");
+        if (miembroLogin != null){
+            iniciar_sesionUN.classList.add('d-none');
+            Crear_cuentaUN.classList.add('d-none');
+        } else {
+            iniciar_sesionUN.classList.remove('d-none');
+            Crear_cuentaUN.classList.remove('d-none');
+        }
+});
+
+
+let modalAbierto = false; // Variable para rastrear si el modal está abierto
+
+// Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
+document.getElementById('cards-container').addEventListener('click', function (event) {
+    if (!modalAbierto && event.target.classList.contains('details-btn')) {
+        const modalId = event.target.getAttribute('data-bs-target');
+        const modal = new bootstrap.Modal(document.querySelector(modalId));
+
+        // Muestra el modal
+        modal.show();
+
+        // Marca el modal como abierto
+        modalAbierto = true;
+
+        // Agrega el evento hidden.bs.modal al modal para cerrar el backdrop
+        modal._element.addEventListener('hidden.bs.modal', function () {
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) {
+                backdrop.parentNode.removeChild(backdrop);
+            }
+            modalAbierto = false; // Restablece el estado del modal
+        });
+    }
+});
 
 function addItem(item) {
     const container = document.getElementById('cards-container');
-    
-    // Crear la tarjeta
+
     const card = document.createElement('div');
-    card.classList.add('card','col-md-3', 'mb-5', 'mx-auto');
-    
+    card.classList.add("col-lg-9");
+
     const truncatedDescription = item.descripcion.slice(0, Math.floor(item.descripcion.length * 0.2));
     const modalId = `exampleModal_${idCounter}`;
     idCounter++;
-    
+
     const cardHTML = `
-        <!-- Contenido de la tarjeta -->
-        <img src="${item.img[0]}" class="card-img-top" alt="no disponible">
-        <div class="card-body d-flex flex-column" style="margin: 5px; padding: 5px;">
-            <h5 class="card-title">${item.nombreDestino}</h5>
-            <p class="card-text flex-grow-1">${truncatedDescription}...</p>
-            <button type="button" style="background-color: #85586F" class="btn btn-secondary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
-                Detalles
-            </button>
-        </div> <!-- card-body -->
+        <img src="${item.img[0]}" class="card-img-top" alt="${item.nombreDestino}">
+        <div class="row">
+            <div class="card-body d-flex flex-column" style="margin: 5px; padding: 5px;">
+                <h5 class="card-title">${item.nombreDestino}</h5>
+                <p class="card-text flex-grow-1">${truncatedDescription.substring(0, Math.floor(truncatedDescription.length * 0.8))}...</p>
+                <button type="button" style="background-color: #85586F" class="btn btn-secondary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
+                    Detalles
+                </button>
+            </div>
+        </div>
 
         <!-- Modal -->
         <div class="modal fade custom-modal"  id="${modalId}" tabindex="-1" 
@@ -73,11 +118,7 @@ function addItem(item) {
                                 </p>
                                 <p class="text-end modal-price"><strong>${item.precio} MXN</strong></p>
                             </div>
-                            
                             <div class="modal-footer">
-                            <div class="btnCompra">
-                                <button id="btnAñadirCarrito" type="button" style="background-color:#85586F" class="btn btn-secondary">Añadir a carrito</button>
-                            </div>
                                 <button type="button" style= "background-color:#85586F" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
@@ -85,73 +126,45 @@ function addItem(item) {
                 </div>
             </div>
         </div> <!-- cierre-modal -->
-    `;
+        `;
 
     card.innerHTML = cardHTML;
-    
-    // Crear el espacio entre tarjetas
-    const space = document.createElement('div');
-    space.classList.add('col-md-auto'); 
-    
-    // Agregar la tarjeta y el espacio al contenedor
     container.appendChild(card);
-    container.appendChild(space);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const storedViajes = localStorage.getItem('viajes');
-    const viajes = storedViajes ? JSON.parse(storedViajes) : [];
-
-    for (let i = 0; i < viajes.length; i++) {
-        const storedItem = viajes[i];
-        addItem(storedItem);
-    }
-
-            //Se obtiene miembro login de localStorage (OCULTAR DEL LOGUEO DE USUARIO)
-            let iniciar_sesionUN = document.getElementById("iniciar_sesionUN");
-            let Crear_cuentaUN = document.getElementById("Crear_cuentaUN");
-    
-            let miembroLogin = localStorage.getItem("login");
-            if (miembroLogin != null){
-                iniciar_sesionUN.classList.add('d-none');
-                Crear_cuentaUN.classList.add('d-none');
-            } else {
-                iniciar_sesionUN.classList.remove('d-none');
-                Crear_cuentaUN.classList.remove('d-none');
-            }
-
-});
+let idCounter = 1;
 
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
-    if (event.target.classList.contains('details-btn')) {
+    if (!modalAbierto && event.target.classList.contains('details-btn')) {
         const modalId = event.target.getAttribute('data-bs-target');
-        const modal = document.querySelector(modalId);
+        const modal = new bootstrap.Modal(document.querySelector(modalId));
+        
+        // Muestra el modal
+        modal.show();
 
-        if (!modal) {
-            const modal = new bootstrap.Modal(document.querySelector(modalId));
-            modal.show();
+        // Verifica si ya se ha agregado el evento hidden.bs.modal al modal
+        if (!modal._element.classList.contains('backdrop-event-added')) {
+            // Agrega el evento hidden.bs.modal al modal
+            modal._element.addEventListener('hidden.bs.modal', function () {
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.parentNode.removeChild(backdrop);
+                }
+                modalAbierto = false; // Restablece el estado del modal
+            });
+
+            // Marca el modal para indicar que se ha agregado el evento
+            modal._element.classList.add('backdrop-event-added');
         }
-    }
 
-    // Verificamos si el clic ocurrió en el botón de añadir al carrito por su ID
-    if (event.target.id === 'btnAñadirCarrito') {
-        const card = event.target.closest('.card'); // Obtener la tarjeta padre del botón
-        const nombreDestino = card.querySelector('.card-title').innerText;
-        const imagen = card.querySelector('.card-img-top').getAttribute('src');
-        const precio = card.querySelector('.modal-price').innerText;
-
-        const item = {
-            nombreDestino: nombreDestino,
-            imagen: imagen,
-            precio: precio
-        };
-
-        addToCart(item); // Añadir el artículo al carrito
+        modalAbierto = true; // Marca el modal como abierto
     }
 });
 
-// Aquí añade los elementos usando la función addItem() como hiciste anteriormente
+
+
+
 addItem({
     'id': 1,
     'nombreDestino':'Aventura Maya en Península Yucateca',
@@ -261,3 +274,4 @@ addItem({
     'descripcion':'Embárcate en nuestra experiencia "Encanto Costero y Artesanías Mexicanas”, durante 5 días, disfrutade alojamiento en hoteles con desayuno y cena incluidos, transporte hacia destinos turísticos ymercados artesanales donde podrás explorar y adquirir artesanías únicas, excursiones a lugareslocales de artesanías para conocer de cerca la cultura mexicana y visita a playas paradisíacas pararelajarte y disfrutar del paisaje costero. Una experiencia encantadora que combina lo mejor de la costamexicana y su rica artesanía!',
         'img':['./src/catalogo/Viaje 27.jpg','./src/catalogo/Viaje 8.jpg','./src/catalogo/Viaje 9.jpg','./src/catalogo/Viaje 31.jpg']
 });
+

@@ -2,6 +2,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // obtiene el ultimo contador del input almacenado en localStorage iniciando en 11
     let idCounter = parseInt(localStorage.getItem('nextId')) || 11;
 
+            //Se obtiene miembro login de localStorage (OCULTAR DEL LOGUEO DE USUARIO)
+            let iniciar_sesionUN = document.getElementById("iniciar_sesionUN");
+            let Crear_cuentaUN = document.getElementById("Crear_cuentaUN");
+    
+            let miembroLogin = localStorage.getItem("login");
+            if (miembroLogin != null){
+                iniciar_sesionUN.classList.add('d-none');
+                Crear_cuentaUN.classList.add('d-none');
+            } else {
+                iniciar_sesionUN.classList.remove('d-none');
+                Crear_cuentaUN.classList.remove('d-none');
+            }
+
     let btnSendTravel = document.getElementById('btnSendTravel');
     let nameTravel = document.getElementById('nameTravel');
     let nameTravelError = document.getElementById('nameTravelError');
@@ -126,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let priceInputValue = priceInput.value.trim();
 
         // Validar que el campo de precio solo contenga números
-        if (!/^\d.+$/.test(priceInputValue)) {
+        if (!/^\d+$/.test(priceInputValue)) {
             priceInput.classList.add('is-invalid');
             priceInputError.textContent = 'Ingresa solo números en el campo de precio.';
             valid = false;
