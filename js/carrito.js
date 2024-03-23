@@ -9,7 +9,7 @@ function mostrarCarrito() {
 
   // Verificar si hay elementos en el carrito
   if (viajes.length === 0) {
-    carritoContainer.innerHTML = '<p>El carrito está vacío</p>';
+    carritoContainer.innerHTML = '<p>El carrito está vacío</p> <br><br>';
   } else {
     // Construir el HTML completo del carrito
     carritoContainer.innerHTML = ''; // Limpiar el contenido anterior
