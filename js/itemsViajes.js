@@ -1,6 +1,56 @@
 // import { addToCart } from './carrito.js';
 let idCounter = 1;
 
+ // Agrega el modal carritoModal al contenedor principal
+ document.getElementById('cards-container').insertAdjacentHTML('beforeend', `
+ <!-- PopUp Cards -->
+ <div class="modal fade" tabindex="-1" role="dialog" id="carritoModal">
+     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+         <div class="modal-content">
+             <div class="modal-body text-center">
+                 <div>
+                     <i class="text-success bi bi-check-circle"></i>
+                 </div>
+                 <div class="mt-4 py-2">
+                     <p class="px-4 pb-0 mb-1 text-secondary">¡Hecho!</p>
+                     <h4 class="h5">Se ha agregado la reservación con exito!</h4>
+                 </div>
+                 <div class="py-1">
+                    <a href="./carrito.html">
+                        <button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button>
+                    </a>
+                </div>
+             </div>
+         </div>
+     </div>
+ </div> <!-- popup -->
+ `);
+
+ // carrito con reserva ya pendiente
+ document.getElementById('cards-container').insertAdjacentHTML('beforeend', `
+ <!-- PopUp Cards -->
+ <div class="modal fade" tabindex="-1" role="dialog" id="carritoPendienteModal">
+     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+         <div class="modal-content">
+             <div class="modal-body text-center">
+                 <div>
+                     <i class="text-success bi bi-check-circle"></i>
+                 </div>
+                 <div class="mt-4 py-2">
+                     <p class="px-4 pb-0 mb-1 text-secondary">¡Lo siento!</p>
+                     <h4 class="h5">Ya tienes una reserva pendiente!</h4>
+                 </div>
+                 <div class="py-1">
+                    <a href="./carrito.html">
+                        <button type="button" class="btn btn-sm btn-outline-danger rounded-pill px-5" data-bs-dismiss="modal">Ver carrito</button>
+                    </a>
+                </div>
+             </div>
+         </div>
+     </div>
+ </div> <!-- popup -->
+ `);
+
 function addItem(item) {
     const container = document.getElementById('cards-container');
     
@@ -13,79 +63,73 @@ function addItem(item) {
     idCounter++;
     
     const cardHTML = `
-        <!-- Contenido de la tarjeta -->
-        <img src="${item.img[0]}" class="card-img-top" alt="no disponible">
-        <div class="card-body d-flex flex-column" style="margin: 5px; padding: 5px;">
-            <h5 class="card-title">${item.nombreDestino}</h5>
-            <p class="card-text flex-grow-1">${truncatedDescription}...</p>
-            <button type="button" style="background-color: #85586F" class="btn btn-secondary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
-                Detalles
-            </button>
-        </div> <!-- card-body -->
-
-        <!-- Modal -->
-        <div class="modal fade custom-modal"  id="${modalId}" tabindex="-1" 
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-body row" style= "background-color:#F8EDE3">
-                        <!-- Carrusel de imágenes en el lado izquierdo -->
-                        <div class="col-lg-6" style="align-self: center;">
-                            <div class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <!-- Aquí deberías agregar tus imágenes dinámicamente -->
-                                    <div class="carousel-item active">
-                                        <img src="${item.img[0]}" class="d-block w-100" alt="Slide 1">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="${item.img[1]}" class="d-block w-100" alt="Slide 1">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="${item.img[2]}" class="d-block w-100" alt="Slide 1">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="${item.img[3]}" class="d-block w-100" alt="Slide 1">
-                                    </div>
+    <!-- Contenido de la tarjeta -->
+    <img src="${item.img[0]}" class="card-img-top" alt="no disponible">
+    <div class="card-body d-flex flex-column" style="margin: 5px; padding: 5px;">
+        <h5 class="card-title">${item.nombreDestino}</h5>
+        <p class="card-text flex-grow-1">${truncatedDescription}...</p>
+        <button type="button" style="background-color: #85586F" class="btn btn-secondary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
+            Detalles
+        </button>
+    </div> <!-- card-body -->
+    
+    <!-- Modal -->
+    <div class="modal fade custom-modal"  id="${modalId}" tabindex="-1" 
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body row" style= "background-color:#F8EDE3">
+                    <!-- Carrusel de imágenes en el lado izquierdo -->
+                    <div class="col-lg-6" style="align-self: center;">
+                        <div class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <!-- Aquí deberías agregar tus imágenes dinámicamente -->
+                                <div class="carousel-item active">
+                                    <img src="${item.img[0]}" class="d-block w-100" alt="Slide 1">
                                 </div>
-                                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#${modalId}" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"   data-bs-target="#${modalId}" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button> -->
+                                <div class="carousel-item">
+                                    <img src="${item.img[1]}" class="d-block w-100" alt="Slide 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="${item.img[2]}" class="d-block w-100" alt="Slide 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="${item.img[3]}" class="d-block w-100" alt="Slide 1">
+                                </div>
                             </div>
                         </div>
+                    </div>
         
-                        <!-- Informacion a la derecha -->
-                        <div class="col-lg-6">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">${item.nombreDestino}</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p class="modal-description" style="text-align: justify;">${item.descripcion}</p>
-                                <hr />
-                                <h5>Incluye:</h5>
-                                <p class="modal-incluye text-left small">
-                                    ${item.incluye}
-                                </p>
-                                <p class="text-end modal-price"><strong>${item.precio} MXN</strong></p>
-                            </div>
-                            
-                            <div class="modal-footer">
+                    <!-- Informacion a la derecha -->
+                    <div class="col-lg-6">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">${item.nombreDestino}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="modal-description" style="text-align: justify;">${item.descripcion}</p>
+                            <hr />
+                            <h5>Incluye:</h5>
+                            <p class="modal-incluye text-left small">
+                                ${item.incluye}
+                            </p>
+                            <p class="text-end modal-price"><strong> ${item.precio}</strong></p>
+                        </div>
+                        
+                        <div class="modal-footer">
                             <div class="btnCompra">
-                                <button id="btnAñadirCarrito" type="button" style="background-color:#85586F" class="btn btn-secondary">Añadir a carrito</button>
+                                <button id="btnCarrito" type="button" style="background-color:#85586F" class="btn btn-secondary btn-zoom">Reservar</button>
                             </div>
-                                <button type="button" style= "background-color:#85586F" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            </div>
+                            <button type="button" style= "background-color:#85586F" class="btn btn-secondary btn-zoom" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> <!-- cierre-modal -->
+        </div>
+    </div> <!-- cierre-modal -->
     `;
+
+       
 
     card.innerHTML = cardHTML;
     
@@ -109,7 +153,16 @@ function addToCart(item) {
 
     // Almacenar el arreglo actualizado en el LocalStorage
     localStorage.setItem('carrito', JSON.stringify(viajes));
-}
+
+    const carritoModal = new bootstrap.Modal(document.getElementById('carritoModal'));
+    carritoModal.show();
+}// addToCart
+
+function verificarCarrito() {
+    const storedViajes = localStorage.getItem('carrito');
+    const viajes = storedViajes ? JSON.parse(storedViajes) : [];
+    return viajes.length > 0; // Retorna true si hay al menos un artículo en el carrito
+}// verificarCarrito
 
 document.addEventListener('DOMContentLoaded', function () {
     const storedViajes = localStorage.getItem('viajes');
@@ -123,30 +176,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Agrega un evento de clic al contenedor de las tarjetas para manejar clics en los botones
 document.getElementById('cards-container').addEventListener('click', function (event) {
-    if (event.target.classList.contains('details-btn')) {
-        const modalId = event.target.getAttribute('data-bs-target');
-        const modal = document.querySelector(modalId);
-
-        if (!modal) {
-            const modal = new bootstrap.Modal(document.querySelector(modalId));
-            modal.show();
+    if (event.target.id === 'btnCarrito') {
+        // Ocultar el modal principal si está abierto
+        const modalPrincipal = document.querySelector('.modal.fade.custom-modal.show');
+        if (modalPrincipal) {
+            const bsModalPrincipal = bootstrap.Modal.getInstance(modalPrincipal);
+            if (bsModalPrincipal) {
+                bsModalPrincipal.hide();
+            }
         }
-    }
 
-    // Verificamos si el clic ocurrió en el botón de añadir al carrito por su ID
-    if (event.target.id === 'btnAñadirCarrito') {
-        const card = event.target.closest('.card'); // Obtener la tarjeta padre del botón
-        const nombreDestino = card.querySelector('.card-title').innerText;
-        const imagen = card.querySelector('.card-img-top').getAttribute('src');
-        const precio = card.querySelector('.modal-price').innerText;
+        // Verificar si ya hay un artículo en el carrito
+        if (verificarCarrito()) {
+            // Si ya hay un artículo, mostrar un mensaje
+            const carritoPendienteModal = new bootstrap.Modal(document.getElementById('carritoPendienteModal'));
+            carritoPendienteModal.show();
+        } else {
+            // Si no hay ningún artículo en el carrito, agregar el nuevo artículo
+            const card = event.target.closest('.card');
+            const nombreDestino = card.querySelector('.card-title').innerText;
+            const imagen = card.querySelector('.card-img-top').getAttribute('src');
+            const precio = card.querySelector('.modal-price').innerText;
 
-        const item = {
-            nombreDestino: nombreDestino,
-            imagen: imagen,
-            precio: precio
-        };
+            const item = {
+                nombreDestino: nombreDestino,
+                imagen: imagen,
+                precio: precio
+            };
 
-        addToCart(item); // Añadir el artículo al carrito
+            addToCart(item); // Añadir el artículo al carrito
+        }
     }
 });
 
@@ -154,7 +213,7 @@ document.getElementById('cards-container').addEventListener('click', function (e
 addItem({
     'id': 1,
     'nombreDestino':'Aventura Maya en Península Yucateca',
-    'precio':'$10,000',
+    'precio':'10,000',
     'destinos':'Mérida, Chichén Itzá, playa del Carmen y Tulúm',
     'incluye':'Alojamiento en hoteles administrados por manahuia con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte durante todo el recorrido.Visitas guiadas a los principales destinos arqueológicos de la región.<br>Entradas a los sitios arqueológicos mencionados',
     'duracion':'5 días',
@@ -165,7 +224,7 @@ addItem({
 addItem({
     'id': 2,
     'nombreDestino':'Exploración Natural en la Sierra Madre',
-    'precio':'$8,560',
+    'precio':'8,560',
     'destinos':'Puerto Vallarta, San Sebastián del Oeste, Mascota',
     'incluye':'Alojamiento en hoteles seleccionados con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte durante todo el itinerario.<br>Guía turístico experto.',
     'duracion':'4 días',
@@ -176,7 +235,7 @@ addItem({
 addItem({
     'id': 3,
     'nombreDestino':'Playas en Baja California Sur',
-    'precio':'$11,000',
+    'precio':'11,000',
     'destinos':'Loreto, Todos Santos, San José del Cabo, La Paz',
     'incluye':'Alojamiento en hoteles seleccionados con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte durante todo el recorrido.<br>Guía turístico experto.',
     'duracion':'6 días',
@@ -187,7 +246,7 @@ addItem({
 addItem({
     'id': 4,
     'nombreDestino':'Ruta del Café y Naturaleza en Chiapas',
-    'precio':'$12,000',
+    'precio':'12,000',
     'destinos':'San Cristóbal de las Casas, Comitán, Palenque',
     'incluye':'Alojamiento en hoteles con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte durante todo el recorrido.<br>Visitas guiadas a fincas de café para aprender sobre el proceso de producción.<br>Entradas a parques naturales para explorar la exuberante biodiversidad de Chiapas.',
     'duracion':'7 días',
@@ -198,7 +257,7 @@ addItem({
 addItem({
     'id': 5,
     'nombreDestino':'Aventura Marina en la Costa Maya',
-    'precio':'$9,000',
+    'precio':'9,000',
     'destinos':'Mahahual, Bacalar y Tulum',
     'incluye':'Alojamiento en hoteles con desayuno incluido (8:00am a 10:00am).<br>Transporte durante todo el recorrido.<br>Diversas actividades acuáticas.<br>Guía turístico experto.',
     'duracion':'4 días',
@@ -209,7 +268,7 @@ addItem({
 addItem({
     'id': 6,
     'nombreDestino':'Eco-Camping en la Reserva de la Biosfera de Sonora',
-    'precio':'$6,000',
+    'precio':'6,000',
     'destinos':'Reserva de la Biosfera El Pinacate y Gran Desierto de Altar',
     'incluye':'Equipo completo de camping.<br>Desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte ida y vuelta desde el punto de encuentro.<br>Guía especializada durante todo el recorrido.',
     'duracion':'3 días',
@@ -220,7 +279,7 @@ addItem({
 addItem({
     'id': 7,
     'nombreDestino':'Encanto y Aventura Volcánica',
-    'precio':'$9,500',
+    'precio':'9,500',
     'destinos':'Ciudad de México, Puebla, Cholula, Parque Nacional Iztaccíhuatl-Popocatépetl',
     'incluye':'Alojamiento en hoteles con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte durante todo el recorrido.<br>Guía turística experta.',
     'duracion':'5 días',
@@ -231,7 +290,7 @@ addItem({
 addItem({
     'id': 8,
     'nombreDestino':'Aventura Aérea y Relajación Natural en México',
-    'precio':'$14,250',
+    'precio':'14,250',
     'destinos':'Teotihuacán, Campos Florales y Ixtapan de la Sal',
     'incluye':'Alojamiento en hoteles con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Paseo en globo aerostático sobre Teotihuacán.<br>Entrada a balnearios de aguas termales en Campos Florales y Ixtapan de la Sal.<br>Transporte ida y vuelta desde el punto de encuentro.<br>Guía turística experta.',
     'duracion':'2 días',
@@ -242,7 +301,7 @@ addItem({
 addItem({
     'id': 9,
     'nombreDestino':'Aventura en las Alturas: Montañismo y camping en Mexico',
-    'precio':'$7,280',
+    'precio':'7,280',
     'destinos':'Parque Nacional Nevado de Toluca, Parque Nacional Cumbres de Monterrey y Parque Nacional Pico de Orizaba',
     'incluye':'Equipo completo de camping.<br>Desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm), durante la estadía<br>Guía experto en montañismo.<br>Transporte ida y vuelta desde el punto de encuentro.',
     'duracion':'4 días',
@@ -253,7 +312,7 @@ addItem({
 addItem({
     'id': 10,
     'nombreDestino':'Encanto Costero y Artesanías Mexicanas',
-    'precio':'$9,000',
+    'precio':'9,000',
     'destinos':'Puerto escondido y playa del Carmen',
     'incluye':'Alojamiento en hoteles con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte hacia destinos turísticos y mercados artesanales.<br>Excursiones a lugares locales de artesanías.<br>Visita a playas paradisíacas.',
     'duracion':'5 días',
