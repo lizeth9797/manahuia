@@ -8,6 +8,7 @@ function mostrarCarrito() {
   if (viajes.length === 0) {
     carritoContainer.innerHTML = '<p>El carrito está vacío</p>';
   } else {
+<<<<<<< HEAD
     // Limpiar el contenido anterior del carrito
     carritoContainer.innerHTML = '';
 
@@ -15,6 +16,41 @@ function mostrarCarrito() {
     viajes.forEach(item => {
       const viajeHTML = construirItemCarritoHTML(item);
       carritoContainer.insertAdjacentHTML('beforeend', viajeHTML);
+=======
+    // Construir el HTML completo del carrito
+    carritoContainer.innerHTML = ''; // Limpiar el contenido anterior
+    // Agregar los títulos de las columnas fuera del bucle
+
+    // Iterar sobre los viajes en el carrito y agregarlos al DOM
+    viajes.forEach((item) => {
+      const precioInicial = 1; // Precio inicial
+      const cantidad = item.cantidad ? item.cantidad : 1; // Verificar si hay cantidad definida
+      const precioPorPersona = item.precio ? parseFloat(item.precio.replace(',', '')) : precioInicial; // Obtener el precio por persona
+      const total = cantidad * precioPorPersona; // Calcular el total
+
+      const viajeHTML = `
+    <div class="item-carrito text-center text-md-left"> <!-- Agrega clase text-center para centrar en dispositivos móviles -->
+        <div class="info-carrito">
+            <h5>${item.nombreDestino}</h5> <!-- Nombre del destino encima de la foto -->
+            <img src="${item.imagen}" alt="${item.nombreDestino}" class="imagen-carrito"> <!-- Elimina el padding de la imagen -->
+        </div>
+        <div class='input-group input-number-group'>
+            <div class='input-group-button'>
+                <span class='input-number-decrement'>-</span>
+            </div>
+            <input class='input-number' type='number' value='${cantidad}' min='1' id='child' name='child'>
+            <div class='input-group-button'>
+                <span class='input-number-increment'>+</span>
+            </div>
+        </div>
+        <div class="precio-carrito" data-precio="${precioPorPersona}">
+            <strong>Precio por persona: $${item.precio} MEX</strong>
+        </div>
+        <div class="value">Total: <span>${total}</span></div>
+    </div>
+`;
+      carritoContainer.innerHTML += viajeHTML;
+>>>>>>> jos
     });
 
     // Agregar funcionalidad jQuery para los botones de cantidad
