@@ -125,23 +125,19 @@ document.addEventListener("DOMContentLoaded", function () {
         // Validación del precio
         let priceInputValue = priceInput.value.trim();
 
-        // Validar que el campo de precio solo contenga números
-        if (!/^\d.+$/.test(priceInputValue)) {
+        // Validar que el campo de precio solo contenga números y comas para separar los miles
+        if (!/^\d{1,3}(,\d{3})*(\.\d+)?$/.test(priceInputValue)) {
             priceInput.classList.add('is-invalid');
-            priceInputError.textContent = 'Ingresa solo números en el campo de precio.';
+            priceInputError.textContent = 'Ingresa un formato de precio válido.';
             valid = false;
-
         } else {
-            let priceValue = parseFloat(priceInputValue.replace(',', ''));
-            priceInput.classList.remove('is-invalid');
-            priceInput.classList.add('is-valid');
-            priceInputError.textContent = '';
+            // Remover comas del valor y convertirlo a número
+            let priceValue = parseFloat(priceInputValue.replace(/,/g, ''));
 
             if (isNaN(priceValue) || priceValue <= 0 || priceValue >= 10000000) {
                 priceInput.classList.add('is-invalid');
-                priceInputError.textContent = 'Agrega una cifra válida';
+                priceInputError.textContent = 'Agrega una cifra válida.';
                 valid = false;
-
             } else {
                 priceInput.classList.remove('is-invalid');
                 priceInput.classList.add('is-valid');

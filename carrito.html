@@ -205,117 +205,75 @@ input.btn.btn-primary {
     margin-left: 10px; /* Añadir margen a la izquierda para separarlo del contenido */
 }
 
-.cart-item__quantity-wrapper {
-    display: flex;
+.value{
+  text-align:center;
+  margin:16px auto;
+  width: 100px;
+  background: #e6e6e6;
+  padding: 10px;
 }
 
-/* component-quantity */
-.quantity {
-  color: rgba(var(--color-foreground));
-  position: relative;
-  width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+.input-number-group {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  border-radius: var(--inputs-radius);
-  min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.quantity:after {
-  pointer-events: none;
-  content: '';
-  position: absolute;
-  top: var(--inputs-border-width);
-  right: var(--inputs-border-width);
-  bottom: var(--inputs-border-width);
-  left: var(--inputs-border-width);
-  border: 0.1rem solid transparent;
-  border-radius: var(--inputs-radius);
-  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
-  transition: box-shadow var(--duration-short) ease;
-  z-index: 1;
+.input-number-group input[type=number]::-webkit-inner-spin-button,
+.input-number-group input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
 }
 
-.quantity:before {
-  background: rgb(var(--color-background));
-  pointer-events: none;
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: var(--inputs-radius-outset);
-  box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius) rgba(var(--color-base-text), var(--inputs-shadow-opacity));
-  z-index: -1;
+.input-number-group .input-group-button {
+  line-height: calc(80px/2 - 5px);
 }
 
-.quantity__input {
-  color: currentColor;
-  font-size: 1rem;
-  font-weight: 500;
-  opacity: 0.85;
+.input-number-group .input-number {
+  width: 80px;
+  padding: 0 12px;
+  vertical-align: top;
   text-align: center;
-  background-color: transparent;
-  border: 1;
-  padding: 0 0.5rem;
-  width: 100%;
-  flex-grow: 1;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.quantity__button {
-  border: 1px solid rgba(var(--color-foreground));
-  background-color: transparent;
-}
-
-.quantity__button:first-child {
-  margin-left: calc(var(--inputs-border-width));
-}
-
-.quantity__button:last-child {
-  margin-right: calc(var(--inputs-border-width));
-}
-
-.quantity__button svg {
-  width: 1rem;
-  pointer-events: none;
-}
-
-.quantity__button:focus-visible,
-.quantity__input:focus-visible {
-  background-color: rgb(var(--color-background));
-  z-index: 2;
-}
-
-.quantity__button:focus,
-.quantity__input:focus {
-  background-color: rgb(var(--color-background));
-  z-index: 2;
-}
-
-.quantity__button:not(:focus-visible):not(.focused),
-.quantity__input:not(:focus-visible):not(.focused) {
-  box-shadow: inherit;
-  background-color: inherit;
-}
-
-.quantity__input:-webkit-autofill,
-.quantity__input:-webkit-autofill:hover,
-.quantity__input:-webkit-autofill:active {
-  box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
-  -webkit-box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
-}
-
-.quantity__input::-webkit-outer-spin-button,
-.quantity__input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  outline: none;
+  display: block;
   margin: 0;
 }
 
-.quantity__input[type='number'] {
-  -moz-appearance: textfield;
+.input-number-group .input-number,
+.input-number-group .input-number-decrement,
+.input-number-group .input-number-increment {
+  border: 1px solid #cacaca;
+  height: 40px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 0;
 }
 
+.input-number-group .input-number-decrement,
+.input-number-group .input-number-increment {
+  display: inline-block;
+  width: 40px;
+  background: #e6e6e6;
+  color: #0a0a0a;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.input-number-group .input-number-decrement {
+  margin-right: 0.3rem;
+}
+
+.input-number-group .input-number-increment {
+  margin-left: 0.3rem;
+}
     </style>
   </head>
   <body class="fondoprincipal"><!--Cree esta clase de fondo principal para darle un color al fondo, igual en la realizacion del css se puede quitar-->

@@ -163,7 +163,14 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
-
+        
+        .btn-zoom {
+        transition: transform 0.3s ease; /* Agrega una transición suave */
+    }
+    
+    .btn-zoom:hover {
+        transform: scale(1.1); /* Aplica un zoom al 110% del tamaño original */
+    }
   
     </style>
   </head>
@@ -239,8 +246,8 @@
         <div class="container-fluid">
             <div id="cards-container" class="row"></div>
         </div><!--Cierre de las Cards-->
-        
-        
+  
+
     
 
     <!--FOOTER-->
