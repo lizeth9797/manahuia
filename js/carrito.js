@@ -14,15 +14,6 @@ function mostrarCarrito() {
     // Construir el HTML completo del carrito
     carritoContainer.innerHTML = ''; // Limpiar el contenido anterior
     // Agregar los títulos de las columnas fuera del bucle
-    carritoContainer.innerHTML += `
-        <div class="row">
-            <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Producto</h3></div>
-            <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Viajeras</h3></div>
-            <div class="col mx-6" style="color:#85586F; text-align: center;"><h3>Total</h3></div>
-        </div>
-        <br>
-        <br>
-    `;
 
     // Iterar sobre los viajes en el carrito y agregarlos al DOM
     viajes.forEach((item) => {
@@ -32,26 +23,26 @@ function mostrarCarrito() {
       const total = cantidad * precioPorPersona; // Calcular el total
 
       const viajeHTML = `
-        <div class="item-carrito">
-            <div class="info-carrito">
-              <h5>${item.nombreDestino}</h5> <!-- Nombre del destino encima de la foto -->
-              <img src="${item.imagen}" alt="${item.nombreDestino}" class="imagen-carrito" style="width: 200px; height: 200px; padding:20px">
-            </div>
-            <div class='input-group input-number-group'>
-                <div class='input-group-button'>
-                    <span class='input-number-decrement'>-</span>
-                </div>
-                <input class='input-number' type='number' value='${cantidad}' min='1' id='child' name='child'>
-                <div class='input-group-button'>
-                    <span class='input-number-increment'>+</span>
-                </div>
-            </div>
-            <div class="precio-carrito" data-precio="${precioPorPersona}" style="">
-                <strong>Precio por persona: $${item.precio} MEX</strong>
-            </div>
-            <div class="value">Total: <span>${total}</span></div>
+    <div class="item-carrito text-center text-md-left"> <!-- Agrega clase text-center para centrar en dispositivos móviles -->
+        <div class="info-carrito">
+            <h5>${item.nombreDestino}</h5> <!-- Nombre del destino encima de la foto -->
+            <img src="${item.imagen}" alt="${item.nombreDestino}" class="imagen-carrito"> <!-- Elimina el padding de la imagen -->
         </div>
-      `;
+        <div class='input-group input-number-group'>
+            <div class='input-group-button'>
+                <span class='input-number-decrement'>-</span>
+            </div>
+            <input class='input-number' type='number' value='${cantidad}' min='1' id='child' name='child'>
+            <div class='input-group-button'>
+                <span class='input-number-increment'>+</span>
+            </div>
+        </div>
+        <div class="precio-carrito" data-precio="${precioPorPersona}">
+            <strong>Precio por persona: $${item.precio} MEX</strong>
+        </div>
+        <div class="value">Total: <span>${total}</span></div>
+    </div>
+`;
       carritoContainer.innerHTML += viajeHTML;
     });
   }
