@@ -8,15 +8,6 @@ function mostrarCarrito() {
   if (viajes.length === 0) {
     carritoContainer.innerHTML = '<p>El carrito está vacío</p>';
   } else {
-<<<<<<< HEAD
-    // Limpiar el contenido anterior del carrito
-    carritoContainer.innerHTML = '';
-
-    // Iterar sobre los viajes en el carrito y construir el HTML completo del carrito
-    viajes.forEach(item => {
-      const viajeHTML = construirItemCarritoHTML(item);
-      carritoContainer.insertAdjacentHTML('beforeend', viajeHTML);
-=======
     // Construir el HTML completo del carrito
     carritoContainer.innerHTML = ''; // Limpiar el contenido anterior
     // Agregar los títulos de las columnas fuera del bucle
@@ -50,7 +41,6 @@ function mostrarCarrito() {
     </div>
 `;
       carritoContainer.innerHTML += viajeHTML;
->>>>>>> jos
     });
 
     // Agregar funcionalidad jQuery para los botones de cantidad
