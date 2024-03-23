@@ -34,10 +34,8 @@ function mostrarCarrito() {
       const viajeHTML = `
         <div class="item-carrito">
             <div class="info-carrito">
-                <img src="${item.imagen}" alt="${item.nombreDestino}" class="imagen-carrito" style="width: 200px; height: 200px; padding:20px">
-                <div class="descripcion-precio"> 
-                    <h5>${item.nombreDestino}</h5>
-                </div>
+              <h5>${item.nombreDestino}</h5> <!-- Nombre del destino encima de la foto -->
+              <img src="${item.imagen}" alt="${item.nombreDestino}" class="imagen-carrito" style="width: 200px; height: 200px; padding:20px">
             </div>
             <div class='input-group input-number-group'>
                 <div class='input-group-button'>
@@ -49,7 +47,7 @@ function mostrarCarrito() {
                 </div>
             </div>
             <div class="precio-carrito" data-precio="${precioPorPersona}" style="">
-                <strong>Precio por persona:$${item.precio} MEX</strong>
+                <strong>Precio por persona: $${item.precio} MEX</strong>
             </div>
             <div class="value">Total: <span>${total}</span></div>
         </div>
