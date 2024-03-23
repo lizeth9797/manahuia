@@ -19,8 +19,8 @@ function addItem(item) {
             <h5 class="card-title">${item.nombreDestino}</h5>
             <p class="card-text flex-grow-1">${truncatedDescription}...</p>
             <button type="button" style="background-color: #85586F" class="btn btn-secondary details-btn" data-bs-toggle="modal" data-bs-target="#${modalId}">
-                Detalles
-            </button>
+            Detalles
+        </button>
         </div> <!-- card-body -->
 
         <!-- Modal -->
@@ -257,6 +257,6 @@ addItem({
     'destinos':'Puerto escondido y playa del Carmen',
     'incluye':'Alojamiento en hoteles con desayuno (8:00am a 10:00am) y cena incluidos (7:00pm a 9:00pm).<br>Transporte hacia destinos turísticos y mercados artesanales.<br>Excursiones a lugares locales de artesanías.<br>Visita a playas paradisíacas.',
     'duracion':'5 días',
-    'descripcion':'Embárcate en nuestra experiencia "Encanto Costero y Artesanías Mexicanas”, durante 5 días, disfrutade alojamiento en hoteles con desayuno y cena incluidos, transporte hacia destinos turísticos ymercados artesanales donde podrás explorar y adquirir artesanías únicas, excursiones a lugareslocales de artesanías para conocer de cerca la cultura mexicana y visita a playas paradisíacas pararelajarte y disfrutar del paisaje costero. Una experiencia encantadora que combina lo mejor de la costamexicana y su rica artesanía!',
+    'descripcion':'Embárcate en nuestra experiencia "Encanto Costero y Artesanías Mexicanas”, durante 5 días, disfruta de alojamiento en hoteles con desayuno y cena incluidos, transporte hacia destinos turísticos y mercados artesanales donde podrás explorar y adquirir artesanías únicas, excursiones a lugares locales de artesanías para conocer de cerca la cultura mexicana y visita a playas paradisíacas para relajarte y disfrutar del paisaje costero. Una experiencia encantadora que combina lo mejor de la costamexicana y su rica artesanía!',
         'img':['./src/catalogo/Viaje 27.jpg','./src/catalogo/Viaje 8.jpg','./src/catalogo/Viaje 9.jpg','./src/catalogo/Viaje 31.jpg']
 });

@@ -85,6 +85,24 @@
         transform: scale(1.1);
     }
 
+ /* Botón "detalles" animación */
+ @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* animación al botón al pasar el mouse sobre él */
+    .details-btn:hover {
+        animation: pulse 1s infinite;
+    }
+
 
 
 
